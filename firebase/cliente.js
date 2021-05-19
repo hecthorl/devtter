@@ -84,18 +84,6 @@ export const listenLatestDevits = callback => {
    }
 }
 
-// export const fetchLatestDevits = () => {
-//    if (firebase.apps.length !== 0) {
-//       return app
-//          .firestore()
-//          .collection('devits')
-//          .orderBy('createdAt', 'desc')
-//          .limit(2)
-//          .get()
-//          .then(snapShot => snapShot.docs.map(mapDevitfromFirebase))
-//    }
-// }
-
 export const uploadImage = file => {
    if (firebase.apps.length !== 0) {
       const ref = app.storage().ref(`images/${file.name}`)
