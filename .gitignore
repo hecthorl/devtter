@@ -20,7 +20,7 @@
 *.pem
 *.http
 *.prettierrc.json
-*.eslintrc.js
+
 admin_firebase.json
 
 # debug
