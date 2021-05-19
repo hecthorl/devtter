@@ -1,10 +1,10 @@
 import Devit from 'components/Devit'
+import homeStyles from 'components/homeStyles'
 import { listenLatestDevits } from 'firebase/cliente'
 import useUser from 'hooks/useUser'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import homeStyles from './styles'
 import { FiPenTool } from 'react-icons/fi'
 
 const Home = () => {

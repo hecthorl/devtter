@@ -1,6 +1,6 @@
+import loadingRelojStyles from 'components/loadingRelojStyles'
 import Head from 'next/head'
 import useDate from '../../hooks/useDate'
-import loadingRelojStyles from './styles'
 
 const Reloj = () => {
    const hora = useDate()
