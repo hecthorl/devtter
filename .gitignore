@@ -18,6 +18,10 @@
 # misc
 .DS_Store
 *.pem
+*.http
+*.prettierrc.json
+*.eslintrc.js
+admin_firebase.json
 
 # debug
 npm-debug.log*
