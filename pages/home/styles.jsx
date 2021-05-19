@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css'
 import { colors } from 'styles/theme'
 
-export const homeStyles = css`
+const homeStyles = css`
    ::-webkit-scrollbar {
       width: 10px;
    }
@@ -80,5 +80,4 @@ export const homeStyles = css`
       background: rgb(255 255 255 / 95%);
    }
 `
-// backdrop-filter: blur(4px);
 export default homeStyles

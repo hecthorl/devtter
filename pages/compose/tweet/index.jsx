@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { addDevit, uploadImage } from 'firebase/cliente'
 import { useRouter } from 'next/router'
 import { FiX } from 'react-icons/fi'
-import { stylesTweet } from './styles'
+import stylesTweet from './styles'
 
 const COMPOSE_STATES = {
    USER_NOT_KNOW: 0,

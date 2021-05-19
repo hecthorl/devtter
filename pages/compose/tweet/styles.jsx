@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css'
 
-export const stylesTweet = css`
+const stylesTweet = css`
    form {
       display: flex;
       flex-direction: column;
@@ -47,3 +47,4 @@ export const stylesTweet = css`
       margin-bottom: 10px;
    }
 `
+export default stylesTweet
