@@ -1,12 +1,13 @@
-import buttonStyles from './styles'
-
 const Button = ({ children, onClick, disabled }) => {
    return (
       <>
-         <button disabled={disabled} onClick={onClick}>
+         <button
+            className="p-3 text-lg bg-white text-black w-full rounded-full"
+            disabled={disabled}
+            onClick={onClick}
+         >
             {children}
          </button>
-         <style jsx>{buttonStyles}</style>
       </>
    )
 }

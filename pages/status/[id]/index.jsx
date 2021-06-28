@@ -19,7 +19,7 @@ const DevitPage = props => {
 export const getStaticPaths = async () => {
    return {
       paths: [{ params: { id: 'g8ldtalv1ENybubFTgKt' } }],
-      fallback: !false
+      fallback: true
    }
 }
 

@@ -1,10 +1,10 @@
-import Navbar from 'components/navbar'
+// import Navbar from 'components/navbar'
 import { globalStyles } from './styles'
 
 const Layout = ({ children }) => {
    return (
       <>
-         <Navbar />
+         {/* <Navbar /> */}
          <div>{children}</div>
          <style jsx global>
             {globalStyles}
