@@ -34,15 +34,12 @@ export const authStateChanged = onChange => {
 
 export const githubPovider = () => {
    const githubProv = new GithubAuthProvider()
-   return (
-      app
-         .auth()
-         .signInWithPopup(githubProv)
-         // .then(mapUserFromFirebase)
-         .catch(err => console.error(err))
-   )
+   return app
+      .auth()
+      .signInWithPopup(githubProv)
+      .catch(err => console.error(err))
 }
-// export const googleProvider = new app.auth.GoogleAuthProvider();
+
 export const addDevit = ({ avatar, content, userId, img, username }) => {
    if (firebase.apps.length !== 0) {
       return app.firestore().collection('devits').add({

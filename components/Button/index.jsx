@@ -2,7 +2,7 @@ const Button = ({ children, onClick, disabled }) => {
    return (
       <>
          <button
-            className="p-3 text-lg bg-white text-black w-full rounded-full"
+            className="p-3 text-lg bg-white text-black w-full max-w-sm rounded-full"
             disabled={disabled}
             onClick={onClick}
          >

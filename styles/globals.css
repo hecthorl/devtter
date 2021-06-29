@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+   .hero-image {
+      @apply bg-wall md:order-1 bg-no-repeat bg-cover bg-center flex justify-center items-center w-full;
+   }
+   .hero-container__text {
+      @apply space-y-8 p-6 mb-5 w-full md:order-2 md:bg-repeat-y md:flex md:flex-col justify-center;
+   }
+   .hero-container {
+      @apply flex md:h-screen flex-wrap md:flex-nowrap text-white bg-black font-bold;
+   }
+
+   .icons-section {
+      @apply h-16 w-16 bg-green-500 absolute -top-20 right-4 rounded-full flex justify-center items-center;
+   }
+}

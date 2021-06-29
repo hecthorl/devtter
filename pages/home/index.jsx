@@ -1,11 +1,11 @@
+import Link from 'next/link'
+import Head from 'next/head'
 import Devit from 'components/Devit'
-import homeStyles from 'components/homeStyles'
+import { useEffect, useState } from 'react'
 import { listenLatestDevits } from 'firebase/cliente'
 import useUser from 'hooks/useUser'
-import Head from 'next/head'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { FiPenTool } from 'react-icons/fi'
+import { FcIdea } from 'react-icons/fc'
+import { FiPenTool, FiHome } from 'react-icons/fi'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
@@ -23,14 +23,21 @@ const Home = () => {
    return (
       <>
          <Head>
-            <title>Devtter | 🧁</title>
+            <title>Devtter / Inicio</title>
          </Head>
-         <section>
-            <header>
-               <h1>Inicio</h1>
+         <section className="bg-blue-900 text-white">
+            <header className="sticky top-0 bg-blue-900 px-4 py-3 flex items-center border-b-2 border-blue-400">
+               <div className="w-12">
+                  <img
+                     src={user?.avatar}
+                     alt="user avatar"
+                     className="rounded-full"
+                  />
+               </div>
+               <h1 className="text-xl w-full ml-5 font-bold">Inicio</h1>
+               <FcIdea className="text-3xl" />
             </header>
             <main>
-               {!!timeLine.length && <div className="border-top-style"></div>}
                {timeLine?.map(item => {
                   const {
                      avatar,
@@ -55,18 +62,41 @@ const Home = () => {
                   )
                })}
             </main>
-            <footer>
-               <Link href="/compose/tweet">
-                  <a className="new-tweet">
-                     <FiPenTool style={{ pointerEvents: 'none' }} />
-                  </a>
-               </Link>
-               <ul>asdasds</ul>
-            </footer>
+            <div className="sticky bottom-0 w-full py-3 bg-blue-900 border-t-2 border-blue-400 flex justify-around items-center text-3xl">
+               <div>
+                  <Link href="/">
+                     <a>
+                        <FiHome className="pointer-events-none text-green-500" />
+                     </a>
+                  </Link>
+               </div>
+               <div>
+                  <span>🥩</span>
+               </div>
+               <div>
+                  <span>🍷</span>
+               </div>
+               <div>
+                  <span>🧶</span>
+               </div>
+               <div className="icons-section">
+                  <Link href="/compose/tweet">
+                     <a>
+                        <FiPenTool className="pointer-events-none " />
+                     </a>
+                  </Link>
+               </div>
+            </div>
          </section>
-         <style jsx>{homeStyles}</style>
       </>
    )
 }
 
 export default Home
+/**
+ * <Link href="/compose/tweet">
+                  <a className="">
+                     <FiPenTool style={{ pointerEvents: 'none' }} />
+                  </a>
+               </Link>
+ */
