@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import Button from 'components/Button'
 import useUser from 'hooks/useUser'
 import { useEffect, useState } from 'react'
 import { addDevit, uploadImage } from 'firebase/cliente'
 import { useRouter } from 'next/router'
 import { FiX } from 'react-icons/fi'
-import stylesTweet from 'components/stylesTweet'
+import { HiArrowLeft } from 'react-icons/hi'
 
 const COMPOSE_STATES = {
    USER_NOT_KNOW: 0,
@@ -28,7 +27,7 @@ const Tweet = () => {
    const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE)
    const [task, setTask] = useState(null)
    const [imgURL, setImgURL] = useState(null)
-   const { push } = useRouter()
+   const { push, back } = useRouter()
    const user = useUser()
 
    useEffect(() => {
@@ -48,8 +47,7 @@ const Tweet = () => {
       setMessage(event.target.value)
    }
 
-   const handleSubmit = event => {
-      event.preventDefault()
+   const handleSubmit = () => {
       const tweet = message.trim()
 
       setStatus(COMPOSE_STATES.LOADING)
@@ -90,43 +88,72 @@ const Tweet = () => {
 
    const border =
       drag === DRAG_IMAGE_STATES.DRAG_OVER
-         ? '3px dashed #09f'
-         : '3px dashed transparent'
+         ? 'border-dashed border-2 border-green-500'
+         : 'border-b border-blue-400'
    return (
       <>
          <Head>
-            <title>Tweet | 🍫</title>
+            <title>Publicar nuevo Devit</title>
          </Head>
-         <form onSubmit={handleSubmit}>
-            <textarea
-               style={{ border }}
-               onChange={handleMessage}
-               value={message}
-               onDragEnter={handleDragEnter}
-               onDragLeave={handleDragLeave}
-               onDrop={handleDrop}
-               placeholder="What's going on?"
-            ></textarea>
-            {imgURL && (
-               <section>
-                  <button
-                     onClick={() => setImgURL(null)}
-                     className="img-button"
-                  >
-                     <FiX
-                        style={{
-                           fontSize: '20px',
-                           color: 'white',
-                           pointerEvents: 'none'
-                        }}
+         <div>
+            <header className="flex justify-between px-3 py-2 border-b border-blue-300">
+               <button onClick={() => back()}>
+                  <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
+               </button>
+               <button
+                  onClick={handleSubmit}
+                  type="submit"
+                  className="rounded-full px-4 font-bold text-white py-1 bg-green-500 disabled:opacity-50"
+                  disabled={isButtonDisable || message.length >= 280}
+               >
+                  Devittear
+               </button>
+            </header>
+            <div className="flex px-3 py-2">
+               <div className="w-16 mr-2">
+                  {user?.avatar ? (
+                     <img
+                        src={user.avatar}
+                        alt="user avatar"
+                        className="rounded-full"
                      />
-                  </button>
-                  <img src={imgURL} alt={imgURL} />
-               </section>
-            )}
-            <Button disabled={isButtonDisable}>Devittear 🍫</Button>
-         </form>
-         <style jsx>{stylesTweet}</style>
+                  ) : (
+                     <div className="rounded-full bg-blue-400 h-10 w-10"></div>
+                  )}
+               </div>
+               <div className="w-full">
+                  <textarea
+                     className={`${border} text-lg w-full resize-none h-32 p-2 focus:outline-none bg-transparent text-white`}
+                     onChange={handleMessage}
+                     value={message}
+                     onDragEnter={handleDragEnter}
+                     onDragLeave={handleDragLeave}
+                     onDrop={handleDrop}
+                     placeholder="What's going on?"
+                  ></textarea>
+                  {message.length >= 280 && (
+                     <span className="text-red-400">
+                        Max length characteres exceded
+                     </span>
+                  )}
+                  {imgURL && (
+                     <section className="relative">
+                        <button
+                           onClick={() => setImgURL(null)}
+                           className="absolute bg-black bg-opacity-50 top-3 left-3 text-2xl p-2 rounded-full"
+                        >
+                           <FiX className="text-white" />
+                        </button>
+                        <img
+                           className="rounded-2xl"
+                           src={imgURL}
+                           alt={imgURL}
+                        />
+                     </section>
+                  )}
+               </div>
+            </div>
+         </div>
       </>
    )
 }

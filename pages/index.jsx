@@ -4,7 +4,7 @@ import useUser from 'hooks/useUser'
 import NotLoggedUser from 'components/NotLoggedUser'
 import { useEffect } from 'react'
 
-const Home = () => {
+const Index = () => {
    const user = useUser()
    const { replace } = useRouter()
 
@@ -24,19 +24,4 @@ const Home = () => {
    )
 }
 
-export default Home
-/**
- * <section>
-            <h1>Devtter</h1>
-            <article>
-               <h1>tweet xd</h1>
-            </article>
-            {user === USER_STATE.NOT_LOGGED && (
-               <Button onClick={loginGithub}>
-                  <SiGithub />
-                  Sign Up with Github
-               </Button>
-            )}
-            {user === USER_STATE.NOT_KNOW && <span>Loading...</span>}
-         </section>
- */
+export default Index

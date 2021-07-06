@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+   body {
+      @apply bg-blue-900;
+   }
+}
+
 @layer components {
    .hero-image {
       @apply bg-wall md:order-1 bg-no-repeat bg-cover bg-center flex justify-center items-center w-full;
@@ -14,6 +20,6 @@
    }
 
    .icons-section {
-      @apply h-16 w-16 bg-green-500 absolute -top-20 right-4 rounded-full flex justify-center items-center;
+      @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 right-4 rounded-full flex justify-center items-center;
    }
 }

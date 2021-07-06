@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Button from 'components/Button'
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
 import icon from 'public/48.png'
@@ -19,10 +18,10 @@ const NotLoggedUser = () => {
                <span className="block"> ahora</span>
             </h1>
             <p className="text-2xl md:text-3xl">Únete a Devtter hoy mismo.</p>
-            <Button onClick={loginGithub}>
+            <button onClick={loginGithub}>
                <SiGithub className="inline mr-1 text-2xl" />
                Regístrate
-            </Button>
+            </button>
          </div>
          <div className="hero-image">
             <img

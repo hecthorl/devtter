@@ -9,19 +9,34 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
       event.preventDefault()
       push(`/status/${id}`)
    }
+
    const isClickable = !onStatus
       ? handleClickSingleTweet
-      : () => console.log('nada xd')
+      : () => console.log('nada')
    return (
-      <article onClick={isClickable}>
-         <img src={avatar} className="rounded-full h-12" alt={avatar} />
-         <div className="">
-            <div className="">
-               <h2>{username}</h2>•<time>{date}</time>
+      <article onClick={isClickable} className="px-4 flex gap-x-3 py-3">
+         <img
+            src={avatar}
+            loading="lazy"
+            className="rounded-full h-12"
+            alt={avatar}
+         />
+         <div className="w-full">
+            <div className="flex justify-between">
+               <h2 className="font-bold">{username}</h2>
+               <span className="text-white text-opacity-50">•</span>
+               <time className="text-white text-opacity-50">{date}</time>
             </div>
-            <div className="content-body">
+            <div className="space-y-2">
                <p>{content}</p>
-               {img && <img className="img-body" src={img} alt={img} />}
+               {img && (
+                  <img
+                     loading="lazy"
+                     className="rounded-2xl"
+                     src={img}
+                     alt={img}
+                  />
+               )}
             </div>
          </div>
       </article>
