@@ -10,12 +10,16 @@ module.exports = {
          },
          margin: {
             71: '71px'
+         },
+         maxWidth: {
+            251: '251px'
          }
       },
       screens: {
          sm: '500px',
          md: '987px',
-         xl: '1280px'
+         xl: '1004px',
+         '2xl': '1282px'
       }
    },
    variants: {

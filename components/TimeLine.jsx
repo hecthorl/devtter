@@ -1,6 +1,5 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/SkeletonDevit'
-import { FcIdea } from 'react-icons/fc'
 import useUser from 'hooks/useUser'
 
 const TimeLine = ({ devits }) => {
@@ -22,7 +21,9 @@ const TimeLine = ({ devits }) => {
             <span className="text-xl w-full ml-5 sm:ml-0 font-bold">
                Inicio
             </span>
-            <FcIdea className="text-3xl" />
+            <span role="figure" className="text-lg">
+               ✨
+            </span>
          </div>
          {devits.length ? (
             devits.map(item => {

@@ -28,6 +28,7 @@ const Home = () => {
          <section className="bg-blue-900 text-white w-full flex justify-center">
             <AppBar />
             <TimeLine devits={timeLine} />
+            <div className="hidden xl:block w-52 h-full"></div>
          </section>
       </>
    )
