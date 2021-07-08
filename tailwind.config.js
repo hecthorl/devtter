@@ -2,6 +2,7 @@
 
 module.exports = {
    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+   mode: 'jit',
    darkMode: false, // or 'media' or 'class'
    theme: {
       extend: {
@@ -12,7 +13,22 @@ module.exports = {
             71: '71px'
          },
          maxWidth: {
-            251: '251px'
+            251: '251px',
+            598: '598px'
+         },
+         maxHeight: {
+            580: '850px'
+         },
+         width: {
+            350: '350px'
+         },
+         content: {
+            lupa: "'A'"
+         },
+         colors: {
+            primary: '#15202b',
+            secondary: '#38444d',
+            tertiary: '#192734'
          }
       },
       screens: {

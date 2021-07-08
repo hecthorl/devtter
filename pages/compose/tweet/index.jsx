@@ -34,7 +34,6 @@ const Tweet = () => {
       const onProgress = () => {}
       const onError = () => {}
       const onComplete = () => {
-         // console.log('completado')
          task.snapshot.ref.getDownloadURL().then(setImgURL)
       }
 
@@ -59,8 +58,7 @@ const Tweet = () => {
          username: user.username,
          img: imgURL
       })
-         .then(algo => {
-            // console.log(algo, 'del tweet componse')
+         .then(() => {
             push('/home')
          })
          .catch(err => {

@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+   html {
+      scroll-behavior: smooth;
+   }
    body {
-      @apply bg-blue-900;
+      @apply bg-primary;
+   }
+   textarea,
+   input,
+   button {
+      @apply outline-none;
    }
 }
 

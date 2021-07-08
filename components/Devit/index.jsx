@@ -14,7 +14,10 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
       ? handleClickSingleTweet
       : () => console.log('nada')
    return (
-      <article onClick={isClickable} className="px-4 flex gap-x-3 py-3">
+      <article
+         onClick={isClickable}
+         className="px-4 flex gap-x-3 py-3 border-b border-secondary"
+      >
          <img
             src={avatar}
             loading="lazy"

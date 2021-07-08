@@ -1,15 +1,16 @@
 import Head from 'next/head'
-
 import { useEffect, useState } from 'react'
 import { listenLatestDevits } from 'firebase/cliente'
 import useUser from 'hooks/useUser'
 
 import AppBar from 'components/AppBar'
 import TimeLine from 'components/TimeLine'
+import useGlobalContext from 'hooks/useGlobalContext'
+import Aside from 'components/Aside/inex'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
-
+   const { ref } = useGlobalContext()
    const user = useUser()
 
    useEffect(() => {
@@ -25,11 +26,14 @@ const Home = () => {
          <Head>
             <title>Inicio / Devtter</title>
          </Head>
-         <section className="bg-blue-900 text-white w-full flex justify-center">
+         <div
+            ref={ref}
+            className="bg-primary text-white w-full flex justify-center"
+         >
             <AppBar />
             <TimeLine devits={timeLine} />
-            <div className="hidden xl:block w-52 h-full"></div>
-         </section>
+            <Aside />
+         </div>
       </>
    )
 }

@@ -1,0 +1,42 @@
+[
+   {
+      "title": "Inicio",
+      "href": "/home",
+      "icon": "🎈"
+   },
+   {
+      "title": "Explorar",
+      "href": "/",
+      "icon": "🎊"
+   },
+   {
+      "title": "Notificaciones",
+      "href": "/",
+      "icon": "🎃"
+   },
+   {
+      "title": "Mensajes",
+      "href": "/",
+      "icon": "🎀"
+   },
+   {
+      "title": "Guardados",
+      "href": "/",
+      "icon": "🥼"
+   },
+   {
+      "title": "Lista",
+      "href": "/",
+      "icon": "🚗"
+   },
+   {
+      "title": "Perfil",
+      "href": "/",
+      "icon": "🔰"
+   },
+   {
+      "title": "Más opciones",
+      "href": "/",
+      "icon": "🌐"
+   }
+]

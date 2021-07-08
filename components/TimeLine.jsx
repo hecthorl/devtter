@@ -1,12 +1,14 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/SkeletonDevit'
+import useGlobalContext from 'hooks/useGlobalContext'
 import useUser from 'hooks/useUser'
 
 const TimeLine = ({ devits }) => {
    const user = useUser()
+   const { width } = useGlobalContext()
    return (
-      <main className="divide-y divide-blue-400 w-full max-w-xl min-w-min sm:border-r sm:border-blue-400">
-         <div className="sticky top-0 bg-blue-900 px-4 py-3 flex items-center border-b border-blue-400">
+      <main className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
+         <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
             <div className="w-12 sm:hidden">
                {user?.avatar ? (
                   <img
@@ -15,7 +17,7 @@ const TimeLine = ({ devits }) => {
                      className="rounded-full"
                   />
                ) : (
-                  <div className="rounded-full bg-blue-400 h-10 w-10"></div>
+                  <div className="rounded-full bg-transparent h-10 w-10"></div>
                )}
             </div>
             <span className="text-xl w-full ml-5 sm:ml-0 font-bold">
@@ -25,6 +27,35 @@ const TimeLine = ({ devits }) => {
                ✨
             </span>
          </div>
+         {!(width <= 500) && (
+            <>
+               <div className="px-4 flex gap-x-3 py-3 border-b border-secondary">
+                  <div className="w-12">
+                     {user?.avatar ? (
+                        <img
+                           src={user.avatar}
+                           alt="user avatar"
+                           className="rounded-full"
+                        />
+                     ) : (
+                        <div className="rounded-full bg-secondary h-10 w-10"></div>
+                     )}
+                  </div>
+                  <div className="w-full mt-2">
+                     <form className="flex flex-col items-end w-full">
+                        <textarea
+                           placeholder="¿Qué está pasando?"
+                           className="bg-transparent resize-none w-full border-b h-20 border-secondary text-xl"
+                        ></textarea>
+                        <button className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full">
+                           Devitterar
+                        </button>
+                     </form>
+                  </div>
+               </div>
+               <div className="w-full h-3 bg-tertiary border-b border-secondary"></div>
+            </>
+         )}
          {devits.length ? (
             devits.map(item => {
                const { avatar, img, content, username, id, userId, createdAt } =
@@ -57,3 +88,32 @@ const TimeLine = ({ devits }) => {
 }
 
 export default TimeLine
+/**
+ * <div className="hidden sm:block">
+            <div className="px-4 flex gap-x-3 py-3 border-b border-blue-400">
+               <div className="w-12">
+                  {user?.avatar ? (
+                     <img
+                        src={user.avatar}
+                        alt="user avatar"
+                        className="rounded-full"
+                     />
+                  ) : (
+                     <div className="rounded-full bg-blue-400 h-10 w-10"></div>
+                  )}
+               </div>
+               <div className="w-full mt-2">
+                  <form className="flex flex-col items-end w-full">
+                     <textarea
+                        placeholder="¿Qué está pasando?"
+                        className="bg-transparent resize-none w-full border-b h-20 border-blue-400 text-xl"
+                     ></textarea>
+                     <button className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full">
+                        Devitterar
+                     </button>
+                  </form>
+               </div>
+            </div>
+            <div className="w-full h-3 bg-blue-500 bg-opacity-25 border-b border-blue-400"></div>
+         </div>
+ */
