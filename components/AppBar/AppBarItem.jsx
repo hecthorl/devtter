@@ -1,19 +1,16 @@
 import Link from 'next/link'
-import { FiHome } from 'react-icons/fi'
+// import { FiHome } from 'react-icons/fi'
 
-const AppBarItem = ({ icon, title, href, className }) => {
+const AppBarItem = ({ icon, title, href }) => {
    return (
       <Link href={href}>
-         <a
-            className={
-               className +
-               ' hover:bg-green-600 hover:bg-opacity-20 px-3 py-2 rounded-full group transition-colors'
-            }
-         >
-            {icon || <FiHome className="pointer-events-none text-green-500" />}
-            <span className="hidden 2xl:block group-hover:text-green-500 transition-colors">
-               {title}
-            </span>
+         <a className="flex w-full group">
+            <div className="group-hover:bg-green-600 group-hover:bg-opacity-10 pl-3 pr-6 py-3 rounded-full group transition-colors flex 2xl:gap-3 justify-center 2xl:justify-start">
+               {icon}
+               <span className="hidden 2xl:block group-hover:text-green-500 transition-colors w-full">
+                  {title}
+               </span>
+            </div>
          </a>
       </Link>
    )

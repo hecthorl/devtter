@@ -6,7 +6,7 @@ import useUser from 'hooks/useUser'
 import AppBar from 'components/AppBar'
 import TimeLine from 'components/TimeLine'
 import useGlobalContext from 'hooks/useGlobalContext'
-import Aside from 'components/Aside/inex'
+import Aside from 'components/Aside'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
@@ -25,6 +25,7 @@ const Home = () => {
       <>
          <Head>
             <title>Inicio / Devtter</title>
+            <link rel="icon" href="/faviconLogo.ico" />
          </Head>
          <div
             ref={ref}

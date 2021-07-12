@@ -33,7 +33,9 @@ const TimeLine = ({ devits }) => {
                   <div className="w-12">
                      {user?.avatar ? (
                         <img
-                           src={user.avatar}
+                           loading="lazy"
+                           src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20WIDTH%20HEIGHT'%3E%3C/svg%3E"
+                           data-src={user.avatar}
                            alt="user avatar"
                            className="rounded-full"
                         />
@@ -47,7 +49,10 @@ const TimeLine = ({ devits }) => {
                            placeholder="¿Qué está pasando?"
                            className="bg-transparent resize-none w-full border-b h-20 border-secondary text-xl"
                         ></textarea>
-                        <button className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full">
+                        <button
+                           disabled
+                           className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full"
+                        >
                            Devitterar
                         </button>
                      </form>

@@ -1,7 +1,6 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
-import icon from 'public/48.png'
 const NotLoggedUser = () => {
    const loginGithub = () => {
       githubPovider().catch(err => console.log(err))
@@ -10,7 +9,11 @@ const NotLoggedUser = () => {
       <section className="hero-container">
          <div className="hero-container__text">
             <div>
-               <Image src={icon} alt="Icon devtter" />
+               <img
+                  src="/logodevvter.svg"
+                  alt="Icon devtter"
+                  className="w-12 h-12"
+               />
             </div>
             <h1 className="text-5xl md:text-7xl">
                <span className="block">Lo que está</span>
@@ -25,8 +28,8 @@ const NotLoggedUser = () => {
          </div>
          <div className="hero-image">
             <img
-               className="p-14 md:w-[256px] w-[150px]"
-               src="/256.png"
+               className="p-14 md:w-[339px] w-[150px]"
+               src="/logodevvter.svg"
                alt="Icon devtter_3"
             />
          </div>

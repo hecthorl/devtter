@@ -22,8 +22,8 @@ module.exports = {
          width: {
             350: '350px'
          },
-         content: {
-            lupa: "'A'"
+         height: {
+            1075: '1075px'
          },
          colors: {
             primary: '#15202b',

@@ -3,25 +3,38 @@ import { useRouter } from 'next/router'
 import Devit from 'components/Devit'
 import { firestore } from 'firebase/admin'
 import { HiArrowLeft } from 'react-icons/hi'
+import AppBar from 'components/AppBar'
+import Aside from 'components/Aside'
+import useGlobalContext from 'hooks/useGlobalContext'
+import SkeletonDevit from 'components/SkeletonDevit'
 
 const DevitPage = props => {
-   const { isFallback, back } = useRouter()
+   const { back, isFallback } = useRouter()
+   const { ref } = useGlobalContext()
    const devitTitle = `${props.username} en Devtter: "${props.content}"`
 
-   if (isFallback) return <h1>Cargando...</h1>
    return (
       <>
          <Head>
             <title>{props.username ? devitTitle : 'Devtter'}</title>
+            <link rel="icon" href="/faviconLogo.ico" />
          </Head>
-         <div className="text-white">
-            <header className="sticky top-0 bg-blue-900 px-4 py-3 flex items-center border-b border-blue-400">
-               <button onClick={() => back()}>
-                  <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
-               </button>
-               <h1 className="text-xl w-full ml-5 font-bold">Devvter</h1>
-            </header>
-            <Devit {...props} onStatus={true} />
+         <div ref={ref} className="text-white w-full flex justify-center">
+            <AppBar />
+            <div className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
+               <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
+                  <button onClick={() => back()}>
+                     <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
+                  </button>
+                  <h1 className="text-xl w-full ml-5 font-bold">Devvter</h1>
+               </div>
+               {isFallback ? (
+                  <SkeletonDevit />
+               ) : (
+                  <Devit {...props} onStatus={true} />
+               )}
+            </div>
+            <Aside />
          </div>
       </>
    )

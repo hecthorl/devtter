@@ -17,7 +17,7 @@ const Index = () => {
          <Head>
             <title>Devtter App</title>
             <meta name="description" content="Devtter, un twitter para devs" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/faviconLogo.ico" />
          </Head>
          <NotLoggedUser />
       </>

@@ -47,16 +47,16 @@ const Tweet = () => {
    }
 
    const handleSubmit = () => {
-      const tweet = message.trim()
+      const devit = message.trim()
 
       setStatus(COMPOSE_STATES.LOADING)
 
       addDevit({
          avatar: user.avatar,
-         content: tweet,
+         content: devit,
          userId: user.uid,
          username: user.username,
-         img: imgURL
+         img: imgURL || 'No image'
       })
          .then(() => {
             push('/home')
@@ -127,7 +127,7 @@ const Tweet = () => {
                      onDragEnter={handleDragEnter}
                      onDragLeave={handleDragLeave}
                      onDrop={handleDrop}
-                     placeholder="What's going on?"
+                     placeholder="Qué está pasando?"
                   ></textarea>
                   {message.length >= 280 && (
                      <span className="text-red-400">
