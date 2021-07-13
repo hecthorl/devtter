@@ -7,10 +7,11 @@ import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import useGlobalContext from 'hooks/useGlobalContext'
 import SkeletonDevit from 'components/SkeletonDevit'
+import DevitInput from 'components/DevitInput'
 
 const DevitPage = props => {
    const { back, isFallback } = useRouter()
-   const { ref } = useGlobalContext()
+   const { ref, popUp } = useGlobalContext()
    const devitTitle = `${props.username} en Devtter: "${props.content}"`
 
    return (
@@ -19,6 +20,7 @@ const DevitPage = props => {
             <title>{props.username ? devitTitle : 'Devtter'}</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
+
          <div ref={ref} className="text-white w-full flex justify-center">
             <AppBar />
             <div className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
@@ -35,6 +37,7 @@ const DevitPage = props => {
                )}
             </div>
             <Aside />
+            {popUp && <DevitInput />}
          </div>
       </>
    )

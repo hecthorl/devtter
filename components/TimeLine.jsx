@@ -5,6 +5,7 @@ import useUser from 'hooks/useUser'
 
 const TimeLine = ({ devits }) => {
    const user = useUser()
+
    const { width } = useGlobalContext()
    return (
       <main className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
@@ -34,8 +35,7 @@ const TimeLine = ({ devits }) => {
                      {user?.avatar ? (
                         <img
                            loading="lazy"
-                           src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20WIDTH%20HEIGHT'%3E%3C/svg%3E"
-                           data-src={user.avatar}
+                           src={user.avatar}
                            alt="user avatar"
                            className="rounded-full"
                         />

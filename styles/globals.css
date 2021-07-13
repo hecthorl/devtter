@@ -9,7 +9,7 @@
    body {
       @apply bg-primary;
    }
-   textarea,
+
    input,
    button {
       @apply outline-none;

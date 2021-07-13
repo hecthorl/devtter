@@ -7,10 +7,11 @@ import AppBar from 'components/AppBar'
 import TimeLine from 'components/TimeLine'
 import useGlobalContext from 'hooks/useGlobalContext'
 import Aside from 'components/Aside'
+import DevitInput from 'components/DevitInput'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
-   const { ref } = useGlobalContext()
+   const { ref, popUp } = useGlobalContext()
    const user = useUser()
 
    useEffect(() => {
@@ -34,6 +35,7 @@ const Home = () => {
             <AppBar />
             <TimeLine devits={timeLine} />
             <Aside />
+            {popUp && <DevitInput />}
          </div>
       </>
    )

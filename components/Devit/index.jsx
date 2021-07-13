@@ -32,7 +32,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
             </div>
             <div className="space-y-2">
                <p>{content}</p>
-               {img && (
+               {img === 'No image' ? null : (
                   <img
                      loading="lazy"
                      className="rounded-2xl"
