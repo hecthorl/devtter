@@ -6,8 +6,8 @@ import { HiArrowLeft } from 'react-icons/hi'
 import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import useGlobalContext from 'hooks/useGlobalContext'
-import SkeletonDevit from 'components/SkeletonDevit'
-import DevitInput from 'components/DevitInput'
+import SkeletonDevit from 'components/Devit/SkeletonDevit'
+import DevitInput from 'components/DevitInput/DevitInputModal'
 
 const DevitPage = props => {
    const { back, isFallback } = useRouter()

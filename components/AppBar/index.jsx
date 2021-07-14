@@ -44,7 +44,7 @@ const AppBar = () => {
                        icon={item.icon}
                     />
                  ))}
-            <button className="icons-section" onClick={DevvitearButton}>
+            <button className="devitearBtn" onClick={DevvitearButton}>
                <GiFeather className="pointer-events-none 2xl:hidden" />
                <span className="hidden 2xl:inline text-base font-bold">
                   Devittear
@@ -59,74 +59,27 @@ const AppBar = () => {
                   <span className="bg-blue-400 h-12 w-12"></span>
                )}
             </div>
-            <div className="hidden 2xl:block text-sm w-full">
+            <div className="hidden 2xl:flex text-sm w-full justify-between items-center">
                <div>
-                  {user?.username ? (
-                     user?.username
-                  ) : (
-                     <span className="w-full bg-secondary h-3"></span>
-                  )}
+                  <div>
+                     {user?.username ? (
+                        user?.username
+                     ) : (
+                        <span className="w-full bg-secondary h-3"></span>
+                     )}
+                  </div>
+                  <div className="text-white text-opacity-50">
+                     @{user?.username.replace(' ', '_')}
+                  </div>
                </div>
-               <div className="text-white text-opacity-50">
-                  @{user?.username.replace(' ', '_')}
-               </div>
+
+               <span className="text-2xl">
+                  <FiMoreHorizontal className="pointer-events-none" />
+               </span>
             </div>
-            <span className="text-2xl">
-               <FiMoreHorizontal className="pointer-events-none" />
-            </span>
          </div>
       </header>
    )
 }
 
 export default AppBar
-/**
- *
- <AppBarItem
-               className="flex 2xl:gap-3 w-full justify-center 2xl:justify-start"
-               title="Inicio"
-               href="/"
-            />
-            <AppBarItem
-               className="flex 2xl:gap-3 w-full justify-center 2xl:justify-start"
-               title="Explorar"
-               href="/"
-               icon="💥"
-            />
-            <AppBarItem
-               className="flex 2xl:gap-3 w-full justify-center 2xl:justify-start"
-               title="Notificaciones"
-               href="/"
-               icon="🔱"
-            />
-            <AppBarItem
-               className="flex 2xl:gap-3 w-full justify-center 2xl:justify-start"
-               title="Mensajes"
-               href="/"
-               icon="🍷"
-            />
-            <AppBarItem
-               className="sm:flex gap-3 w-full hidden justify-center 2xl:justify-start"
-               title="Guardados"
-               href="/"
-               icon="🛒"
-            />
-            <AppBarItem
-               className="sm:flex gap-3 w-full hidden justify-center 2xl:justify-start"
-               title="Listas"
-               href="/"
-               icon="🍫"
-            />
-            <AppBarItem
-               className="sm:flex gap-3 w-full hidden justify-center 2xl:justify-start"
-               title="Perfil"
-               href="/"
-               icon="🥩"
-            />
-            <AppBarItem
-               className="sm:flex gap-3 w-full hidden justify-center 2xl:justify-start"
-               title="Más opciones"
-               href="/"
-               icon="🎉"
-            />
-*/

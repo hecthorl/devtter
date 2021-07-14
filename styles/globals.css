@@ -27,7 +27,7 @@
       @apply flex md:h-screen flex-wrap md:flex-nowrap text-white bg-black font-bold;
    }
 
-   .icons-section {
+   .devitearBtn {
       @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 right-4 rounded-full flex justify-center items-center 2xl:w-full;
    }
 }

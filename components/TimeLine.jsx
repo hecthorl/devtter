@@ -1,7 +1,8 @@
 import Devit from 'components/Devit'
-import SkeletonDevit from 'components/SkeletonDevit'
+import SkeletonDevit from 'components/Devit/SkeletonDevit'
 import useGlobalContext from 'hooks/useGlobalContext'
 import useUser from 'hooks/useUser'
+import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
    const user = useUser()
@@ -30,35 +31,8 @@ const TimeLine = ({ devits }) => {
          </div>
          {!(width <= 500) && (
             <>
-               <div className="px-4 flex gap-x-3 py-3 border-b border-secondary">
-                  <div className="w-12">
-                     {user?.avatar ? (
-                        <img
-                           loading="lazy"
-                           src={user.avatar}
-                           alt="user avatar"
-                           className="rounded-full"
-                        />
-                     ) : (
-                        <div className="rounded-full bg-secondary h-10 w-10"></div>
-                     )}
-                  </div>
-                  <div className="w-full mt-2">
-                     <form className="flex flex-col items-end w-full">
-                        <textarea
-                           placeholder="¿Qué está pasando?"
-                           className="bg-transparent resize-none w-full border-b h-20 border-secondary text-xl"
-                        ></textarea>
-                        <button
-                           disabled
-                           className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full"
-                        >
-                           Devitterar
-                        </button>
-                     </form>
-                  </div>
-               </div>
-               <div className="w-full h-3 bg-tertiary border-b border-secondary"></div>
+               <DevitInput />
+               <div className="w-full h-3 bg-tertiary border-t border-b border-secondary"></div>
             </>
          )}
          {devits.length ? (
@@ -94,31 +68,32 @@ const TimeLine = ({ devits }) => {
 
 export default TimeLine
 /**
- * <div className="hidden sm:block">
-            <div className="px-4 flex gap-x-3 py-3 border-b border-blue-400">
-               <div className="w-12">
-                  {user?.avatar ? (
-                     <img
-                        src={user.avatar}
-                        alt="user avatar"
-                        className="rounded-full"
-                     />
-                  ) : (
-                     <div className="rounded-full bg-blue-400 h-10 w-10"></div>
-                  )}
+ * <div className="px-4 flex gap-x-3 py-3 border-b border-secondary">
+                  <div className="w-12">
+                     {user?.avatar ? (
+                        <img
+                           loading="lazy"
+                           src={user.avatar}
+                           alt="user avatar"
+                           className="rounded-full"
+                        />
+                     ) : (
+                        <div className="rounded-full bg-secondary h-10 w-10"></div>
+                     )}
+                  </div>
+                  <div className="w-full mt-2">
+                     <form className="flex flex-col items-end w-full">
+                        <textarea
+                           placeholder="¿Qué está pasando?"
+                           className="bg-transparent resize-none w-full border-b h-20 border-secondary text-xl"
+                        ></textarea>
+                        <button
+                           disabled
+                           className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full"
+                        >
+                           Devitterar
+                        </button>
+                     </form>
+                  </div>
                </div>
-               <div className="w-full mt-2">
-                  <form className="flex flex-col items-end w-full">
-                     <textarea
-                        placeholder="¿Qué está pasando?"
-                        className="bg-transparent resize-none w-full border-b h-20 border-blue-400 text-xl"
-                     ></textarea>
-                     <button className="w-28 py-2 px-3 bg-green-500 mt-3 rounded-full">
-                        Devitterar
-                     </button>
-                  </form>
-               </div>
-            </div>
-            <div className="w-full h-3 bg-blue-500 bg-opacity-25 border-b border-blue-400"></div>
-         </div>
  */

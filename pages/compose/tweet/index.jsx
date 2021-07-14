@@ -1,4 +1,4 @@
-import DevitInput from 'components/DevitInput'
+import DevitInput from 'components/DevitInput/DevitInputModal'
 import useUser from 'hooks/useUser'
 import Head from 'next/head'
 import { useRouter } from 'next/router'

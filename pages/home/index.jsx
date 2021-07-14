@@ -7,7 +7,7 @@ import AppBar from 'components/AppBar'
 import TimeLine from 'components/TimeLine'
 import useGlobalContext from 'hooks/useGlobalContext'
 import Aside from 'components/Aside'
-import DevitInput from 'components/DevitInput'
+import DevitInput from 'components/DevitInput/DevitInputModal'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
