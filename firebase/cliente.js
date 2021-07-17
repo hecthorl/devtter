@@ -82,7 +82,7 @@ export const listenLatestDevits = callback => {
 }
 
 export const uploadImage = file => {
-   if (firebase.apps.length !== 0) {
+   if (firebase.apps.length !== 0 && file !== null) {
       const ref = app.storage().ref(`images/${file.name}`)
       const task = ref.put(file)
       return task

@@ -1,40 +1,24 @@
-import useUser from 'hooks/useUser'
-import OnImage from './OnImage'
-import WordsCounter from './WordsCounter'
-import useTextarea from 'hooks/useTextarea'
-import DevitInputBtn from './DevitInputBtn'
-import DevitInputIcons from './DevitInputIcons'
 import DevitInputTextarea from './DevitInputTextarea'
+
+import Avatar from 'components/Avatar'
 import useGlobalContext from 'hooks/useGlobalContext'
+import { UPLOADING_STATES } from 'helpers/constants'
 
 const DevitInput = () => {
-   const { imgURL, setImgURL } = useTextarea()
-   const { message, setMessage } = useGlobalContext()
-   const user = useUser()
-
+   const { devitStates } = useGlobalContext()
+   const { UPLOADING } = UPLOADING_STATES
    return (
       <>
-         <div className="px-4 py-2 flex gap-x-2">
+         <div className="px-4 py-2 flex gap-x-2 relative">
             <div className="ml-2 w-14 rounded-full overflow-hidden h-[fit-content]">
-               {user?.avatar ? (
-                  <img loading="lazy" src={user.avatar} alt="user avatar" />
-               ) : (
-                  <div className="rounded-full bg-secondary h-10 w-10"></div>
-               )}
+               <Avatar />
             </div>
-            <div className="w-full">
-               <DevitInputTextarea setMessage={setMessage} message={message} />
-               <div className="flex justify-between items-center pt-2 border-t border-secondary">
-                  <div className="flex text-lg gap-x-2">
-                     <DevitInputIcons />
-                  </div>
-                  <div className="flex items-center justify-center gap-x-2">
-                     <WordsCounter words={message.length} maxValue={280} />
-                     <DevitInputBtn message={message} imgURL={imgURL} />
-                  </div>
+            <DevitInputTextarea />
+            {devitStates === UPLOADING && (
+               <div className="absolute top-0 right-0 w-full h-full bg-blue-600 bg-opacity-20 flex items-center justify-center text-white backdrop-blur-sm">
+                  <h1>CARGANDO...</h1>
                </div>
-               <OnImage imgURL={imgURL} setImgURL={setImgURL} />
-            </div>
+            )}
          </div>
       </>
    )

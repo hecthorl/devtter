@@ -1,3 +1,4 @@
+import { DRAG_IMAGE_STATES, UPLOADING_STATES } from 'helpers/constants'
 import useResizeObserver from 'hooks/useResizeObserver'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
@@ -6,18 +7,21 @@ export const Context = createContext(null)
 
 const ContextProvider = ({ children }) => {
    const { ref, width, height } = useResizeObserver()
-   const [message, setMessage] = useState('')
    const [popUp, setpopUp] = useState(false)
+   const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE)
+   const [devitStates, setDevitStates] = useState(UPLOADING_STATES.NONE)
    const { pathname } = useRouter()
 
    const values = {
-      message,
-      setMessage,
       ref,
       width,
       height,
       popUp,
-      setpopUp
+      setpopUp,
+      drag,
+      setDrag,
+      devitStates,
+      setDevitStates
    }
 
    useEffect(() => {

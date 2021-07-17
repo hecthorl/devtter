@@ -1,4 +1,5 @@
 const emojis = ['💄', '🏆', '🪁', '🏀', '🍖']
+
 const DevitInputIcons = ({ content = emojis }) => {
    return (
       <>

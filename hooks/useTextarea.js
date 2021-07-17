@@ -1,33 +1,36 @@
-import { uploadImage } from 'firebase/cliente'
-import { DRAG_IMAGE_STATES } from 'helpers/constants'
+import { onError, onProgress } from 'helpers/firestoreStates'
 import { useEffect, useState } from 'react'
+// import { uploadImage } from 'firebase/cliente'
+// import { DRAG_IMAGE_STATES } from 'helpers/constants'
 
 const useTextarea = () => {
-   const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE)
    const [task, setTask] = useState(null)
+   const [preview, setPreview] = useState(null)
    const [imgURL, setImgURL] = useState(null)
 
-   const handleDragEnter = event => {
-      event.preventDefault()
-      setDrag(DRAG_IMAGE_STATES.DRAG_OVER)
-   }
-   const handleDragLeave = event => {
-      event.preventDefault()
-      setDrag(DRAG_IMAGE_STATES.NONE)
-   }
    const handleDrop = event => {
       event.preventDefault()
+      // eslint-disable-next-line no-undef
       setDrag(DRAG_IMAGE_STATES.NONE)
       const [file] = event.dataTransfer.files
+
+      // eslint-disable-next-line no-undef
       const task = uploadImage(file)
       setTask(task)
    }
-
    useEffect(() => {
-      const onProgress = () => {}
-      const onError = () => {}
+      // const onProgress = () => {
+      //    const { bytesTransferred, totalBytes } = task.snapshot
+      //    const progress = (bytesTransferred / totalBytes) * 100
+      //    console.log(progress)
+      // }
+      // const onError = error => {
+      //    console.log(error)
+      // }
       const onComplete = () => {
-         task.snapshot.ref.getDownloadURL().then(setImgURL)
+         task.snapshot.ref.getDownloadURL().then(item => {
+            setImgURL(item)
+         })
       }
 
       if (task) {
@@ -35,13 +38,17 @@ const useTextarea = () => {
       }
    }, [task])
 
+   // console.log('hook', preview)
+
    return {
-      handleDragEnter,
-      handleDragLeave,
+      // handleDragEnter,
+      // handleDragLeave,
       handleDrop,
       imgURL,
       setImgURL,
-      drag
+      // drag,
+      preview,
+      setPreview
    }
 }
 

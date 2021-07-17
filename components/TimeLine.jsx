@@ -7,7 +7,7 @@ import DevitInput from './DevitInput'
 const TimeLine = ({ devits }) => {
    const user = useUser()
 
-   const { width } = useGlobalContext()
+   const { width, popUp } = useGlobalContext()
    return (
       <main className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
          <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
@@ -31,7 +31,7 @@ const TimeLine = ({ devits }) => {
          </div>
          {!(width <= 500) && (
             <>
-               <DevitInput />
+               <DevitInput disabled={popUp} />
                <div className="w-full h-3 bg-tertiary border-t border-b border-secondary"></div>
             </>
          )}

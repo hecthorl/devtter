@@ -1,22 +1,20 @@
 import { authStateChanged } from 'firebase/cliente'
+import { USER_STATE } from 'helpers/constants'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-export const USER_STATE = {
-   NOT_LOGGED: null,
-   NOT_KNOW: undefined
-}
+const { NOT_KNOW, NOT_LOGGED } = USER_STATE
 
 const useUser = () => {
-   const [user, setUser] = useState(USER_STATE.NOT_KNOW)
-   const router = useRouter()
+   const [user, setUser] = useState(NOT_KNOW)
+   const { push } = useRouter()
 
    useEffect(() => {
       authStateChanged(setUser)
    }, [])
 
    useEffect(() => {
-      user === USER_STATE.NOT_LOGGED && router.push('/')
+      if (user === NOT_LOGGED) push('/')
    }, [user])
 
    return user

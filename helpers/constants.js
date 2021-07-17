@@ -10,5 +10,17 @@ export const DRAG_IMAGE_STATES = {
    NONE: 0,
    DRAG_OVER: 1,
    UPLOADING: 2,
-   COMPLETE: 3
+   COMPLETE: 3,
+   DROPED: 4
+}
+
+export const UPLOADING_STATES = {
+   NONE: 'nada',
+   UPLOADING: 'subiendo',
+   DONE: 'terminado'
+}
+
+export const USER_STATE = {
+   NOT_LOGGED: null,
+   NOT_KNOW: undefined
 }
