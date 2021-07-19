@@ -1,5 +1,7 @@
 import useTimeAgo from 'hooks/useTimeAgo'
 import { useRouter } from 'next/router'
+import CommentBtn from './CommentBtn'
+import LikeBtn from './LikeBtn'
 
 const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
    const date = useTimeAgo(createdAt)
@@ -31,15 +33,28 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
                <time className="text-white text-opacity-50">{date}</time>
             </div>
             <div className="space-y-2">
-               <p>{content}</p>
-               {img === 'No image' ? null : (
-                  <img
-                     loading="lazy"
-                     className="rounded-2xl"
-                     src={img}
-                     alt={img}
-                  />
-               )}
+               <div className="pb-2">
+                  <p>{content}</p>
+                  {img === 'No image' ? null : (
+                     <img
+                        loading="lazy"
+                        className="rounded-2xl break-all"
+                        src={img}
+                        alt={img}
+                     />
+                  )}
+               </div>
+               <div className="flex max-w-[425px] w-full justify-between text-sm text-[#8899a6]">
+                  <CommentBtn />
+                  <button>
+                     <span>🧁</span>
+                     <span>10</span>
+                  </button>
+                  <LikeBtn />
+                  <button>
+                     <span>🥤</span>
+                  </button>
+               </div>
             </div>
          </div>
       </article>

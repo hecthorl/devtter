@@ -1,14 +1,5 @@
+import { DATE_UNITS } from 'helpers/constants'
 import { useEffect, useState } from 'react'
-
-const DATE_UNITS = [
-   ['year', 31557600],
-   ['month', 2629800],
-   ['week', 604800],
-   ['day', 86400],
-   ['hour', 3600],
-   ['minute', 60],
-   ['second', 1]
-]
 
 const getDateDiffs = timestamp => {
    const now = Date.now()

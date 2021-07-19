@@ -1,7 +1,7 @@
 import ContextProvider from 'context/Context'
 import '../styles/globals.css'
 
-const MyApp = ({ Component, pageProps }) => {
+const DevtterApp = ({ Component, pageProps }) => {
    return (
       <ContextProvider>
          <Component {...pageProps} />
@@ -9,4 +9,4 @@ const MyApp = ({ Component, pageProps }) => {
    )
 }
 
-export default MyApp
+export default DevtterApp

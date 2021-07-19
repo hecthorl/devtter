@@ -10,7 +10,7 @@ const TimeLine = ({ devits }) => {
    const { width, popUp } = useGlobalContext()
    return (
       <main className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
-         <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
+         <div className="sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
             <div className="w-12 sm:hidden">
                {user?.avatar ? (
                   <img

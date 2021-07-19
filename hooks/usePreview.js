@@ -22,9 +22,9 @@ const usePreview = () => {
    }
 
    /**
-    * preview => la url final de la imagen
+    * preview => la url en formato blob de la imagen
     * handleDrop => metodo para detectar el drop de la imagen en el textarea
-    * setPreviw => metodo para el boton de cerrar imagen
+    * setPreview => metodo para el boton de cerrar la imagen
     */
    return { preview, handleDrop, setPreview, file }
 }
