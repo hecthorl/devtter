@@ -17,7 +17,11 @@ const FollowersItem = ({ img, content }) => {
    return (
       <div className="flex justify-between w-full items-center px-4 py-3 border-b border-secondary">
          <div className="flex">
-            <img src={img} alt={img} className="h-12 w-12 rounded-full" />
+            <img
+               src={img}
+               alt={img}
+               className="h-12 w-12 rounded-full overflow-hidden"
+            />
             <p className="flex flex-col text-base justify-center ml-2">
                <span className="hover:underline cursor-pointer">{content}</span>
                <span className="text-white text-opacity-30 font-normal">
@@ -68,7 +72,7 @@ const Aside = () => {
                <h4 className="px-4 py-2 border-b border-secondary">
                   A quién Seguir
                </h4>
-               <div>
+               <div className="text-sm break-words">
                   <FollowersItem
                      img="https://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_400x400.png"
                      content="ReactJS"

@@ -16,13 +16,15 @@ const getDateDiffs = timestamp => {
 const useTimeAgo = timestamp => {
    if (!timestamp || isNaN(timestamp)) return console.log(timestamp, 'error')
    const [timeAgo, setTimeAgo] = useState(() => getDateDiffs(timestamp))
+
    useEffect(() => {
       const val = setInterval(() => {
          const newTimeAgo = getDateDiffs(timestamp)
          setTimeAgo(newTimeAgo)
-      }, 1e3)
+      }, 5e3)
       return () => clearInterval(val)
    }, [timestamp])
+
    const rtf = new Intl.RelativeTimeFormat({
       style: 'long',
       localeMatcher: 'best fit'

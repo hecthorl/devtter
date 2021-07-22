@@ -26,6 +26,7 @@ const usePreview = () => {
     * handleDrop => metodo para detectar el drop de la imagen en el textarea
     * setPreview => metodo para el boton de cerrar la imagen
     */
+
    return { preview, handleDrop, setPreview, file }
 }
 

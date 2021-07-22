@@ -4,7 +4,7 @@ import useUser from './useUser'
 import { useRouter } from 'next/router'
 import useGlobalContext from './useGlobalContext'
 
-const useSendDevit = ({ file = null, message, setMessage }) => {
+const useSendDevit = ({ file, message, setMessage }) => {
    const { devitStates, setDevitStates, setpopUp, popUp } = useGlobalContext()
    const { DONE, UPLOADING } = UPLOADING_STATES
 
@@ -28,7 +28,6 @@ const useSendDevit = ({ file = null, message, setMessage }) => {
             .then(() => {
                if (!popUp) {
                   setMessage('')
-                  console.log('termino de enviarse el devit sin img')
                   setDevitStates(DONE)
                   return
                }
@@ -63,7 +62,6 @@ const useSendDevit = ({ file = null, message, setMessage }) => {
        * la añado al objeto para crear el devit y terminar de enviarlo
        */
       promise.then(img => {
-         console.log('img', img)
          addDevit({
             avatar: user.avatar,
             content: message.trim(),
@@ -74,7 +72,6 @@ const useSendDevit = ({ file = null, message, setMessage }) => {
             .then(() => {
                if (!popUp) {
                   setMessage('')
-                  console.log('termino de enviarse el devit con img')
                   setDevitStates(DONE)
                   return
                }
