@@ -42,7 +42,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
                loading="lazy"
                className={' h-12 ' + toimageAv}
                src={avatar}
-               alt={avatar}
+               alt={'current image profile of ' + username}
             />
             <div
                className={
@@ -53,7 +53,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
          <div className="w-full">
             <div className="flex justify-between">
                <div className="flex gap-x-2">
-                  <h2 className="font-bold">{username}</h2>
+                  <h2 className="font-bold hover:underline">{username}</h2>
                   <div
                      onClick={e => e.stopPropagation()}
                      className="text-white space-x-1 text-opacity-50"
@@ -71,7 +71,11 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
             </div>
             <div className="space-y-2">
                <div className="pb-3">
-                  <p className="pb-2">{content}</p>
+                  <p
+                     className={onStatus ? 'text-2xl pb-2 ' : 'text-base pb-2 '}
+                  >
+                     {content}
+                  </p>
                   {img === 'No image' ? null : (
                      <div
                         onClick={e => e.stopPropagation()}

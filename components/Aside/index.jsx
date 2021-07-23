@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FiSettings } from 'react-icons/fi'
 const TrendsItem = () => {
    return (
@@ -14,14 +15,28 @@ const TrendsItem = () => {
 }
 //
 const FollowersItem = ({ img, content }) => {
+   const [state, setState] = useState(false)
+
+   const toimage = state ? 'opacity-100' : 'opacity-0'
+   const toFallbackImg = state ? 'opacity-0' : 'opacity-100'
+
    return (
       <div className="flex justify-between w-full items-center px-4 py-3 border-b border-secondary">
          <div className="flex">
-            <img
-               src={img}
-               alt={img}
-               className="h-12 w-12 rounded-full overflow-hidden"
-            />
+            <div className="h-12 w-12 rounded-full overflow-hidden relative">
+               <img
+                  onLoad={() => setState(true)}
+                  loading="lazy"
+                  src={img}
+                  alt={content}
+                  className={toimage}
+               />
+               <div
+                  className={
+                     'absolute top-0 w-full h-full bg-blue-600 ' + toFallbackImg
+                  }
+               ></div>
+            </div>
             <p className="flex flex-col text-base justify-center ml-2">
                <span className="hover:underline cursor-pointer">{content}</span>
                <span className="text-white text-opacity-30 font-normal">
@@ -58,11 +73,9 @@ const Aside = () => {
                   </span>
                </div>
                <div className="divide-y divide-secondary">
-                  <TrendsItem />
-                  <TrendsItem />
-                  <TrendsItem />
-                  <TrendsItem />
-                  <TrendsItem />
+                  {[...Array(4).keys()].map((u, i) => (
+                     <TrendsItem key={i} />
+                  ))}
                   <div className="px-4 py-2 text-green-500 text-base font-normal">
                      Mostrar más
                   </div>

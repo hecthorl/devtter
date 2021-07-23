@@ -21,7 +21,7 @@ const Home = () => {
       }
       return () => unSubscribe && unSubscribe()
    }, [user])
-   console.log('veces')
+   // console.log('veces')
 
    return (
       <>

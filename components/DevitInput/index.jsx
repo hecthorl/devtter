@@ -10,7 +10,7 @@ const DevitInput = () => {
    return (
       <>
          <div className="px-4 py-2 flex gap-x-2 relative">
-            <div className="ml-2 w-14 rounded-full overflow-hidden h-[fit-content]">
+            <div className="w-[48px]">
                <Avatar />
             </div>
             <DevitInputTextarea />

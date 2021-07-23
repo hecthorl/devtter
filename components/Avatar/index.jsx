@@ -1,16 +1,15 @@
-import useUser from 'hooks/useUser'
+import useAvatarPhoto from 'hooks/useAvatarPhoto'
 
 const Avatar = () => {
-   const user = useUser()
-
+   const avatarImage = useAvatarPhoto()
    return (
-      <>
-         {user && user.avatar ? (
-            <img src={user.avatar} alt="user avatar" loading="lazy" />
+      <div className="w-[inherit] rounded-full overflow-hidden">
+         {avatarImage ? (
+            <img src={avatarImage} alt="Current image profile" />
          ) : (
-            <span className="bg-secondary h-12 w-12"></span>
+            <div className="bg-blue-600 w-full h-[48px]"></div>
          )}
-      </>
+      </div>
    )
 }
 

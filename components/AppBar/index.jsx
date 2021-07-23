@@ -6,6 +6,7 @@ import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { useRouter } from 'next/router'
+import Avatar from 'components/Avatar'
 
 const AppBar = () => {
    const user = useUser()
@@ -52,12 +53,8 @@ const AppBar = () => {
             </button>
          </nav>
          <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
-            <div className="rounded-full overflow-hidden max-w-[40px]">
-               {user?.avatar ? (
-                  <img src={user.avatar} alt="user avatar" />
-               ) : (
-                  <span className="bg-blue-400 h-12 w-12"></span>
-               )}
+            <div className="w-[40px]">
+               <Avatar />
             </div>
             <div className="hidden 2xl:flex text-sm w-full justify-between items-center">
                <div>
