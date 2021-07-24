@@ -7,7 +7,7 @@ const DevitInputModal = () => {
    return (
       <div
          onClick={() => setpopUp(false)}
-         className="fixed top-0 right-0 w-screen h-screen bg-white bg-opacity-20"
+         className="fixed top-0 right-0 w-screen h-screen bg-white bg-opacity-20 z-50"
       >
          <dialog
             onClick={e => e.stopPropagation()}

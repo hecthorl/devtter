@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Devit from 'components/Devit'
 import { firestore } from 'firebase/admin'
 import { HiArrowLeft } from 'react-icons/hi'
 import AppBar from 'components/AppBar'
@@ -8,6 +7,7 @@ import Aside from 'components/Aside'
 import useGlobalContext from 'hooks/useGlobalContext'
 import SkeletonDevit from 'components/Devit/SkeletonDevit'
 import DevitInput from 'components/DevitInput/DevitInputModal'
+import SingleDevit from 'components/SingleDevit'
 
 const DevitPage = props => {
    const { back, isFallback } = useRouter()
@@ -30,11 +30,7 @@ const DevitPage = props => {
                   </button>
                   <h1 className="text-xl w-full ml-5 font-bold">Devvter</h1>
                </div>
-               {isFallback ? (
-                  <SkeletonDevit />
-               ) : (
-                  <Devit {...props} onStatus={true} />
-               )}
+               {isFallback ? <SkeletonDevit /> : <SingleDevit {...props} />}
             </div>
             <Aside />
             {popUp && <DevitInput />}
@@ -44,8 +40,11 @@ const DevitPage = props => {
 }
 
 export const getStaticPaths = async () => {
+   const snapShot = await firestore.collection('devits').get()
+   const paths = snapShot.docs.map(doc => ({ params: { id: doc.id } }))
+
    return {
-      paths: [{ params: { id: 'g8ldtalv1ENybubFTgKt' } }],
+      paths: paths,
       fallback: true
    }
 }

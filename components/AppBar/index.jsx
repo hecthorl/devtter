@@ -1,12 +1,14 @@
-import { GiFeather } from 'react-icons/gi'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { GiFeather } from 'react-icons/gi'
 import useUser from 'hooks/useUser'
 import AppBarItem from './AppBarItem'
 import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
-import { useRouter } from 'next/router'
-import Avatar from 'components/Avatar'
+
+const Avatar = dynamic(() => import('components/Avatar'))
 
 const AppBar = () => {
    const user = useUser()

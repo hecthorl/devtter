@@ -1,8 +1,9 @@
+import dynamic from 'next/dynamic'
 import DevitInputTextarea from './DevitInputTextarea'
-
-import Avatar from 'components/Avatar'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { UPLOADING_STATES } from 'helpers/constants'
+
+const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const DevitInput = () => {
    const { devitStates } = useGlobalContext()
