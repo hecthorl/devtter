@@ -53,12 +53,12 @@ const FollowersItem = ({ img, content }) => {
 
 const Aside = () => {
    return (
-      <aside className="hidden xl:block h-1075 pt-1 ml-7 sticky -top-60 text-xl">
+      <aside className="hidden xl:block h-[1075px] pt-1 ml-7 sticky -top-60 text-xl">
          <div className="">
             <div className="fixed top-0 py-1 pb-2 bg-primary">
                <input
                   type="text"
-                  className="py-2 pl-14 rounded-full bg-tertiary w-350 relative"
+                  className="py-2 pl-14 rounded-full bg-tertiary w-[350px] relative"
                   placeholder="Buscar en Devtter"
                />
                <div className="absolute -top-1 pt-1 left-4 text-xl h-full flex items-center">
@@ -81,7 +81,7 @@ const Aside = () => {
                   </div>
                </div>
             </div>
-            <div className="rounded-2xl bg-tertiary flex flex-col py-2 font-bold w-ful mt-6">
+            <div className="rounded-2xl bg-tertiary flex flex-col py-2 font-bold w-[350px] mt-6">
                <h4 className="px-4 py-2 border-b border-secondary">
                   A quién Seguir
                </h4>

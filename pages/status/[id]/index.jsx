@@ -23,7 +23,7 @@ const DevitPage = props => {
 
          <div ref={ref} className="text-white w-full flex justify-center">
             <AppBar />
-            <div className="w-full max-w-598 min-w-min sm:border-r sm:border-secondary">
+            <div className="w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary">
                <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary z-20">
                   <button onClick={() => back()}>
                      <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />

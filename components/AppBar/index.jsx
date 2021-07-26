@@ -8,19 +8,20 @@ import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
 
-const Avatar = dynamic(() => import('components/Avatar'))
+const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const AppBar = () => {
    const user = useUser()
    const { push } = useRouter()
    const { width, setpopUp } = useGlobalContext()
    const mobileSize = items.slice(0, 4)
+   console.log(width)
    const DevvitearButton = () => {
       width <= 500 ? push('/compose/tweet') : setpopUp(true)
    }
    return (
-      <header className="fixed sm:sticky w-full sm:w-auto bottom-0 sm:top-0 sm:left-0 pb-3 sm:px-3 bg-primary border-t sm:border-r border-secondary text-3xl sm:border-t-0 sm:h-screen sm:flex sm:flex-col sm:justify-between 2xl:max-w-251 2xl:w-full">
-         <nav className="w-full flex justify-around items-start sm:flex-col sm:justify-between text-xl font-semibold h-3/4">
+      <header className="fixed z-50 sm:sticky w-full sm:w-auto bottom-0 sm:top-0 sm:left-0 sm:pb-3 sm:px-3 bg-primary border-t sm:border-r border-secondary text-3xl sm:border-t-0 sm:h-screen sm:flex sm:flex-col sm:justify-between 2xl:max-w-[275px] 2xl:w-full">
+         <nav className="w-full flex justify-around items-start sm:flex-col sm:justify-between text-[20px] font-semibold">
             <Link href="/">
                <a className="bg-green-500 bg-opacity-0 hover:bg-opacity-10 transition-colors hidden rounded-full w-12 h-12 sm:block relative">
                   <img
@@ -48,14 +49,14 @@ const AppBar = () => {
                     />
                  ))}
             <button className="devitearBtn" onClick={DevvitearButton}>
-               <GiFeather className="pointer-events-none 2xl:hidden" />
+               <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
                <span className="hidden 2xl:inline text-base font-bold">
                   Devittear
                </span>
             </button>
          </nav>
          <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
-            <div className="w-[40px]">
+            <div className="w-[40px] mx-auto">
                <Avatar />
             </div>
             <div className="hidden 2xl:flex text-sm w-full justify-between items-center">

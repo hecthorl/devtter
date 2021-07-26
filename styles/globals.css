@@ -18,7 +18,7 @@
 
 @layer components {
    .hero-image {
-      @apply bg-wall md:order-1 bg-no-repeat bg-cover bg-center flex justify-center items-center w-full;
+      @apply md:order-1 bg-no-repeat bg-cover bg-center flex justify-center items-center w-full;
    }
    .hero-container__text {
       @apply space-y-8 p-6 mb-5 w-full md:order-2 md:bg-repeat-y md:flex md:flex-col justify-center;
@@ -28,6 +28,6 @@
    }
 
    .devitearBtn {
-      @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 right-4 rounded-full flex justify-center items-center 2xl:w-full;
+      @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 right-4 rounded-full flex justify-center items-center 2xl:w-[225px] sm:mt-2;
    }
 }

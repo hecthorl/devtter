@@ -1,6 +1,7 @@
 // import Image from 'next/image'
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
+import LogoComponent from './LogoComponent'
 const NotLoggedUser = () => {
    const loginGithub = () => {
       githubPovider().catch(err => console.log(err))
@@ -8,30 +9,30 @@ const NotLoggedUser = () => {
    return (
       <section className="hero-container">
          <div className="hero-container__text">
-            <div>
-               <img
-                  src="/logodevvter.svg"
-                  alt="Icon devtter"
-                  className="w-12 h-12"
-               />
+            <div className="h-11 w-11">
+               <LogoComponent />
             </div>
-            <h1 className="text-5xl md:text-7xl">
-               <span className="block">Lo que está</span>
-               <span className="block"> pasando</span>
-               <span className="block"> ahora</span>
+            <h1 className="text-5xl md:text-7xl flex flex-col">
+               <span>Lo que está</span>
+               <span> pasando</span>
+               <span> ahora</span>
             </h1>
             <p className="text-2xl md:text-3xl">Únete a Devtter hoy mismo.</p>
-            <button onClick={loginGithub}>
-               <SiGithub className="inline mr-1 text-2xl" />
+            <button
+               className="max-w-[380px] duration-200 ease-in w-full font-bold hover:text-white hover:bg-[#1a91da] transition-colors border border-[#1a91da] rounded-full py-3 text-[#1a91da]"
+               onClick={loginGithub}
+            >
+               <SiGithub className="inline mr-2 text-2xl" />
                Regístrate
             </button>
          </div>
-         <div className="hero-image">
-            <img
-               className="p-14 md:w-[339px] w-[150px]"
-               src="/logodevvter.svg"
-               alt="Icon devtter_3"
-            />
+         <div
+            className="hero-image"
+            style={{ backgroundImage: "url('./devtterWall.png')" }}
+         >
+            <div className="max-w-[339px] w-full p-8">
+               <LogoComponent />
+            </div>
          </div>
       </section>
    )

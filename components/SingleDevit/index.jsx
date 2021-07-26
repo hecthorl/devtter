@@ -2,12 +2,14 @@ import CommentBtn from 'components/Devit/CommentBtn'
 import LikeBtn from 'components/Devit/LikeBtn'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
+
+const SingleDevitDates = dynamic(() => import('./Dates'), { ssr: false })
 
 const SingleDevit = props => {
    const { avatar, content, username, createdAt, img } = props
    const [avatarImg, setAvatarImg] = useState(false)
    const [isLoaded, setIsLoaded] = useState(false)
-   console.log(createdAt)
 
    const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
    const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
@@ -70,25 +72,7 @@ const SingleDevit = props => {
             )}
          </div>
          <div className="text-white text-opacity-50 py-3 space-x-1">
-            <span className="space-x-1 hover:underline">
-               <span>
-                  {new Intl.DateTimeFormat('es-PE', {
-                     hour: 'numeric',
-                     minute: '2-digit',
-                     hour12: true
-                  }).format(createdAt)}
-               </span>
-               <span>·</span>
-               <span>
-                  {new Intl.DateTimeFormat('es-PE', {
-                     month: 'short',
-                     day: 'numeric',
-                     year: 'numeric'
-                  }).format(createdAt)}
-               </span>
-            </span>
-            <span>·</span>
-            <span>Twited for andriod</span>
+            <SingleDevitDates date={createdAt} />
          </div>
          <div className="flex w-full justify-around text-sm text-[#8899a6]">
             <CommentBtn />
