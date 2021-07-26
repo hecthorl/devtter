@@ -1,4 +1,3 @@
-// import Image from 'next/image'
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
 import LogoComponent from './LogoComponent'

@@ -1,12 +1,11 @@
 import useTimeAgo from 'hooks/useTimeAgo'
-import { useRouter } from 'next/router'
 import CommentBtn from './CommentBtn'
 import LikeBtn from './LikeBtn'
 import { BsThreeDots } from 'react-icons/bs'
 import { useState } from 'react'
 import Link from 'next/link'
 
-const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
+const Devit = ({ avatar, content, username, createdAt, img, id }) => {
    const [isLoaded, setIsLoaded] = useState(false)
    const [avatarImg, setAvatarImg] = useState(false)
 
@@ -35,11 +34,9 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
                className="relative max-h-[48px] min-w-[48px] rounded-full overflow-hidden"
             >
                <img
-                  onLoad={() => {
-                     setAvatarImg(true)
-                  }}
+                  onLoad={() => setAvatarImg(true)}
                   loading="lazy"
-                  className={' h-12 ' + toimageAv}
+                  className={'h-12 ' + toimageAv}
                   src={avatar}
                   alt={'current image profile of ' + username}
                />
@@ -71,13 +68,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id, onStatus }) => {
                </div>
                <div className="space-y-2">
                   <div className="pb-3">
-                     <p
-                        className={
-                           onStatus ? 'text-2xl pb-2 ' : 'text-base pb-2 '
-                        }
-                     >
-                        {content}
-                     </p>
+                     <p className="text-base pb-2">{content}</p>
                      {img === 'No image' ? null : (
                         <div
                            onClick={e => e.stopPropagation()}

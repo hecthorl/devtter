@@ -3,7 +3,7 @@ import useAvatarPhoto from 'hooks/useAvatarPhoto'
 const Avatar = () => {
    const avatarImage = useAvatarPhoto()
    return (
-      <div className="w-[inherit] rounded-full overflow-hidden">
+      <div className="w-[inherit] h-[inherit] rounded-full overflow-hidden text-xs break-words">
          {avatarImage ? (
             <img src={avatarImage} alt="Current image profile" />
          ) : (
