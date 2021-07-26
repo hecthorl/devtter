@@ -2,6 +2,7 @@
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
 const NotLoggedUser = () => {
+   const data = typeof window !== 'undefined' ? navigator.platform : 'nada'
    const loginGithub = () => {
       githubPovider().catch(err => console.log(err))
    }
@@ -18,7 +19,7 @@ const NotLoggedUser = () => {
             <h1 className="text-5xl md:text-7xl">
                <span className="block">Lo que está</span>
                <span className="block"> pasando</span>
-               <span className="block"> ahora</span>
+               <span className="block"> {data}</span>
             </h1>
             <p className="text-2xl md:text-3xl">Únete a Devtter hoy mismo.</p>
             <button onClick={loginGithub}>
