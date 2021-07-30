@@ -11,7 +11,7 @@ const DevitInput = () => {
    return (
       <>
          <div className="px-4 py-2 flex gap-x-2 relative">
-            <div className="w-[48px]">
+            <div className="w-[48px] h-[48px]">
                <Avatar />
             </div>
             <DevitInputTextarea />

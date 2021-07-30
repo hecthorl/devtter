@@ -68,7 +68,8 @@ const mapDevitfromFirebase = doc => {
 export const listenLatestDevits = callback => {
    if (firebase.apps.length !== 0) {
       return (
-         app
+         firebase
+            .app()
             .firestore()
             .collection('devits')
             .orderBy('createdAt', 'desc')

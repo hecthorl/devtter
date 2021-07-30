@@ -1,12 +1,12 @@
+import Link from 'next/link'
+import { useState } from 'react'
 import useTimeAgo from 'hooks/useTimeAgo'
 import CommentBtn from './CommentBtn'
 import LikeBtn from './LikeBtn'
 import { BsThreeDots } from 'react-icons/bs'
-import { useState } from 'react'
-import Link from 'next/link'
+import DevitMedia from 'components/DevitMedia'
 
 const Devit = ({ avatar, content, username, createdAt, img, id }) => {
-   const [isLoaded, setIsLoaded] = useState(false)
    const [avatarImg, setAvatarImg] = useState(false)
 
    const date = useTimeAgo(createdAt)
@@ -16,9 +16,6 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
    //    event.preventDefault()
    //    push(`/status/${id}`)
    // }
-
-   const toimage = isLoaded ? 'opacity-100' : 'opacity-0'
-   const toFallbackImg = isLoaded ? 'opacity-0' : 'opacity-100'
 
    const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
    const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
@@ -69,29 +66,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
                <div className="space-y-2">
                   <div className="pb-3">
                      <p className="text-base pb-2">{content}</p>
-                     {img === 'No image' ? null : (
-                        <div
-                           onClick={e => e.stopPropagation()}
-                           className="w-full h-[283px] overflow-hidden rounded-2xl relative"
-                        >
-                           <img
-                              onLoad={() => setIsLoaded(true)}
-                              loading="lazy"
-                              className={
-                                 'break-all min-w-full h-full object-cover ' +
-                                 toimage
-                              }
-                              src={img}
-                              alt={img}
-                           />
-                           <div
-                              className={
-                                 'absolute top-0 w-full h-full bg-blue-600 ' +
-                                 toFallbackImg
-                              }
-                           ></div>
-                        </div>
-                     )}
+                     <DevitMedia img={img} />
                   </div>
                   <div className="flex max-w-[425px] w-full justify-between text-sm text-[#8899a6]">
                      <CommentBtn />

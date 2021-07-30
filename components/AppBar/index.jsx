@@ -2,20 +2,21 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { GiFeather } from 'react-icons/gi'
-import useUser from 'hooks/useUser'
 import AppBarItem from './AppBarItem'
 import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
+import { useAuthUser } from 'next-firebase-auth'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const AppBar = () => {
-   const user = useUser()
+   const { displayName } = useAuthUser()
+
    const { push } = useRouter()
    const { width, setpopUp } = useGlobalContext()
    const mobileSize = items.slice(0, 4)
-   console.log(width)
+
    const DevvitearButton = () => {
       width <= 500 ? push('/compose/tweet') : setpopUp(true)
    }
@@ -31,23 +32,25 @@ const AppBar = () => {
                   />
                </a>
             </Link>
-            {width <= 500
-               ? mobileSize.map((item, id) => (
-                    <AppBarItem
-                       key={id}
-                       title={item.title}
-                       href={item.href}
-                       icon={item.icon}
-                    />
-                 ))
-               : items.map((item, id) => (
-                    <AppBarItem
-                       key={id}
-                       title={item.title}
-                       href={item.href}
-                       icon={item.icon}
-                    />
-                 ))}
+            <div className="flex sm:flex-col gap-y-2 w-full">
+               {width <= 500
+                  ? mobileSize.map((item, id) => (
+                       <AppBarItem
+                          key={id}
+                          title={item.title}
+                          href={item.href}
+                          icon={item.icon}
+                       />
+                    ))
+                  : items.map((item, id) => (
+                       <AppBarItem
+                          key={id}
+                          title={item.title}
+                          href={item.href}
+                          icon={item.icon}
+                       />
+                    ))}
+            </div>
             <button className="devitearBtn" onClick={DevvitearButton}>
                <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
                <span className="hidden 2xl:inline text-base font-bold">
@@ -56,20 +59,19 @@ const AppBar = () => {
             </button>
          </nav>
          <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
-            <div className="w-[40px] mx-auto">
+            <div className="w-[40px] h-[40px] mx-auto">
                <Avatar />
             </div>
             <div className="hidden 2xl:flex text-sm w-full justify-between items-center">
-               <div>
-                  <div>
-                     {user?.username ? (
-                        user?.username
-                     ) : (
-                        <span className="w-full bg-secondary h-3"></span>
-                     )}
-                  </div>
+               <div className="w-full">
+                  {!displayName ? (
+                     <span className="w-full bg-secondary rounded-full h-3 inline-block"></span>
+                  ) : (
+                     displayName
+                  )}
+
                   <div className="text-white text-opacity-50">
-                     @{user?.username.replace(' ', '_')}
+                     @{displayName.replace(' ', '_')}
                   </div>
                </div>
 

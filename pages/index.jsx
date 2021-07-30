@@ -1,17 +1,12 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import useUser from 'hooks/useUser'
 import NotLoggedUser from 'components/NotLoggedUser'
-import { useEffect } from 'react'
+import {
+   AuthAction,
+   withAuthUser,
+   withAuthUserTokenSSR
+} from 'next-firebase-auth'
 
 const Index = () => {
-   const user = useUser()
-   const { replace } = useRouter()
-
-   useEffect(() => {
-      user && replace('/home')
-   }, [user])
-
    return (
       <>
          <Head>
@@ -24,4 +19,7 @@ const Index = () => {
    )
 }
 
-export default Index
+export const getServerSideProps = withAuthUserTokenSSR()()
+export default withAuthUser({
+   whenAuthed: AuthAction.REDIRECT_TO_APP
+})(Index)

@@ -1,6 +1,7 @@
 import { SiGithub } from 'react-icons/si'
 import { githubPovider } from 'firebase/cliente'
 import LogoComponent from './LogoComponent'
+
 const NotLoggedUser = () => {
    const loginGithub = () => {
       githubPovider().catch(err => console.log(err))

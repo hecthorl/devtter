@@ -1,26 +1,16 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/Devit/SkeletonDevit'
 import useGlobalContext from 'hooks/useGlobalContext'
-import useUser from 'hooks/useUser'
+import Avatar from './Avatar'
 import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
-   const user = useUser()
-
    const { width } = useGlobalContext()
    return (
       <main className="w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary">
          <div className="sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
             <div className="w-12 sm:hidden">
-               {user?.avatar ? (
-                  <img
-                     src={user.avatar}
-                     alt="user avatar"
-                     className="rounded-full"
-                  />
-               ) : (
-                  <div className="rounded-full bg-transparent h-10 w-10"></div>
-               )}
+               <Avatar />
             </div>
             <span className="text-xl w-full ml-5 sm:ml-0 font-bold">
                Inicio

@@ -1,21 +1,18 @@
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import CommentBtn from 'components/Devit/CommentBtn'
 import LikeBtn from 'components/Devit/LikeBtn'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
-import { useState } from 'react'
-import dynamic from 'next/dynamic'
+import DevitMedia from 'components/DevitMedia'
 
 const SingleDevitDates = dynamic(() => import('./Dates'), { ssr: false })
 
 const SingleDevit = props => {
    const { avatar, content, username, createdAt, img } = props
    const [avatarImg, setAvatarImg] = useState(false)
-   const [isLoaded, setIsLoaded] = useState(false)
 
    const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
    const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
-
-   const toimage = isLoaded ? 'opacity-100' : 'opacity-0'
-   const toFallbackImg = isLoaded ? 'opacity-0' : 'opacity-100'
 
    return (
       <article className="px-4 gap-x-3 py-3 border-b border-secondary">
@@ -23,9 +20,7 @@ const SingleDevit = props => {
             <div className="flex">
                <div className="relative h-12 w-12 rounded-full overflow-hidden">
                   <img
-                     onLoad={() => {
-                        setAvatarImg(true)
-                     }}
+                     onLoad={() => setAvatarImg(true)}
                      loading="lazy"
                      className={toimageAv}
                      src={avatar}
@@ -53,23 +48,7 @@ const SingleDevit = props => {
          </div>
          <div>
             <p className="pb-2 text-2xl">{content}</p>
-            {img === 'No image' ? null : (
-               <div className="w-full overflow-hidden rounded-2xl relative">
-                  <img
-                     onLoad={() => setIsLoaded(true)}
-                     loading="lazy"
-                     className={'break-all w-full ' + toimage}
-                     src={img}
-                     alt={img}
-                  />
-                  <div
-                     className={
-                        'absolute top-0 right-0 left-0 w-full h-full bg-blue-600 ' +
-                        toFallbackImg
-                     }
-                  ></div>
-               </div>
-            )}
+            <DevitMedia img={img} />
          </div>
          <div className="text-white text-opacity-50 py-3 space-x-1">
             <SingleDevitDates date={createdAt} />

@@ -22,10 +22,8 @@ const Tweet = () => {
                   <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
                </button>
                <button
-                  // onClick={handleSubmit}
                   type="submit"
                   className="rounded-full px-4 font-bold text-white py-1 bg-green-500 disabled:opacity-50"
-                  // disabled={isButtonDisable || message.length >= 280}
                >
                   Devittear
                </button>

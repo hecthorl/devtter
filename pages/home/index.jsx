@@ -1,27 +1,33 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { listenLatestDevits } from 'firebase/cliente'
-import useUser from 'hooks/useUser'
+import useGlobalContext from 'hooks/useGlobalContext'
 
 import AppBar from 'components/AppBar'
 import TimeLine from 'components/TimeLine'
-import useGlobalContext from 'hooks/useGlobalContext'
 import Aside from 'components/Aside'
 import DevitInput from 'components/DevitInput/DevitInputModal'
+
+import {
+   AuthAction,
+   withAuthUser,
+   withAuthUserTokenSSR,
+   useAuthUser
+} from 'next-firebase-auth'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
    const { ref, popUp } = useGlobalContext()
-   const user = useUser()
+   const { email } = useAuthUser()
 
    useEffect(() => {
       let unSubscribe = null
-      if (user) {
+      if (email) {
          unSubscribe = listenLatestDevits(setTimeLine)
       }
       return () => unSubscribe && unSubscribe()
-   }, [user])
-   // console.log('veces')
+   }, [email])
+   console.log('veces')
 
    return (
       <>
@@ -41,5 +47,8 @@ const Home = () => {
       </>
    )
 }
-
-export default Home
+export const getServerSideProps = withAuthUserTokenSSR()()
+export default withAuthUser({
+   whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+   authPageURL: '/'
+})(Home)

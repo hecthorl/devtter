@@ -1,10 +1,10 @@
 import ContextProvider from 'context/Context'
+import initAuth from 'firebase/InitAuth'
 import '../styles/globals.css'
 
+initAuth()
+
 const DevtterApp = ({ Component, pageProps }) => {
-   if (typeof window !== 'undefined') {
-      console.log(navigator.userAgent)
-   }
    return (
       <ContextProvider>
          <Component {...pageProps} />
