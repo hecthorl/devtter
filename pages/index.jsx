@@ -19,7 +19,9 @@ const Index = () => {
    )
 }
 
-export const getServerSideProps = withAuthUserTokenSSR()()
+export const getServerSideProps = withAuthUserTokenSSR({
+   whenAuthed: AuthAction.REDIRECT_TO_APP
+})()
 export default withAuthUser({
    whenAuthed: AuthAction.REDIRECT_TO_APP
 })(Index)

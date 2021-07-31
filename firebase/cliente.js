@@ -2,39 +2,33 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
+import { configFirebase } from 'helpers/constants'
+import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 
-const configFirebase = {
-   apiKey: 'AIzaSyBBDq8aN58spe3fEcYmngFU1m143VcE8Qs',
-   authDomain: 'chat-app-hector.firebaseapp.com',
-   projectId: 'chat-app-hector',
-   storageBucket: 'chat-app-hector.appspot.com',
-   messagingSenderId: '835835726435',
-   appId: '1:835835726435:web:827febe7c8f24cd92a0656'
-}
-
-const app = !firebase.apps.length && firebase.initializeApp(configFirebase)
+// const app = !firebase.apps.length && firebase.initializeApp(configFirebase)
 
 const { GithubAuthProvider } = firebase.auth
 
-const mapUserFromFirebase = user => {
-   if (!user) return
-   const { email, photoURL, displayName, uid } = user
+// const mapUserFromFirebase = user => {
+//    if (!user) return
+//    const { email, photoURL, displayName, uid } = user
 
-   return { avatar: photoURL, email, username: displayName, uid }
-}
+//    return { avatar: photoURL, email, username: displayName, uid }
+// }
 
-export const authStateChanged = onChange => {
-   if (firebase.apps.length !== 0) {
-      return app.auth().onAuthStateChanged(user => {
-         const normalizeUser = user ? mapUserFromFirebase(user) : null
-         onChange(normalizeUser)
-      })
-   }
-}
+// export const authStateChanged = onChange => {
+//    if (firebase.apps.length !== 0) {
+//       return app.auth().onAuthStateChanged(user => {
+//          const normalizeUser = user ? mapUserFromFirebase(user) : null
+//          onChange(normalizeUser)
+//       })
+//    }
+// }
 
 export const githubPovider = () => {
    const githubProv = new GithubAuthProvider()
-   return app
+   return firebase
+      .app()
       .auth()
       .signInWithPopup(githubProv)
       .catch(err => console.error(err))
@@ -42,7 +36,7 @@ export const githubPovider = () => {
 
 export const addDevit = ({ avatar, content, userId, img, username }) => {
    if (firebase.apps.length !== 0) {
-      return app.firestore().collection('devits').add({
+      return firebase.app().firestore().collection('devits').add({
          username,
          avatar,
          content,
@@ -54,14 +48,6 @@ export const addDevit = ({ avatar, content, userId, img, username }) => {
       })
    } else {
       console.log('app.firestore()')
-   }
-}
-
-const mapDevitfromFirebase = doc => {
-   const data = doc.data()
-   return {
-      id: doc.id,
-      ...data
    }
 }
 
@@ -83,8 +69,11 @@ export const listenLatestDevits = callback => {
 }
 
 export const uploadImage = file => {
-   if (firebase.apps.length !== 0 && file !== null) {
-      const ref = app.storage().ref(`images/${file.name}`)
+   if (firebase.apps.length !== 0) {
+      const ref = firebase
+         .app()
+         .storage(configFirebase.storageBucket)
+         .ref(`images/${file.name}`)
       const task = ref.put(file)
       return task
    }

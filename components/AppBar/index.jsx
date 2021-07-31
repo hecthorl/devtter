@@ -16,6 +16,7 @@ const AppBar = () => {
    const { push } = useRouter()
    const { width, setpopUp } = useGlobalContext()
    const mobileSize = items.slice(0, 4)
+   const notUser = items.slice(0, 2)
 
    const DevvitearButton = () => {
       width <= 500 ? push('/compose/tweet') : setpopUp(true)
@@ -32,54 +33,69 @@ const AppBar = () => {
                   />
                </a>
             </Link>
-            <div className="flex sm:flex-col gap-y-2 w-full">
-               {width <= 500
-                  ? mobileSize.map((item, id) => (
-                       <AppBarItem
-                          key={id}
-                          title={item.title}
-                          href={item.href}
-                          icon={item.icon}
-                       />
-                    ))
-                  : items.map((item, id) => (
-                       <AppBarItem
-                          key={id}
-                          title={item.title}
-                          href={item.href}
-                          icon={item.icon}
-                       />
-                    ))}
-            </div>
-            <button className="devitearBtn" onClick={DevvitearButton}>
-               <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
-               <span className="hidden 2xl:inline text-base font-bold">
-                  Devittear
-               </span>
-            </button>
-         </nav>
-         <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
-            <div className="w-[40px] h-[40px] mx-auto">
-               <Avatar />
-            </div>
-            <div className="hidden 2xl:flex text-sm w-full justify-between items-center">
-               <div className="w-full">
-                  {!displayName ? (
-                     <span className="w-full bg-secondary rounded-full h-3 inline-block"></span>
-                  ) : (
-                     displayName
-                  )}
-
-                  <div className="text-white text-opacity-50">
-                     @{displayName.replace(' ', '_')}
+            {displayName ? (
+               <>
+                  <div className="flex sm:flex-col gap-y-2 w-full">
+                     {width <= 500
+                        ? mobileSize.map((item, id) => (
+                             <AppBarItem
+                                key={id}
+                                title={item.title}
+                                href={item.href}
+                                icon={item.icon}
+                             />
+                          ))
+                        : items.map((item, id) => (
+                             <AppBarItem
+                                key={id}
+                                title={item.title}
+                                href={item.href}
+                                icon={item.icon}
+                             />
+                          ))}
                   </div>
+                  <button className="devitearBtn" onClick={DevvitearButton}>
+                     <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
+                     <span className="hidden 2xl:inline text-base font-bold">
+                        Devittear
+                     </span>
+                  </button>
+               </>
+            ) : (
+               notUser.map((item, id) => (
+                  <AppBarItem
+                     key={id}
+                     title={item.title}
+                     href={item.href}
+                     icon={item.icon}
+                  />
+               ))
+            )}
+         </nav>
+         {displayName && (
+            <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
+               <div className="w-[40px] h-[40px] mx-auto">
+                  <Avatar />
                </div>
+               <div className="hidden 2xl:flex text-sm w-full justify-between items-center">
+                  <div className="w-full">
+                     {!displayName ? (
+                        <span className="w-full bg-secondary rounded-full h-3 inline-block"></span>
+                     ) : (
+                        displayName
+                     )}
 
-               <span className="text-2xl">
-                  <FiMoreHorizontal className="pointer-events-none" />
-               </span>
+                     <div className="text-white text-opacity-50">
+                        @{displayName?.replace(' ', '_')}
+                     </div>
+                  </div>
+
+                  <span className="text-2xl">
+                     <FiMoreHorizontal className="pointer-events-none" />
+                  </span>
+               </div>
             </div>
-         </div>
+         )}
       </header>
    )
 }

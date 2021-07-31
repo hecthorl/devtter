@@ -34,3 +34,12 @@ export const DATE_UNITS = [
    ['minute', 60],
    ['second', 1]
 ]
+
+export const configFirebase = {
+   apiKey: 'AIzaSyBBDq8aN58spe3fEcYmngFU1m143VcE8Qs',
+   authDomain: 'chat-app-hector.firebaseapp.com',
+   projectId: 'chat-app-hector',
+   storageBucket: 'chat-app-hector.appspot.com',
+   messagingSenderId: '835835726435',
+   appId: '1:835835726435:web:827febe7c8f24cd92a0656'
+}

@@ -1,6 +1,6 @@
 import { addDevit, uploadImage } from 'firebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
-import useUser from './useUser'
+import { useAuthUser } from 'next-firebase-auth'
 import { useRouter } from 'next/router'
 import useGlobalContext from './useGlobalContext'
 
@@ -9,7 +9,14 @@ const useSendDevit = ({ file, message, setMessage }) => {
    const { DONE, UPLOADING } = UPLOADING_STATES
 
    const { push } = useRouter()
-   const user = useUser()
+   const { photoURL, displayName, id } = useAuthUser()
+
+   const devit = {
+      avatar: photoURL,
+      content: message.trim(),
+      userId: id,
+      username: displayName
+   }
 
    const handleSubmit = () => {
       // Entra en la fase carga, para enviar el devit
@@ -19,10 +26,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
       // En este caso si NO hay imagen
       if (!file) {
          addDevit({
-            avatar: user.avatar,
-            content: message.trim(),
-            userId: user.uid,
-            username: user.username,
+            ...devit,
             img: 'No image'
          })
             .then(() => {
@@ -63,10 +67,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
        */
       promise.then(img => {
          addDevit({
-            avatar: user.avatar,
-            content: message.trim(),
-            userId: user.uid,
-            username: user.username,
+            ...devit,
             img
          })
             .then(() => {

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { withAuthUser } from 'next-firebase-auth'
 import { firestore } from 'firebase/admin'
 import { HiArrowLeft } from 'react-icons/hi'
 import AppBar from 'components/AppBar'
@@ -24,11 +25,14 @@ const DevitPage = props => {
          <div ref={ref} className="text-white w-full flex justify-center">
             <AppBar />
             <div className="w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary">
-               <div className="sticky top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary z-20">
-                  <button onClick={() => back()}>
-                     <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
+               <div className="sticky top-0 bg-primary px-4 py-1 flex items-center border-b border-secondary z-20">
+                  <button
+                     className="p-3 transition-colors rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10"
+                     onClick={() => back()}
+                  >
+                     <HiArrowLeft className="pointer-events-none text-xl text-green-500" />
                   </button>
-                  <h1 className="text-xl w-full ml-5 font-bold">Devvter</h1>
+                  <h1 className="text-xl w-full ml-5 font-bold">Devtter</h1>
                </div>
                {isFallback ? <SkeletonDevit /> : <SingleDevit {...props} />}
             </div>
@@ -44,7 +48,7 @@ export const getStaticPaths = async () => {
    const paths = snapShot.docs.map(doc => ({ params: { id: doc.id } }))
 
    return {
-      paths: paths,
+      paths,
       fallback: true
    }
 }
@@ -58,16 +62,12 @@ export const getStaticProps = context => {
       .then(doc => {
          const data = doc.data()
          const id = doc.id
-
-         const props = {
-            ...data,
-            id
-         }
-         return { props }
+         return { props: { ...data, id } }
       })
-      .catch(() => {
+      .catch(err => {
+         console.log(err)
          return { props: {} }
       })
 }
 
-export default DevitPage
+export default withAuthUser()(DevitPage)

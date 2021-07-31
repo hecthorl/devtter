@@ -15,6 +15,8 @@ Devtter App es un proyecto personal, **basada** en la idea de hacer un clon de T
             │   │    └── index.jsx
             │   ├── Avatar/
             │   │    └── index.jsx
+            │   ├── DevitMedia/
+            │   │    └── index.jsx
             │   ├── Devit/
             │   │    ├── CommentBtn.jsx
             │   │    ├── HeartIcon.jsx
@@ -29,27 +31,32 @@ Devtter App es un proyecto personal, **basada** en la idea de hacer un clon de T
             │   │    ├── OnImage.jsx
             │   │    ├── WordsCounter.jsx
             │   │    └── DevitInputTextarea.jsx
+            │   ├── LogoComponent.jsx
             │   ├── NotLoggedUser.jsx
             │   ├── TimeLine.jsx
             ├── context/
             │   └── Context.jsx
             ├── firebase/
             │   ├── admin.js
+            │   ├── initAuth.js
             │   └── cliente.js
             ├── helpers/
-            │   └── constants.js
+            │   ├── constants.js
+            │   ├── getDevitDate.js
+            │   └── devitsFromFirestore.js
             ├── hooks/
             │   ├── useGlobalcontext.js
             │   ├── useHandlers.js
             │   ├── usePreview.js
             │   ├── useResizeObserver.js
             │   ├── useSendDevit.js
-            │   ├── useTimeAgo.js
-            │   └── useUser.js
+            │   └── useTimeAgo.js
             ├── pages/
             │   ├── api/
-            │   │    └── devits/
-            │   │          └── [id].js
+            │   │    ├── devits/
+            │   │    │     └── [id].js
+            │   │    ├── login.js
+            │   │    └── logout.js
             │   ├── compose/
             │   │    └── tweet/
             │   │          └── index.jsx
@@ -71,6 +78,6 @@ Devtter App es un proyecto personal, **basada** en la idea de hacer un clon de T
 -  Crear devits con o sin imagen (el equivalente a tweets)
 -  Ver devits en tiempo real
 -  100% responsive
--  Autenticación a través de firebase/auth
--  Estilado con puro tailwindcss
+-  Autenticación con firebase
+-  Estilado con tailwindcss
 -  Ver devits por separado
