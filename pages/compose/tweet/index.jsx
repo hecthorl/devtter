@@ -1,5 +1,5 @@
 import DevitInput from 'components/DevitInput/DevitInputModal'
-import useUser from 'hooks/useUser'
+
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -7,7 +7,7 @@ import { HiArrowLeft } from 'react-icons/hi'
 
 const Tweet = () => {
    const { back, push } = useRouter()
-   const user = useUser()
+
    useEffect(() => {
       push('/home')
    }, [])
@@ -29,17 +29,7 @@ const Tweet = () => {
                </button>
             </header>
             <div className="flex px-3 py-2">
-               <div className="w-16 mr-2">
-                  {user?.avatar ? (
-                     <img
-                        src={user.avatar}
-                        alt="user avatar"
-                        className="rounded-full"
-                     />
-                  ) : (
-                     <div className="rounded-full bg-blue-400 h-10 w-10"></div>
-                  )}
-               </div>
+               <div className="w-16 mr-2"></div>
                <div>
                   <DevitInput />
                </div>
