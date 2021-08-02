@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { useState } from 'react'
 import useTimeAgo from 'hooks/useTimeAgo'
 import CommentBtn from './CommentBtn'

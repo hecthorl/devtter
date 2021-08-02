@@ -23,7 +23,7 @@ const NotLoggedUser = () => {
                onClick={loginGithub}
             >
                <SiGithub className="inline mr-2 text-2xl" />
-               Regístrate
+               Ingresa
             </button>
          </div>
          <div

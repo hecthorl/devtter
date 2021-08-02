@@ -1,6 +1,3 @@
-// import useAvatarPhoto from 'hooks/useAvatarPhoto'
-// import useUser from 'hooks/useUser'
-
 import { useAuthUser } from 'next-firebase-auth'
 
 const Avatar = () => {

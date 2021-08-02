@@ -7,18 +7,20 @@ import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { useAuthUser } from 'next-firebase-auth'
+import HoverComponent from 'components/HoverComponent'
+import { useState } from 'react'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const AppBar = () => {
    const { displayName } = useAuthUser()
-
+   const [isClicked, setIsClicked] = useState(false)
    const { push } = useRouter()
    const { width, setpopUp } = useGlobalContext()
    const mobileSize = items.slice(0, 4)
    const notUser = items.slice(0, 2)
 
-   const DevvitearButton = () => {
+   const devittearBtn = () => {
       width <= 500 ? push('/compose/tweet') : setpopUp(true)
    }
    return (
@@ -54,7 +56,7 @@ const AppBar = () => {
                              />
                           ))}
                   </div>
-                  <button className="devitearBtn" onClick={DevvitearButton}>
+                  <button className="devitearBtn" onClick={devittearBtn}>
                      <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
                      <span className="hidden 2xl:inline text-base font-bold">
                         Devittear
@@ -73,7 +75,10 @@ const AppBar = () => {
             )}
          </nav>
          {displayName && (
-            <div className="hidden sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors">
+            <div
+               onClick={() => setIsClicked(!isClicked)}
+               className="hidden relative sm:block sm:mt-5 2xl:flex 2xl:w-full 2xl:items-center gap-3 sm:pb-4 2xl:p-3 2xl:hover:bg-green-600 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer transition-colors"
+            >
                <div className="w-[40px] h-[40px] mx-auto">
                   <Avatar />
                </div>
@@ -86,7 +91,7 @@ const AppBar = () => {
                      )}
 
                      <div className="text-white text-opacity-50">
-                        @{displayName?.replace(' ', '_')}
+                        @{displayName.replace(' ', '_')}
                      </div>
                   </div>
 
@@ -94,6 +99,12 @@ const AppBar = () => {
                      <FiMoreHorizontal className="pointer-events-none" />
                   </span>
                </div>
+               {isClicked && (
+                  <>
+                     <div className="fixed top-0 left-0 right-0 w-screen h-screen cursor-auto"></div>
+                     <HoverComponent />
+                  </>
+               )}
             </div>
          )}
       </header>
