@@ -4,7 +4,7 @@ import { FiX } from 'react-icons/fi'
 
 const OnImage = ({ preview, setPreview }) => {
    const { devitStates } = useGlobalContext()
-
+   console.log(preview)
    useEffect(() => {
       setPreview(null)
    }, [devitStates])
@@ -22,7 +22,7 @@ const OnImage = ({ preview, setPreview }) => {
          <img
             className="rounded-2xl h-72 w-full object-cover"
             src={preview}
-            alt={preview}
+            alt="image"
          />
       </div>
    )

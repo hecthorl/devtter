@@ -8,6 +8,8 @@ const useHandlers = () => {
 
    const handleDragEnter = event => {
       event.preventDefault()
+      // const [file] = event.dataTransfer.files
+      // console.log(file)
       setDrag(DRAG_IMAGE_STATES.DRAG_OVER)
    }
    const handleDragLeave = event => {

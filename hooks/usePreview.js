@@ -1,4 +1,5 @@
 import { DRAG_IMAGE_STATES } from 'helpers/constants'
+import { imgFormatSupported } from 'helpers/imgFormatSupported'
 import { useState } from 'react'
 import useGlobalContext from './useGlobalContext'
 
@@ -11,14 +12,17 @@ const usePreview = () => {
       event.preventDefault()
       setDrag(DRAG_IMAGE_STATES.DROPED)
       const [file] = event.dataTransfer.files
+      const isFormat = imgFormatSupported(file.type)
+      console.log(file.type)
+      if (isFormat) {
+         setFile(file)
 
-      setFile(file)
-
-      const reader = new FileReader()
-      reader.onload = event => {
-         setPreview(event.target.result)
+         const reader = new FileReader()
+         reader.onload = event => {
+            setPreview(event.target.result)
+         }
+         reader.readAsDataURL(file)
       }
-      reader.readAsDataURL(file)
    }
 
    /**
@@ -26,7 +30,6 @@ const usePreview = () => {
     * handleDrop => metodo para detectar el drop de la imagen en el textarea
     * setPreview => metodo para el boton de cerrar la imagen
     */
-
    return { preview, handleDrop, setPreview, file }
 }
 

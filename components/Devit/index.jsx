@@ -1,4 +1,3 @@
-// import Link from 'next/link'
 import { useState } from 'react'
 import useTimeAgo from 'hooks/useTimeAgo'
 import CommentBtn from './CommentBtn'
@@ -13,8 +12,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
    const date = useTimeAgo(createdAt)
    const { push } = useRouter()
 
-   const handleClickSingleTweet = event => {
-      event.preventDefault()
+   const handleClickSingleTweet = () => {
       push(`/status/${id}`)
    }
 
@@ -22,19 +20,25 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
    const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
 
    return (
-      // <Link href={`/status/${id}`}>
       <article
          onClick={handleClickSingleTweet}
-         className="px-4 flex gap-x-3 py-3 border-b border-secondary hover:bg-[#ffffff0d] cursor-pointer transition-colors duration-200"
+         onMouseUp={e => {
+            const btn = e.button
+
+            if (btn === 1) {
+               window.open(`/status/${id}`, '_blank')
+            }
+         }}
+         className="px-4 flex py-3 border-b border-secondary hover:bg-[#ffffff0d] cursor-pointer transition-colors duration-200"
       >
          <div
             onClick={e => e.stopPropagation()}
-            className="relative max-h-[48px] min-w-[48px] rounded-full overflow-hidden"
+            className="relative w-12 h-[fit-content] rounded-full overflow-hidden"
          >
             <img
                onLoad={() => setAvatarImg(true)}
                loading="lazy"
-               className={'h-12 ' + toimageAv}
+               className={toimageAv}
                src={avatar}
                alt={'current image profile of ' + username}
             />
@@ -44,7 +48,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
                }
             ></div>
          </div>
-         <div className="w-full">
+         <div className="pl-3" style={{ width: 'calc(100% - 48px)' }}>
             <div className="flex justify-between">
                <div className="flex gap-x-2">
                   <h2 className="font-bold hover:underline">{username}</h2>
@@ -82,7 +86,6 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
             </div>
          </div>
       </article>
-      // </Link>
    )
 }
 
