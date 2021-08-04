@@ -17,17 +17,52 @@
 }
 
 @layer components {
-   .hero-image {
+   /* NotLoggedUser */
+   .landing-container {
+      @apply flex md:h-screen flex-wrap md:flex-nowrap text-white bg-black font-bold;
+   }
+   .landing-img {
       @apply md:order-1 bg-no-repeat bg-cover bg-center flex justify-center items-center w-full;
    }
-   .hero-container__text {
+   .landing-text-container {
       @apply space-y-8 p-6 mb-5 w-full md:order-2 md:bg-repeat-y md:flex md:flex-col justify-center;
    }
-   .hero-container {
-      @apply flex md:h-screen flex-wrap md:flex-nowrap text-white bg-black font-bold;
+
+   .main-text {
+      @apply text-5xl md:text-7xl flex flex-col;
+   }
+
+   .sub-text {
+      @apply text-2xl md:text-3xl;
+   }
+
+   .logo-container {
+      @apply max-w-[339px] w-full p-8;
+   }
+
+   .signin-btn {
+      @apply max-w-[380px] hover:text-white hover:bg-brand  border-brand  py-3 text-brand;
+      @apply duration-200 ease-in w-full font-bold transition-colors border rounded-full;
+   }
+
+   /* AppBar */
+   .appbar-container {
+      @apply fixed z-50 w-full bottom-0 bg-primary border-t sm:border-r border-secondary text-3xl;
+      @apply sm:sticky sm:w-auto sm:top-0 sm:left-0 sm:pb-3 sm:px-3 sm:border-t-0;
+      @apply sm:h-screen sm:flex sm:flex-col sm:justify-between;
+      @apply 2xl:max-w-[275px] 2xl:w-full;
+   }
+   .nav-container {
+      @apply w-full flex justify-around items-start sm:flex-col sm:justify-between text-xl font-semibold;
+   }
+
+   .logo-link {
+      @apply hidden rounded-full w-12 h-12 sm:block relative;
+      @apply bg-green-500 bg-opacity-0 hover:bg-opacity-10 transition-colors duration-200;
    }
 
    .devitearBtn {
-      @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 right-4 rounded-full flex justify-center items-center 2xl:w-[225px] sm:mt-2;
+      @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 2xl:w-[225px] sm:mt-2;
+      @apply right-4 rounded-full flex justify-center items-center;
    }
 }

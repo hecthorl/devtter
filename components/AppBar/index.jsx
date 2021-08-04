@@ -2,13 +2,14 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { GiFeather } from 'react-icons/gi'
-import AppBarItem from './AppBarItem'
 import items from './items.json'
 import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { useAuthUser } from 'next-firebase-auth'
 import HoverComponent from 'components/HoverComponent'
 import { useState } from 'react'
+import appBarItem from 'helpers/appBarItem'
+import { ICONS } from 'helpers/devitIcons'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
@@ -24,10 +25,10 @@ const AppBar = () => {
       width <= 500 ? push('/compose/tweet') : setpopUp(true)
    }
    return (
-      <header className="fixed z-50 sm:sticky w-full sm:w-auto bottom-0 sm:top-0 sm:left-0 sm:pb-3 sm:px-3 bg-primary border-t sm:border-r border-secondary text-3xl sm:border-t-0 sm:h-screen sm:flex sm:flex-col sm:justify-between 2xl:max-w-[275px] 2xl:w-full">
-         <nav className="w-full flex justify-around items-start sm:flex-col sm:justify-between text-[20px] font-semibold">
+      <header className="appbar-container">
+         <nav className="nav-container" style={{ lineHeight: 'inherit' }}>
             <Link href="/">
-               <a className="bg-green-500 bg-opacity-0 hover:bg-opacity-10 transition-colors hidden rounded-full w-12 h-12 sm:block relative">
+               <a className="logo-link">
                   <img
                      src="/logoDevvter.svg"
                      alt="Logo Devtter"
@@ -38,23 +39,10 @@ const AppBar = () => {
             {displayName ? (
                <>
                   <div className="flex sm:flex-col gap-y-2 w-full">
-                     {width <= 500
-                        ? mobileSize.map((item, id) => (
-                             <AppBarItem
-                                key={id}
-                                title={item.title}
-                                href={item.href}
-                                icon={item.icon}
-                             />
-                          ))
-                        : items.map((item, id) => (
-                             <AppBarItem
-                                key={id}
-                                title={item.title}
-                                href={item.href}
-                                icon={item.icon}
-                             />
-                          ))}
+                     {/* {width <= 500
+                        ? mobileSize.map(appBarItem)
+                        : items.map(appBarItem)} */}
+                     {ICONS.map(appBarItem)}
                   </div>
                   <button className="devitearBtn" onClick={devittearBtn}>
                      <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
@@ -64,14 +52,7 @@ const AppBar = () => {
                   </button>
                </>
             ) : (
-               notUser.map((item, id) => (
-                  <AppBarItem
-                     key={id}
-                     title={item.title}
-                     href={item.href}
-                     icon={item.icon}
-                  />
-               ))
+               notUser.map(appBarItem)
             )}
          </nav>
          {displayName && (

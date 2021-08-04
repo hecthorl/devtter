@@ -7,7 +7,7 @@ import DevitInput from './DevitInput'
 const TimeLine = ({ devits }) => {
    const { width } = useGlobalContext()
    return (
-      <main className="w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary">
+      <main className="max-w-[598px] sm:border-r sm:border-secondary">
          <div className="sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
             <div className="w-12 sm:hidden">
                <Avatar />

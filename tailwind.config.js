@@ -9,7 +9,8 @@ module.exports = {
          colors: {
             primary: '#15202b',
             secondary: '#38444d',
-            tertiary: '#192734'
+            tertiary: '#192734',
+            brand: '#1a91da'
          },
          boxShadow: {
             float: 'rgb(136 153 166 / 20%) 0px 0px 15px, rgb(136 153 166 / 15%) 0px 0px 3px 1px'
@@ -25,5 +26,9 @@ module.exports = {
    variants: {
       extend: { opacity: ['disabled'] }
    },
-   plugins: []
+   plugins: [],
+   corePlugins: {
+      lineHeight: false,
+      ring: false
+   }
 }

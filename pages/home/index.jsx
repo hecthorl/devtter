@@ -35,14 +35,11 @@ const Home = () => {
             <title>Inicio / Devtter</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
-         <div
-            ref={ref}
-            className="bg-primary text-white w-full flex justify-center"
-         >
+         <div ref={ref} className="text-white w-full flex justify-center">
             <AppBar />
-            <TimeLine devits={timeLine} />
+            {/* <TimeLine devits={timeLine} />
             <Aside />
-            {popUp && <DevitInput />}
+            {popUp && <DevitInput />} */}
          </div>
       </>
    )
