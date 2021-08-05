@@ -61,6 +61,10 @@
       @apply bg-green-500 bg-opacity-0 hover:bg-opacity-10 transition-colors duration-200;
    }
 
+   .logo-img {
+      @apply w-8 h-8 absolute top-2 right-3;
+   }
+
    .devitearBtn {
       @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 2xl:w-[225px] sm:mt-2;
       @apply right-4 rounded-full flex justify-center items-center;

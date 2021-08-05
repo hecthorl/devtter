@@ -3,7 +3,7 @@ const TemplateIcon = ({ className, children }) => {
       <svg
          aria-hidden
          viewBox="0 0 24 24"
-         className={className + ' fill-current'}
+         className={className || ' fill-current'}
       >
          <g>{children}</g>
       </svg>

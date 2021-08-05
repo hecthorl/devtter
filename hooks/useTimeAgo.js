@@ -26,7 +26,7 @@ const useTimeAgo = timestamp => {
    }, [timestamp])
 
    const rtf = new Intl.RelativeTimeFormat({
-      style: 'long',
+      style: 'narrow',
       localeMatcher: 'best fit'
    })
 

@@ -1,59 +1,35 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { GiFeather } from 'react-icons/gi'
-import items from './items.json'
-import useGlobalContext from 'hooks/useGlobalContext'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { useAuthUser } from 'next-firebase-auth'
 import HoverComponent from 'components/HoverComponent'
 import { useState } from 'react'
-import appBarItem from 'helpers/appBarItem'
-import { ICONS } from 'helpers/devitIcons'
+import AppbarNavigation from './AppBarNavigation'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const AppBar = () => {
    const { displayName } = useAuthUser()
    const [isClicked, setIsClicked] = useState(false)
-   const { push } = useRouter()
-   const { width, setpopUp } = useGlobalContext()
-   const mobileSize = items.slice(0, 4)
-   const notUser = items.slice(0, 2)
 
-   const devittearBtn = () => {
-      width <= 500 ? push('/compose/tweet') : setpopUp(true)
-   }
    return (
       <header className="appbar-container">
-         <nav className="nav-container" style={{ lineHeight: 'inherit' }}>
+         <nav
+            className="nav-container"
+            style={{ lineHeight: 'inherit' }}
+            aria-label="Navegacion Principal"
+            role="navigation"
+         >
             <Link href="/">
-               <a className="logo-link">
+               <a className="logo-link" aria-label="Devtter" role="link">
                   <img
                      src="/logoDevvter.svg"
-                     alt="Logo Devtter"
-                     className="w-8 h-8 absolute top-2 right-3"
+                     className="logo-img"
+                     aria-hidden
                   />
                </a>
             </Link>
-            {displayName ? (
-               <>
-                  <div className="flex sm:flex-col gap-y-2 w-full">
-                     {/* {width <= 500
-                        ? mobileSize.map(appBarItem)
-                        : items.map(appBarItem)} */}
-                     {ICONS.map(appBarItem)}
-                  </div>
-                  <button className="devitearBtn" onClick={devittearBtn}>
-                     <GiFeather className="pointer-events-none text-2xl 2xl:hidden" />
-                     <span className="hidden 2xl:inline text-base font-bold">
-                        Devittear
-                     </span>
-                  </button>
-               </>
-            ) : (
-               notUser.map(appBarItem)
-            )}
+            <AppbarNavigation isUser={displayName} />
          </nav>
          {displayName && (
             <div

@@ -7,7 +7,7 @@ import DevitInput from './DevitInput'
 const TimeLine = ({ devits }) => {
    const { width } = useGlobalContext()
    return (
-      <main className="max-w-[598px] sm:border-r sm:border-secondary">
+      <main className="max-w-[598px] sm:border-r sm:border-secondary w-full mb-[42px]">
          <div className="sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
             <div className="w-12 sm:hidden">
                <Avatar />
@@ -15,7 +15,7 @@ const TimeLine = ({ devits }) => {
             <span className="text-xl w-full ml-5 sm:ml-0 font-bold">
                Inicio
             </span>
-            <span role="figure" className="text-lg">
+            <span role="figure" aria-hidden className="text-lg">
                ✨
             </span>
          </div>
@@ -49,7 +49,7 @@ const TimeLine = ({ devits }) => {
                     />
                  )
               })
-            : [...Array(8).keys()].map((u, i) => <SkeletonDevit key={i} />)}
+            : [...Array(8).keys()].map((_, i) => <SkeletonDevit key={i} />)}
       </main>
    )
 }

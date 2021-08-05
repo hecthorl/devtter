@@ -7,15 +7,9 @@ import NotificationsIcon from 'components/DevtterIcons/NotificationsIcon'
 import OptionsIcon from 'components/DevtterIcons/OptionsIcon'
 import ProfileIcon from 'components/DevtterIcons/ProfileIcon'
 
-// const Home = () => <HomeIcon />
-// const Explorer = () => <ExploreIcon />
-// const Notifications = () => <NotificationsIcon />
-// const Messages = () => <MessagesIcon />
-// const Bookmarks = () => <BookmarksIcon />
-// const Lists = () => <ListsIcon />
-// const Profile = () => <ProfileIcon />
-// const Options = () => <OptionsIcon />
-
+/**
+ * @constant {array} ICONS - Array con la información para mapear en un componente.
+ */
 export const ICONS = [
    {
       title: 'Inicio',

@@ -37,9 +37,9 @@ const Home = () => {
          </Head>
          <div ref={ref} className="text-white w-full flex justify-center">
             <AppBar />
-            {/* <TimeLine devits={timeLine} />
+            <TimeLine devits={timeLine} />
             <Aside />
-            {popUp && <DevitInput />} */}
+            {popUp && <DevitInput />}
          </div>
       </>
    )

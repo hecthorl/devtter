@@ -4,7 +4,7 @@ import { FiX } from 'react-icons/fi'
 
 const OnImage = ({ preview, setPreview }) => {
    const { devitStates } = useGlobalContext()
-   console.log(preview)
+
    useEffect(() => {
       setPreview(null)
    }, [devitStates])
