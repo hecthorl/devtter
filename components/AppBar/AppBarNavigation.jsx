@@ -17,17 +17,17 @@ const AppbarNavigation = ({ isUser }) => {
    if (!isUser) return notUser.map(appBarItem)
    return (
       <>
-         <div className="flex sm:flex-col gap-y-2 w-full">
+         <div className="app-navigation-container">
             {width <= 500 ? mobileSize.map(appBarItem) : ICONS.map(appBarItem)}
          </div>
-         <button className="devitearBtn" onClick={devittearBtn}>
-            <GiFeather
-               aria-hidden
-               className="pointer-events-none text-2xl 2xl:hidden"
-            />
-            <span className="hidden 2xl:inline text-base font-bold">
-               Devittear
-            </span>
+         <button
+            className="devitear-btn"
+            onClick={devittearBtn}
+            role="button"
+            aria-label="Devitear"
+         >
+            <GiFeather aria-hidden className="devitear-btn-svg" />
+            <span className="devitear-btn-name">Devittear</span>
          </button>
       </>
    )

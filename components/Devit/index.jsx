@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import useTimeAgo from 'hooks/useTimeAgo'
 import CommentBtn from './CommentBtn'
 import LikeBtn from './LikeBtn'
@@ -6,31 +5,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import DevitMedia from 'components/DevitMedia'
 import { useRouter } from 'next/router'
 import { handleMouseUp } from 'helpers/handleMouseUp'
-
-const Avatar = ({ avatar }) => {
-   const [avatarImg, setAvatarImg] = useState(false)
-   const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
-   const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
-   return (
-      <div
-         onClick={e => e.stopPropagation()}
-         className="relative w-12 h-12 rounded-full overflow-hidden"
-      >
-         <img
-            onLoad={() => setAvatarImg(true)}
-            loading="lazy"
-            className={toimageAv}
-            src={avatar}
-         />
-         <div
-            className={
-               'absolute w-[inherit] h-[inherit] top-0 bg-blue-600 ' +
-               toFallbackImgAv
-            }
-         ></div>
-      </div>
-   )
-}
+import DevitAvatar from './DevitAvatar'
 
 const Devit = ({ avatar, content, username, createdAt, img, id }) => {
    const date = useTimeAgo(createdAt)
@@ -45,9 +20,9 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
          role="article"
          onClick={handleClickSingleTweet}
          onMouseUp={e => handleMouseUp(e, id)}
-         className="px-4 flex py-3 border-b border-secondary hover:bg-[#ffffff0d] cursor-pointer transition-colors duration-200 space-x-4"
+         className="devit-container"
       >
-         <Avatar avatar={avatar} />
+         <DevitAvatar avatar={avatar} />
          <div className="flex-1">
             <div className="flex justify-between">
                <div>

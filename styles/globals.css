@@ -17,6 +17,21 @@
 }
 
 @layer components {
+   /* Avatar */
+   .avatar-container {
+      @apply w-[inherit] h-[inherit] rounded-full overflow-hidden text-xs break-words;
+   }
+   .avatar-loader {
+      @apply bg-blue-600 w-[inherit] h-[inherit];
+   }
+
+   /* Devit */
+
+   .devit-container {
+      @apply px-4 flex py-3 border-b border-secondary hover:bg-[#ffffff0d];
+      @apply cursor-pointer transition-colors duration-200 space-x-4;
+   }
+
    /* NotLoggedUser */
    .landing-container {
       @apply flex md:h-screen flex-wrap md:flex-nowrap text-white bg-black font-bold;
@@ -64,9 +79,79 @@
    .logo-img {
       @apply w-8 h-8 absolute top-2 right-3;
    }
+   .app-navigation-container {
+      @apply flex sm:flex-col gap-y-2 w-full;
+   }
 
-   .devitearBtn {
+   .devitear-btn {
       @apply h-16 w-16 sm:w-12 sm:h-12 bg-green-500 absolute sm:static -top-20 2xl:w-[225px] sm:mt-2;
       @apply right-4 rounded-full flex justify-center items-center;
+   }
+   .devitear-btn-svg {
+      @apply pointer-events-none text-2xl 2xl:hidden;
+   }
+   .devitear-btn-name {
+      @apply hidden 2xl:inline text-base font-bold;
+   }
+
+   .miniprofile-container {
+      @apply hidden relative sm:block sm:mt-5 gap-3 sm:pb-4 transition-colors;
+      @apply 2xl:flex 2xl:w-full 2xl:items-center 2xl:p-3 2xl:hover:bg-green-600;
+      @apply 2xl:hover:bg-opacity-20 2xl:rounded-full 2xl:cursor-pointer;
+   }
+   .miniprofile-avatar {
+      @apply w-[40px] h-[40px] mx-auto;
+   }
+   .miniprofile-info {
+      @apply hidden 2xl:flex text-[15px] w-full justify-between items-center leading-5;
+   }
+   .miniprofile-loader {
+      @apply bg-secondary rounded-full h-3 inline-block;
+   }
+   .miniprofile-name {
+      @apply text-white text-opacity-50;
+   }
+   .fake-screen {
+      @apply fixed top-0 left-0 right-0 w-screen h-screen cursor-auto;
+   }
+
+   .profile-menu {
+      @apply absolute w-[300px] h-[222px] top-[-234px] -left-8 cursor-auto bg-[#15202b] rounded-2xl shadow-float;
+   }
+   .profile-menu-container {
+      @apply relative py-3 divide-y divide-[rgba(255,255,255,0.2)] w-full text-base;
+   }
+   .profile-menu-info {
+      @apply py-3 px-4 flex justify-between items-center;
+   }
+   .profile-menu-option_1 {
+      @apply py-3 px-4 hover:bg-[#ffffff0d];
+   }
+   .profile-menu-username {
+      @apply flex flex-col;
+   }
+   .check-mark-icon {
+      @apply text-[lime] text-lg;
+   }
+   .profile-menu-option_2 {
+      @apply py-3 px-4 ml-auto w-[inherit] hover:bg-[#ffffff0d];
+   }
+   .pointer {
+      @apply absolute w-5 h-3 bottom-[-11px] bg-primary 2xl:right-[139px] right-[232px];
+   }
+
+   .app_bar_item {
+      @apply flex w-full justify-center 2xl:justify-start;
+   }
+   .app_bar_item-container {
+      @apply group-hover:bg-green-600 group-hover:bg-opacity-10;
+      @apply justify-center 2xl:justify-start p-2 duration-200;
+      @apply rounded-full transition-colors flex 2xl:gap-x-4;
+   }
+   .app_bar_item-icon {
+      @apply w-[26.25px] group-hover:text-green-500 m-auto;
+   }
+   .app_bar_item-content {
+      @apply hidden 2xl:block group-hover:text-green-500 transition-colors duration-200 mr-2;
    }
 }

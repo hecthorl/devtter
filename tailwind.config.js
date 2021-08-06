@@ -28,7 +28,10 @@ module.exports = {
    },
    plugins: [],
    corePlugins: {
-      lineHeight: false,
-      ring: false
+      ringWidth: false,
+      ringColor: false,
+      ringOpacity: false,
+      ringOffsetColor: false,
+      ringOffsetWidth: false
    }
 }

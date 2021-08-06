@@ -4,11 +4,11 @@ const Avatar = () => {
    const { photoURL } = useAuthUser()
 
    return (
-      <div className="w-[inherit] h-[inherit] rounded-full overflow-hidden text-xs break-words">
+      <div className="avatar-container">
          {photoURL ? (
             <img src={photoURL} alt="Current image profile" />
          ) : (
-            <div className="bg-blue-600 w-[inherit] h-[inherit]"></div>
+            <div className="avatar-loader"></div>
          )}
       </div>
    )
