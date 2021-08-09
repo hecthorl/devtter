@@ -26,10 +26,172 @@
    }
 
    /* Devit */
-
    .devit-container {
       @apply px-4 flex py-3 border-b border-secondary hover:bg-[#ffffff0d];
       @apply cursor-pointer transition-colors duration-200 space-x-4;
+   }
+
+   .devit-content {
+      @apply flex-1;
+   }
+
+   .devit-heading {
+      @apply flex justify-between;
+   }
+
+   .devit-heading-usernames {
+      @apply text-white text-opacity-50;
+   }
+   .devit-heading-username {
+      @apply font-bold text-opacity-100 text-white;
+   }
+   .devit-heading-link {
+      @apply hidden sm:inline ml-1;
+   }
+
+   .devit-btn {
+      @apply relative;
+   }
+   .devit-btn_container {
+      @apply absolute bg-brand rounded-full w-[33.5px] h-[33.5px] -m-2;
+      @apply bg-opacity-0 hover:bg-opacity-10 flex items-center;
+      @apply justify-center top-1 left-[-19px] right-0 bottom-0;
+   }
+   .devit-btn_svg {
+      @apply group-hover:text-brand;
+   }
+
+   .devit-reactions {
+      @apply flex mt-4 mb-2 max-w-[425px] w-full justify-between text-sm text-[#b8b8b8];
+   }
+
+   .devit-input-container {
+      @apply px-4 py-2 flex gap-x-2 relative;
+   }
+
+   .devit-input-loading {
+      @apply absolute top-0 right-0 w-full h-full bg-blue-600 bg-opacity-20;
+      @apply flex items-center justify-center text-white backdrop-blur-sm;
+   }
+
+   /* Aside */
+   .aside-container {
+      @apply hidden xl:block h-[1075px] pt-1 ml-7 sticky -top-60 text-xl;
+   }
+
+   .search_input-container {
+      @apply fixed top-0 py-1 pb-2 bg-primary;
+   }
+
+   .search_input-container input {
+      @apply py-2 pl-14 text-lg rounded-full bg-tertiary w-[350px] relative;
+   }
+   .search_input-container > div {
+      @apply absolute -top-1 pt-1 left-4 text-xl h-full flex items-center;
+   }
+
+   .trends-container {
+      @apply mt-16 rounded-2xl bg-tertiary flex flex-col py-2 font-bold w-[350px];
+   }
+   .trends-heading {
+      @apply flex justify-between border-b border-secondary px-4 py-2;
+   }
+   .trends-settings-btn {
+      @apply text-green-500 cursor-pointer;
+   }
+
+   .trends-settings-btn > svg {
+      @apply pointer-events-none;
+   }
+
+   .trends-expand {
+      @apply px-4 py-2 text-green-500 text-base font-normal;
+   }
+
+   .trends-content {
+      @apply divide-y divide-secondary;
+   }
+
+   .trends_item-container {
+      @apply px-4 py-2 cursor-pointer;
+   }
+   .trends_item-location {
+      @apply text-sm font-normal text-white text-opacity-40;
+   }
+   .trends_item-text {
+      @apply text-base;
+   }
+   .trends_item-count {
+      @apply text-sm font-normal text-white text-opacity-40;
+   }
+
+   .follow-container {
+      @apply rounded-2xl bg-tertiary flex flex-col py-2 font-bold w-[350px] mt-6;
+   }
+   .follow-container h4 {
+      @apply px-4 py-2 border-b border-secondary;
+   }
+   .follow-container > div {
+      @apply text-sm break-words;
+   }
+
+   .follow-container > div > div {
+      @apply px-4 py-2 text-green-500 text-base font-normal;
+   }
+
+   .followers_item-container {
+      @apply flex justify-between w-full items-center px-4 py-3 border-b border-secondary;
+   }
+   .follower_avatar {
+      @apply flex;
+   }
+   .follower_img {
+      @apply h-12 w-12 rounded-full overflow-hidden relative;
+   }
+   .follower_img-fallback {
+      @apply absolute top-0 w-full h-full bg-blue-600;
+   }
+   .follower_username-container {
+      @apply flex flex-col text-base justify-center ml-2;
+   }
+   .follower_username {
+      @apply hover:underline cursor-pointer;
+   }
+   .follower_linkusername {
+      @apply text-white text-opacity-30 font-normal;
+   }
+   .follower-btn {
+      @apply text-base px-4 font-semibold py-1 rounded-full transition-colors;
+      @apply bg-opacity-0 hover:bg-opacity-10 bg-green-500;
+      @apply border border-green-500 text-green-500;
+   }
+
+   .aside-separator {
+      @apply w-full h-1 border-b border-secondary my-2 border-opacity-30;
+   }
+
+   .footer-text {
+      @apply text-center text-sm text-white text-opacity-30 font-normal;
+   }
+
+   .devit_media-container {
+      @apply w-full overflow-hidden relative rounded-2xl;
+   }
+
+   .devit_media-img {
+      @apply break-all min-w-full h-full object-cover;
+   }
+   .devit_media-fallback {
+      @apply absolute top-0 w-full h-full bg-blue-600;
+   }
+
+   /* SingleDevit */
+   .single_devit-container {
+      @apply px-4 gap-x-3 py-3 border-b border-secondary;
+   }
+
+   .single_devit-btn {
+      @apply rounded-full bg-blue-500 p-2 bg-opacity-0 hover:bg-opacity-20 self-start text-lg text-white text-opacity-50;
    }
 
    /* NotLoggedUser */
@@ -153,5 +315,13 @@
    }
    .app_bar_item-content {
       @apply hidden 2xl:block group-hover:text-green-500 transition-colors duration-200 mr-2;
+   }
+
+   /* DevitInput */
+   .devit-avatar-container {
+      @apply relative w-12 h-12 rounded-full overflow-hidden;
+   }
+   .devit-avatar-fallback {
+      @apply absolute h-[inherit] top-0 bg-blue-600 w-[inherit];
    }
 }

@@ -13,5 +13,3 @@ const CommentBtn = () => {
 }
 
 export default CommentBtn
-
-// <span className="group-hover:text-brand transition-colors">10</span>

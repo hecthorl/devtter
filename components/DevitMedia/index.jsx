@@ -6,38 +6,19 @@ const DevitMedia = ({ img }) => {
    const [isLoaded, setIsLoaded] = useState(false)
    const { pathname } = useRouter()
 
-   const imageContainer = classNames(
-      'w-full',
-      'overflow-hidden',
-      'relative',
-      'rounded-2xl',
-      {
-         'h-[283px]': pathname.includes('home')
-      }
-   )
+   const imageContainer = classNames('devit_media-container', {
+      'h-[283px]': pathname.includes('home')
+   })
 
-   const toimage = classNames(
-      'break-all',
-      'min-w-full',
-      'h-full',
-      'object-cover',
-      {
-         'opacity-100': isLoaded,
-         'opacity-0': !isLoaded
-      }
-   )
+   const toimage = classNames('devit_media-img', {
+      'opacity-100': isLoaded,
+      'opacity-0': !isLoaded
+   })
 
-   const toFallbackImg = classNames(
-      'absolute',
-      'top-0',
-      'w-full',
-      'h-full',
-      'bg-blue-600',
-      {
-         'opacity-100': !isLoaded,
-         'opacity-0': isLoaded
-      }
-   )
+   const toFallbackImg = classNames('.devit_media-fallback', {
+      'opacity-100': !isLoaded,
+      'opacity-0': isLoaded
+   })
 
    return (
       <>

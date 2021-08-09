@@ -34,13 +34,3 @@ const LikeBtn = () => {
 }
 
 export default LikeBtn
-
-/**
- * <span
-            className={
-               'group-hover:text-opacity-100 transition-colors ' + islikedNumber
-            }
-         >
-            10
-         </span>
- */

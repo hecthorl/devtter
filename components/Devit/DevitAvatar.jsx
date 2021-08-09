@@ -1,13 +1,21 @@
 import { useState } from 'react'
+import classNames from 'classnames'
 
 const DevitAvatar = ({ avatar }) => {
    const [avatarImg, setAvatarImg] = useState(false)
-   const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
-   const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
+   const toFallbackImgAv = classNames('devit-avatar-fallback', {
+      'opacity-100': !avatarImg,
+      'opacity-0': avatarImg
+   })
+   const toimageAv = classNames({
+      'opacity-0': !avatarImg,
+      'opacity-100': avatarImg
+   })
+
    return (
       <div
          onClick={e => e.stopPropagation()}
-         className="relative w-12 h-12 rounded-full overflow-hidden"
+         className="devit-avatar-container"
       >
          <img
             onLoad={() => setAvatarImg(true)}
@@ -15,12 +23,7 @@ const DevitAvatar = ({ avatar }) => {
             className={toimageAv}
             src={avatar}
          />
-         <div
-            className={
-               'absolute w-[inherit] h-[inherit] top-0 bg-blue-600 ' +
-               toFallbackImgAv
-            }
-         ></div>
+         <div className={toFallbackImgAv}></div>
       </div>
    )
 }

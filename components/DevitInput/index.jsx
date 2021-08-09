@@ -10,13 +10,13 @@ const DevitInput = () => {
    const { UPLOADING } = UPLOADING_STATES
    return (
       <>
-         <div className="px-4 py-2 flex gap-x-2 relative">
+         <div className="devit-input-container">
             <div className="w-[48px] h-[48px]">
                <Avatar />
             </div>
             <DevitInputTextarea />
             {devitStates === UPLOADING && (
-               <div className="absolute top-0 right-0 w-full h-full bg-blue-600 bg-opacity-20 flex items-center justify-center text-white backdrop-blur-sm">
+               <div className="devit-input-loading">
                   <h1>CARGANDO...</h1>
                </div>
             )}
