@@ -29,7 +29,6 @@ const DevitMedia = ({ img }) => {
                   loading="lazy"
                   className={toimage}
                   src={img}
-                  alt={img}
                />
                <div className={toFallbackImg}></div>
             </div>

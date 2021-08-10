@@ -190,8 +190,60 @@
       @apply px-4 gap-x-3 py-3 border-b border-secondary;
    }
 
+   .single_devit-heading {
+      @apply flex justify-between pb-2;
+   }
+
+   .single_devit-loader {
+      @apply absolute w-full h-full top-0 bg-blue-600;
+   }
+
+   .single_devit-username {
+      @apply flex flex-col ml-2 text-[15px] cursor-pointer;
+   }
+
+   .single_devit-username:hover span:first-child {
+      @apply underline;
+   }
+
+   .single_devit-username span:first-child {
+      @apply font-bold;
+   }
+
+   .single_devit-username span:last-child {
+      @apply text-white text-opacity-50;
+   }
+
+   .single_devit-avatar {
+      @apply relative h-12 w-12 rounded-full overflow-hidden;
+   }
+
    .single_devit-btn {
       @apply rounded-full bg-blue-500 p-2 bg-opacity-0 hover:bg-opacity-20 self-start text-lg text-white text-opacity-50;
+   }
+
+   .single_devit-date {
+      @apply text-white text-opacity-50 py-3 space-x-1;
+   }
+   .single_devit-reactions {
+      @apply flex w-full justify-around text-sm text-[#8899a6];
+   }
+
+   /* TimeLine */
+   .timeline-container {
+      @apply max-w-[598px] sm:border-r sm:border-secondary w-full mb-[42px];
+   }
+   .timeline-heading {
+      @apply sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary;
+   }
+   .timeline-heading__avatar {
+      @apply w-12 sm:hidden;
+   }
+   .timeline-heading__title {
+      @apply text-xl w-full ml-5 sm:ml-0 font-bold;
+   }
+   .timeline__separator {
+      @apply w-full h-3 bg-tertiary border-t border-b border-secondary;
    }
 
    /* NotLoggedUser */
@@ -323,5 +375,31 @@
    }
    .devit-avatar-fallback {
       @apply absolute h-[inherit] top-0 bg-blue-600 w-[inherit];
+   }
+
+   /* page: status/[id] */
+
+   .status-page-container {
+      @apply text-white w-full flex justify-center;
+   }
+   .status-page-heading {
+      @apply w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary;
+   }
+   .status-page-heading > div {
+      @apply sticky top-0 bg-primary px-4 py-1 flex items-center border-b border-secondary z-20;
+   }
+   .status-page-heading button {
+      @apply p-3 transition-colors rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10;
+   }
+   .status-page-heading button > svg {
+      @apply pointer-events-none text-xl text-green-500;
+   }
+   .status-page-heading h5 {
+      @apply text-xl w-full ml-5 font-bold;
+   }
+
+   /* page: home */
+   .home-container {
+      @apply text-white w-full flex justify-center;
    }
 }

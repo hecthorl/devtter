@@ -1,6 +1,6 @@
 /**
- * Retorna un objeto con la información por separado para formatear a gusto
- * @param {number} fecha Número en formato de fecha para el constructor Intl
+ * Retorna un objeto con la información por separado para formatear las fechas a gusto
+ * @param {number} fecha Número en formato de fecha para Intl
  * @returns {object} Objeto que representa las fechas extraidas
  */
 const getDevitDate = fecha => {

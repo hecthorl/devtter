@@ -16,10 +16,10 @@ const SingleDevit = props => {
             <p className="pb-3 text-2xl">{content}</p>
             <DevitMedia img={img} />
          </div>
-         <div className="text-white text-opacity-50 py-3 space-x-1">
+         <div className="single_devit-date">
             <SingleDevitDates date={createdAt} />
          </div>
-         <div className="flex w-full justify-around text-sm text-[#8899a6]">
+         <div className="single_devit-reactions">
             <CommentBtn />
             <button>
                <span>🧁</span>

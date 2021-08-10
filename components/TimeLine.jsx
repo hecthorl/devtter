@@ -7,14 +7,12 @@ import DevitInput from './DevitInput'
 const TimeLine = ({ devits }) => {
    const { width } = useGlobalContext()
    return (
-      <main className="max-w-[598px] sm:border-r sm:border-secondary w-full mb-[42px]">
-         <div className="sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary">
-            <div className="w-12 sm:hidden">
+      <main className="timeline-container">
+         <div className="timeline-heading">
+            <div className="timeline-heading__avatar">
                <Avatar />
             </div>
-            <span className="text-xl w-full ml-5 sm:ml-0 font-bold">
-               Inicio
-            </span>
+            <span className="timeline-heading__title">Inicio</span>
             <span role="figure" aria-hidden className="text-lg">
                ✨
             </span>
@@ -22,7 +20,7 @@ const TimeLine = ({ devits }) => {
          {!(width <= 500) && (
             <>
                <DevitInput />
-               <div className="w-full h-3 bg-tertiary border-t border-b border-secondary"></div>
+               <div className="timeline__separator"></div>
             </>
          )}
          {devits.length

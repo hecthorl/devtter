@@ -1,16 +1,23 @@
+import classNames from 'classnames'
 import { useState } from 'react'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 
 const SingleDevitHeading = ({ avatar, username }) => {
    const [avatarImg, setAvatarImg] = useState(false)
 
-   const toimageAv = avatarImg ? 'opacity-100' : 'opacity-0'
-   const toFallbackImgAv = avatarImg ? 'opacity-0' : 'opacity-100'
+   const toimageAv = classNames({
+      'opacity-100': avatarImg,
+      'opacity-0': !avatarImg
+   })
+   const toFallbackImgAv = classNames('single_devit-loader', {
+      'opacity-100': !avatarImg,
+      'opacity-0': avatarImg
+   })
 
    return (
-      <div className="flex justify-between pb-2">
+      <div className="single_devit-heading">
          <div className="flex">
-            <div className="relative h-12 w-12 rounded-full overflow-hidden">
+            <div className="single_devit-avatar">
                <img
                   onLoad={() => setAvatarImg(true)}
                   loading="lazy"
@@ -18,20 +25,11 @@ const SingleDevitHeading = ({ avatar, username }) => {
                   src={avatar}
                   alt={'current image profile of ' + username}
                />
-               <div
-                  className={
-                     'absolute w-full h-full top-0 bg-blue-600 ' +
-                     toFallbackImgAv
-                  }
-               ></div>
+               <div className={toFallbackImgAv}></div>
             </div>
-            <div className="flex flex-col ml-2 text-[15px] group cursor-pointer">
-               <span className="font-bold group-hover:underline">
-                  {username}
-               </span>
-               <span className="text-white text-opacity-50">
-                  {'@' + username.replace(' ', '_')}
-               </span>
+            <div className="single_devit-username">
+               <span>{username}</span>
+               <span>{'@' + username.replace(' ', '_')}</span>
             </div>
          </div>
          <button

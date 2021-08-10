@@ -22,17 +22,18 @@ const DevitPage = props => {
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
 
-         <div ref={ref} className="text-white w-full flex justify-center">
+         <div ref={ref} className="status-page-container">
             <AppBar />
-            <div className="w-full max-w-[598px] min-w-min sm:border-r sm:border-secondary">
-               <div className="sticky top-0 bg-primary px-4 py-1 flex items-center border-b border-secondary z-20">
+            <div className="status-page-heading">
+               <div>
                   <button
-                     className="p-3 transition-colors rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10"
+                     role="button"
+                     aria-label="Atrás"
                      onClick={() => back()}
                   >
-                     <HiArrowLeft className="pointer-events-none text-xl text-green-500" />
+                     <HiArrowLeft aria-hidden />
                   </button>
-                  <h1 className="text-xl w-full ml-5 font-bold">Devtter</h1>
+                  <h5>Devtter</h5>
                </div>
                {isFallback ? <SkeletonDevit /> : <SingleDevit {...props} />}
             </div>
