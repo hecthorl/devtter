@@ -15,6 +15,7 @@ const AppbarNavigation = ({ isUser }) => {
    }
 
    if (!isUser) return notUser.map(appBarItem)
+
    return (
       <>
          <div className="app-navigation-container">

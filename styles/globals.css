@@ -179,10 +179,10 @@
    }
 
    .devit_media-img {
-      @apply break-all min-w-full h-full object-cover;
+      @apply break-all min-w-full h-full object-cover cursor-pointer;
    }
    .devit_media-fallback {
-      @apply absolute top-0 w-full h-full bg-blue-600;
+      @apply absolute top-0 w-full h-full bg-blue-600 pointer-events-none;
    }
 
    /* SingleDevit */

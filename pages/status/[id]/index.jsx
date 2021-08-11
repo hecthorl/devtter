@@ -66,8 +66,7 @@ export const getStaticProps = context => {
          return { props: { ...data, id } }
       })
       .catch(err => {
-         console.log(err)
-         return { props: {} }
+         throw new Error({ err, location: 'Status/error' })
       })
 }
 
