@@ -34,7 +34,7 @@ const DevitMedia = ({ img }) => {
             src={img}
          />
          <div className={toFallbackImg}></div>
-         {visor ? <VisorImg handleVisor={handleState} img={img} /> : ''}
+         {visor && <VisorImg handleVisor={handleState} img={img} />}
       </div>
    )
 }

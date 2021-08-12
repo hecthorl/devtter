@@ -30,7 +30,6 @@ const Home = () => {
       }
       return () => unSubscribe && unSubscribe()
    }, [email])
-   console.log('veces')
 
    return (
       <>

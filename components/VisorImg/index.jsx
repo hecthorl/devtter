@@ -1,45 +1,57 @@
+import { useState } from 'react'
+import classNames from 'classnames'
 import { BsThreeDots } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
+import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi'
 
 const VisorImg = ({ handleVisor, img }) => {
+   document.body.onkeyup = e => {
+      if (e.code === 'Escape') handleVisor(false)
+   }
+   const [toggleWindow, setToggleWindow] = useState(!false)
+
+   const aside = classNames('visor_img-aside', {
+      hidden: toggleWindow
+   })
+
    return (
       <div
-         onKeyUp={e => {
-            if (e.code === 'Escape') handleVisor(false)
+         style={{
+            gridTemplateColumns: toggleWindow ? '1fr' : '1fr 350px'
          }}
-         className="fixed top-0 right-0 left-0 w-screen h-screen bg-primary sm:bg-transparent sm:backdrop-blur-sm z-50 cursor-default"
+         className="visor_img-container"
       >
-         <div
-            onClick={() => handleVisor(false)}
-            className="w-full h-full flex flex-col items-center relative"
-         >
-            <div className="flex-1 h-full flex justify-center items-center ">
-               <img
-                  onClick={e => e.stopPropagation()}
-                  src={img}
-                  className="h-[fit-content] w-[fit-content] object-contain"
-               />
-            </div>
+         <div onClick={() => handleVisor(false)} className="visor_img-content">
             <div
                onClick={e => e.stopPropagation()}
-               className="absolute top-0 left-0 right-0 flex justify-between p-4 text-2xl"
+               className="visor_img-buttons"
             >
                <button onClick={() => handleVisor(false)}>
                   <MdClose aria-hidden />
                </button>
-               <button>
-                  <BsThreeDots aria-hidden />
+               <button onClick={() => setToggleWindow(!toggleWindow)}>
+                  {/* <BsThreeDots aria-hidden /> */}
+                  {!toggleWindow ? (
+                     <HiChevronDoubleRight aria-hidden />
+                  ) : (
+                     <HiChevronDoubleLeft aria-hidden />
+                  )}
                </button>
             </div>
-            <div onClick={e => e.stopPropagation()} className="w-full">
-               <div className="px-8 mx-auto max-w-[600px] flex justify-between">
-                  <span>asda</span>
-                  <span>asda</span>
-                  <span>asda</span>
-                  <span>asda</span>
-               </div>
+            <div className="visor_img-image__container">
+               <img onClick={e => e.stopPropagation()} src={img} />
+            </div>
+            <div
+               onClick={e => e.stopPropagation()}
+               className="w-full px-8 max-w-[600px] flex justify-between h-full max-h-[48px] items-center"
+            >
+               <span>asda</span>
+               <span>asda</span>
+               <span>asda</span>
+               <span>asda</span>
             </div>
          </div>
+         <div className={aside}></div>
       </div>
    )
 }
