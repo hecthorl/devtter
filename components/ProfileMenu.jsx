@@ -2,7 +2,7 @@ import { useAuthUser } from 'next-firebase-auth'
 import Avatar from './Avatar'
 import { GiCheckMark } from 'react-icons/gi'
 
-const HoverComponent = () => {
+const ProfileMenu = () => {
    const { displayName, signOut } = useAuthUser()
    return (
       <div
@@ -37,4 +37,4 @@ const HoverComponent = () => {
    )
 }
 
-export default HoverComponent
+export default ProfileMenu

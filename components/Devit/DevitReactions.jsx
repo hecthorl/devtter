@@ -1,5 +1,5 @@
-import CommentBtn from './CommentBtn'
-import LikeBtn from './LikeBtn'
+import CommentBtn from '../CommentBtn'
+import LikeBtn from '../LikeBtn'
 
 const DevitReactions = () => {
    return (

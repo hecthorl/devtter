@@ -37,7 +37,7 @@ export const ICONS = [
       icon: <BookmarksIcon />
    },
    {
-      title: 'Lista',
+      title: 'Listas',
       href: '/',
       icon: <ListsIcon />
    },

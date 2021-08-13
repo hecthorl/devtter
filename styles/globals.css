@@ -219,14 +219,17 @@
    }
 
    .single_devit-btn {
-      @apply rounded-full bg-blue-500 p-2 bg-opacity-0 hover:bg-opacity-20 self-start text-lg text-white text-opacity-50;
+      @apply rounded-full bg-blue-500 p-2 bg-opacity-0 self-start text-lg text-white text-opacity-50;
+   }
+   .single_devit-btn:hover {
+      @apply bg-opacity-20 text-blue-500;
    }
 
    .single_devit-date {
-      @apply text-white text-opacity-50 py-3 space-x-1;
+      @apply text-white text-opacity-50 py-3;
    }
    .single_devit-reactions {
-      @apply flex w-full justify-around text-sm text-[#8899a6];
+      @apply w-full text-base text-[#8899a6];
    }
 
    /* TimeLine */
@@ -388,11 +391,8 @@
    .status-page-heading > div {
       @apply sticky top-0 bg-primary px-4 py-1 flex items-center border-b border-secondary z-20;
    }
-   .status-page-heading button {
+   .status-page-heading > div > button {
       @apply p-3 transition-colors rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-10;
-   }
-   .status-page-heading button > svg {
-      @apply pointer-events-none text-xl text-green-500;
    }
    .status-page-heading h5 {
       @apply text-xl w-full ml-5 font-bold;

@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import HeartIcon from '../DevtterIcons/HeartIcon'
+import HeartIcon from './DevtterIcons/HeartIcon'
 
 const LikeBtn = () => {
    const [liked, setLiked] = useState(false)
    const isLikedSvg = liked
       ? 'fill-[red] stroke-[red]'
       : 'fill-[transparent] stroke-[#8899a6]'
-
-   // const islikedNumber = liked ? 'text-red-600' : 'group-hover:text-red-600'
 
    const handleClick = event => {
       setLiked(!liked)

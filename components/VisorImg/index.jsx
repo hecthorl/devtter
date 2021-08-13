@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import classNames from 'classnames'
-import { BsThreeDots } from 'react-icons/bs'
+// import { BsThreeDots } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
 import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi'
+import CommentBtn from 'components/CommentBtn'
+import LikeBtn from 'components/LikeBtn'
 
 const VisorImg = ({ handleVisor, img }) => {
    document.body.onkeyup = e => {
@@ -29,7 +31,10 @@ const VisorImg = ({ handleVisor, img }) => {
                <button onClick={() => handleVisor(false)}>
                   <MdClose aria-hidden />
                </button>
-               <button onClick={() => setToggleWindow(!toggleWindow)}>
+               <button
+                  aria-label={toggleWindow ? 'Ver devit' : 'Ocultar devit'}
+                  onClick={() => setToggleWindow(!toggleWindow)}
+               >
                   {/* <BsThreeDots aria-hidden /> */}
                   {!toggleWindow ? (
                      <HiChevronDoubleRight aria-hidden />
@@ -45,10 +50,12 @@ const VisorImg = ({ handleVisor, img }) => {
                onClick={e => e.stopPropagation()}
                className="w-full px-8 max-w-[600px] flex justify-between h-full max-h-[48px] items-center"
             >
-               <span>asda</span>
-               <span>asda</span>
-               <span>asda</span>
-               <span>asda</span>
+               <CommentBtn />
+               <button>
+                  <span>🏀 12</span>
+               </button>
+               <LikeBtn />
+               <span>🏐</span>
             </div>
          </div>
          <div className={aside}></div>

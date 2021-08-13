@@ -5,25 +5,7 @@ import 'firebase/storage'
 import { configFirebase } from 'helpers/constants'
 import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 
-// const app = !firebase.apps.length && firebase.initializeApp(configFirebase)
-
 const { GithubAuthProvider } = firebase.auth
-
-// const mapUserFromFirebase = user => {
-//    if (!user) return
-//    const { email, photoURL, displayName, uid } = user
-
-//    return { avatar: photoURL, email, username: displayName, uid }
-// }
-
-// export const authStateChanged = onChange => {
-//    if (firebase.apps.length !== 0) {
-//       return app.auth().onAuthStateChanged(user => {
-//          const normalizeUser = user ? mapUserFromFirebase(user) : null
-//          onChange(normalizeUser)
-//       })
-//    }
-// }
 
 export const githubPovider = () => {
    const githubProv = new GithubAuthProvider()
@@ -47,7 +29,7 @@ export const addDevit = ({ avatar, content, userId, img, username }) => {
          sharedCounts: 0
       })
    } else {
-      console.log('app.firestore()')
+      throw Error('Error iterno')
    }
 }
 

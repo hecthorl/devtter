@@ -6,7 +6,6 @@ import {
 } from 'next-firebase-auth'
 
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 
 import { listenLatestDevits } from 'firebase/cliente'
@@ -15,8 +14,7 @@ import useGlobalContext from 'hooks/useGlobalContext'
 import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import DevitInput from 'components/DevitInput/DevitInputModal'
-
-const TimeLine = dynamic(import('components/TimeLine'), { ssr: false })
+import TimeLine from 'components/TimeLine'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])

@@ -2,7 +2,7 @@ import { useAuthUser } from 'next-firebase-auth'
 import { useState } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
-import HoverComponent from 'components/HoverComponent'
+import ProfileMenu from 'components/ProfileMenu'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
@@ -40,7 +40,7 @@ const MiniProfile = () => {
          {isClicked && (
             <>
                <div className="fake-screen"></div>
-               <HoverComponent />
+               <ProfileMenu />
             </>
          )}
       </div>
