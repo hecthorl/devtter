@@ -25,15 +25,15 @@ export const addDevit = ({ avatar, content, userId, img, username }) => {
          userId,
          img,
          createdAt: new Date().getTime(),
-         likesCount: 0,
-         sharedCounts: 0
+         likesCount: [],
+         sharedCounts: []
       })
    } else {
       throw Error('Error iterno')
    }
 }
 
-export const listenLatestDevits = callback => {
+export const listenLatestDevits = upDateDevitts => {
    if (firebase.apps.length !== 0) {
       return (
          firebase
@@ -44,7 +44,7 @@ export const listenLatestDevits = callback => {
             // .limit(2)
             .onSnapshot(({ docs }) => {
                const newDevits = docs.map(mapDevitfromFirebase)
-               callback(newDevits)
+               upDateDevitts(newDevits)
             })
       )
    }
@@ -59,4 +59,22 @@ export const uploadImage = file => {
       const task = ref.put(file)
       return task
    }
+}
+
+export const likeDevitt = (user, doc) => {
+   const devitRef = firebase.app().firestore().collection('devits').doc(doc)
+   return devitRef.update({
+      likesCount: firebase.firestore.FieldValue.arrayUnion(user)
+   })
+}
+export const unLikeDevitt = (user, doc) => {
+   const devitRef = firebase.app().firestore().collection('devits').doc(doc)
+   return devitRef.update({
+      likesCount: firebase.firestore.FieldValue.arrayRemove(user)
+   })
+}
+
+export const devittStats = docId => {
+   const devitRef = firebase.app().firestore().collection('devits').doc(docId)
+   return devitRef.get()
 }

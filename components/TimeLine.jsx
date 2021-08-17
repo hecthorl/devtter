@@ -32,7 +32,8 @@ const TimeLine = ({ devits }) => {
                     username,
                     id,
                     userId,
-                    createdAt
+                    createdAt,
+                    likesCount
                  } = item
                  return (
                     <Devit
@@ -43,6 +44,7 @@ const TimeLine = ({ devits }) => {
                        username={username}
                        userId={userId}
                        createdAt={createdAt}
+                       likesCount={likesCount}
                        id={id}
                     />
                  )

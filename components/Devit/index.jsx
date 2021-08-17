@@ -5,17 +5,18 @@ import DevitAvatar from './DevitAvatar'
 import DevitReactions from './DevitReactions'
 import DevitHeading from './DevitHeading'
 
-const Devit = ({ avatar, content, username, createdAt, img, id }) => {
+const Devit = props => {
+   const { avatar, content, username, createdAt, img, id, likesCount } = props
    const { push } = useRouter()
 
-   const handleClickSingleTweet = () => {
+   const handleClickSingleDevitt = () => {
       push(`/status/${id}`)
    }
 
    return (
       <article
          role="article"
-         onClick={handleClickSingleTweet}
+         onClick={handleClickSingleDevitt}
          onMouseUp={e => handleMouseUp(e, id)}
          className="devit-container"
       >
@@ -26,7 +27,7 @@ const Devit = ({ avatar, content, username, createdAt, img, id }) => {
                <p>{content}</p>
                <DevitMedia img={img} />
             </div>
-            <DevitReactions />
+            <DevitReactions id={id} likesCount={likesCount} />
          </div>
       </article>
    )

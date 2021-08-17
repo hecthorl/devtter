@@ -43,3 +43,12 @@ export const configFirebase = {
    messagingSenderId: '835835726435',
    appId: '1:835835726435:web:827febe7c8f24cd92a0656'
 }
+
+export const LIKES_STATES = {
+   DEF4ULT: null,
+   LIKING: 'laikeando',
+   LIKED: 'liked',
+   UNLIKING: 'quitando like',
+   UNLIKED: 'quitar like',
+   ERROR: 'Error al dar like'
+}
