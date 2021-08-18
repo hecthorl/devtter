@@ -4,16 +4,13 @@ import 'firebase/firestore'
 import 'firebase/storage'
 import { configFirebase } from 'helpers/constants'
 import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
+import throwError from 'helpers/throwError'
 
 const { GithubAuthProvider } = firebase.auth
 
 export const githubPovider = () => {
    const githubProv = new GithubAuthProvider()
-   return firebase
-      .app()
-      .auth()
-      .signInWithPopup(githubProv)
-      .catch(err => console.error(err))
+   return firebase.app().auth().signInWithPopup(githubProv).catch(throwError)
 }
 
 export const addDevit = ({ avatar, content, userId, img, username }) => {
