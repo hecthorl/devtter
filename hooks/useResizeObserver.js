@@ -1,5 +1,8 @@
 import { useRef, useCallback, useEffect, useState } from 'react'
 
+/**
+ * Hook para obtener información del viewport
+ */
 const useResizeObserver = () => {
    const [size, setSize] = useState({ width: 0, height: 0 })
    const resizeObserver = useRef(null)

@@ -1,7 +1,7 @@
 /**
  * Retorna un objeto con la información por separado para formatear las fechas a gusto
  * @param {number} fecha Número en formato de fecha para Intl
- * @returns {object} Objeto que representa las fechas extraidas
+ * @returns {object} Objeto que con las fechas extraidas
  */
 const getDevitDate = fecha => {
    const language = navigator.language

@@ -81,3 +81,5 @@ Devtter App es un proyecto personal, **basada** en la idea de hacer un clon de T
 -  Autenticación con firebase
 -  Estilado con tailwindcss
 -  Ver devits por separado
+-  Visor de imágenes
+-  Funcionalidad de likes

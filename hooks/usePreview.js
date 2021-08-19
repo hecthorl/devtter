@@ -3,6 +3,9 @@ import { imgFormatSupported } from 'helpers/imgFormatSupported'
 import { useState } from 'react'
 import useGlobalContext from './useGlobalContext'
 
+/**
+ * Hook para ver la preview local de una imagen antes de subirla.
+ */
 const usePreview = () => {
    const [preview, setPreview] = useState(null)
    const [file, setFile] = useState(null)
@@ -13,7 +16,7 @@ const usePreview = () => {
       setDrag(DRAG_IMAGE_STATES.DROPED)
       const [file] = event.dataTransfer.files
       const isFormat = imgFormatSupported(file.type)
-      console.log(file.type)
+
       if (isFormat) {
          setFile(file)
 
@@ -25,11 +28,6 @@ const usePreview = () => {
       }
    }
 
-   /**
-    * preview => la url en formato blob de la imagen
-    * handleDrop => metodo para detectar el drop de la imagen en el textarea
-    * setPreview => metodo para el boton de cerrar la imagen
-    */
    return { preview, handleDrop, setPreview, file }
 }
 

@@ -1,20 +1,29 @@
 import { DATE_UNITS } from 'helpers/constants'
+import throwError from 'helpers/throwError'
 import { useEffect, useState } from 'react'
 
+/**
+ * Función que devuelve el tiempo que ha pasado y la unidad de tiempo
+ * @param {number} timestamp Fecha sin parcear
+ */
 const getDateDiffs = timestamp => {
    const now = Date.now()
    const elapsed = (timestamp - now) / 1000
 
    for (const [unit, secondsUnit] of DATE_UNITS) {
       if (Math.abs(elapsed) > secondsUnit || unit === 'second') {
-         // console.log(unit, 'unit')
          return { value: Math.floor(elapsed / secondsUnit), unit }
       }
    }
 }
 
+/**
+ * Devuelve la cantidad de tiempo restante entre el valor de entrada y el actual, legible para personas
+ * @param {number} timestamp Fecha sin parcear
+ * @returns {string} Fecha parseada
+ */
 const useTimeAgo = timestamp => {
-   if (!timestamp || isNaN(timestamp)) return console.log(timestamp, 'error')
+   if (!timestamp || isNaN(timestamp)) return throwError('error en usetimeago')
    const [timeAgo, setTimeAgo] = useState(() => getDateDiffs(timestamp))
 
    useEffect(() => {
