@@ -2,7 +2,7 @@ import DevitMedia from 'components/DevitMedia'
 import { useRouter } from 'next/router'
 import { handleMouseUp } from 'helpers/handleMouseUp'
 import DevitAvatar from './DevitAvatar'
-import DevitReactions from './DevitReactions'
+import DevitReactions from '../DevitReactions'
 import DevitHeading from './DevitHeading'
 
 const Devit = props => {
@@ -25,7 +25,7 @@ const Devit = props => {
             <DevitHeading username={username} createdAt={createdAt} />
             <div className="space-y-2">
                <p>{content}</p>
-               <DevitMedia img={img} />
+               <DevitMedia img={img} id={id} likesCount={likesCount} />
             </div>
             <DevitReactions id={id} likesCount={likesCount} />
          </div>

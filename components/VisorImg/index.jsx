@@ -3,10 +3,9 @@ import classNames from 'classnames'
 // import { BsThreeDots } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
 import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi'
-import CommentBtn from 'components/CommentBtn'
-import LikeBtn from 'components/LikeBtn'
+import DevitReactions from 'components/DevitReactions'
 
-const VisorImg = ({ handleVisor, img }) => {
+const VisorImg = ({ handleVisor, img, id, likesCount }) => {
    document.body.onkeyup = e => {
       if (e.code === 'Escape') handleVisor(false)
    }
@@ -50,12 +49,7 @@ const VisorImg = ({ handleVisor, img }) => {
                onClick={e => e.stopPropagation()}
                className="w-full px-8 max-w-[600px] flex justify-between h-full max-h-[48px] items-center"
             >
-               <CommentBtn />
-               <button>
-                  <span>🏀 12</span>
-               </button>
-               <LikeBtn />
-               <span>🏐</span>
+               <DevitReactions id={id} likesCount={likesCount} />
             </div>
          </div>
          <div className={aside}></div>

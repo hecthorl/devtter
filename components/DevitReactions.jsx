@@ -1,5 +1,5 @@
-import CommentBtn from '../CommentBtn'
-import LikeBtn from '../LikeBtn'
+import CommentBtn from './CommentBtn'
+import LikeBtn from './LikeBtn'
 
 const DevitReactions = ({ id, likesCount }) => {
    return (
@@ -9,7 +9,7 @@ const DevitReactions = ({ id, likesCount }) => {
             <span>🧁</span>
             <span>10</span>
          </button>
-         <div className="flex">
+         <div onClick={e => e.stopPropagation()} className="flex">
             <LikeBtn devittId={id} />
             <span>{likesCount.length !== 0 ? likesCount.length : ''}</span>
          </div>

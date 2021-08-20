@@ -234,7 +234,7 @@
 
    /* TimeLine */
    .timeline-container {
-      @apply max-w-[598px] sm:border-r sm:border-secondary w-full mb-[42px];
+      @apply max-w-[600px] sm:border-r sm:border-secondary w-full mb-[42px];
    }
    .timeline-heading {
       @apply sticky z-10 top-0 bg-primary px-4 py-3 flex items-center border-b border-secondary;

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import VisorImg from 'components/VisorImg'
 import useVisorImg from 'hooks/useVisorImg'
 
-const DevitMedia = ({ img }) => {
+const DevitMedia = ({ img, id, likesCount }) => {
    const [isLoaded, setIsLoaded] = useState(false)
    const { visor, handleState } = useVisorImg()
    const { pathname } = useRouter()
@@ -34,7 +34,14 @@ const DevitMedia = ({ img }) => {
             src={img}
          />
          <div className={toFallbackImg}></div>
-         {visor && <VisorImg handleVisor={handleState} img={img} />}
+         {visor && (
+            <VisorImg
+               handleVisor={handleState}
+               img={img}
+               id={id}
+               likesCount={likesCount}
+            />
+         )}
       </div>
    )
 }
