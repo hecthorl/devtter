@@ -1,12 +1,9 @@
-import Head from 'next/head'
 import NotLoggedUser from 'components/NotLoggedUser'
-import {
-   AuthAction,
-   withAuthUser,
-   withAuthUserTokenSSR
-} from 'next-firebase-auth'
+import Head from 'next/head'
+import { useSession } from 'next-auth/react'
 
 const Index = () => {
+   console.log(useSession())
    return (
       <>
          <Head>
@@ -19,9 +16,4 @@ const Index = () => {
    )
 }
 
-export const getServerSideProps = withAuthUserTokenSSR({
-   whenAuthed: AuthAction.REDIRECT_TO_APP
-})()
-export default withAuthUser({
-   whenAuthed: AuthAction.REDIRECT_TO_APP
-})(Index)
+export default Index

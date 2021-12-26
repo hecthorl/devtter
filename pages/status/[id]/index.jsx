@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { withAuthUser } from 'next-firebase-auth'
 import { firestore } from 'firebase/admin'
 import { HiArrowLeft } from 'react-icons/hi'
 import AppBar from 'components/AppBar'
@@ -70,4 +69,4 @@ export const getStaticProps = context => {
       })
 }
 
-export default withAuthUser()(DevitPage)
+export default DevitPage

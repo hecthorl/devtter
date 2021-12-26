@@ -1,9 +1,8 @@
-import { useAuthUser } from 'next-firebase-auth'
 import Avatar from './Avatar'
 import { GiCheckMark } from 'react-icons/gi'
 
 const ProfileMenu = () => {
-   const { displayName, signOut } = useAuthUser()
+   // signOut y displayName
    return (
       <div
          onClick={e => e.stopPropagation()}

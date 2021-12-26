@@ -1,13 +1,10 @@
 import { SiGithub } from 'react-icons/si'
-import { githubPovider } from 'firebase/cliente'
+import { signIn } from 'next-auth/react'
 import LogoComponent from './LogoComponent'
 
 const SignInBtn = () => {
-   const loginGithub = () => {
-      githubPovider().catch(err => console.log(err))
-   }
    return (
-      <button className="signin-btn" onClick={loginGithub}>
+      <button className="signin-btn" onClick={() => signIn()}>
          <SiGithub className="inline mr-2 text-2xl" />
          Ingresa
       </button>

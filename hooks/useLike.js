@@ -3,7 +3,6 @@ import { likeDevitt, unLikeDevitt } from 'firebase/cliente'
 import { LIKES_STATES } from 'helpers/constants'
 import likeBlame from 'helpers/likeBlame'
 import throwError from 'helpers/throwError'
-import { useAuthUser } from 'next-firebase-auth'
 import { useEffect, useState } from 'react'
 
 const { DEF4ULT, UNLIKING, UNLIKED, LIKED, LIKING } = LIKES_STATES
@@ -11,7 +10,7 @@ const { DEF4ULT, UNLIKING, UNLIKED, LIKED, LIKING } = LIKES_STATES
 const useLike = devittId => {
    const [likeState, setLikeState] = useState(DEF4ULT)
 
-   const { id: userId, displayName: userName } = useAuthUser()
+   //userId y displayName
 
    useEffect(() => {
       likeBlame(userId, devittId)

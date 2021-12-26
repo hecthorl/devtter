@@ -1,7 +1,6 @@
 import { addDevit, uploadImage } from 'firebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
 import throwError from 'helpers/throwError'
-import { useAuthUser } from 'next-firebase-auth'
 import { useRouter } from 'next/router'
 import useGlobalContext from './useGlobalContext'
 
@@ -10,7 +9,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
    const { DONE, UPLOADING } = UPLOADING_STATES
 
    const { push } = useRouter()
-   const { photoURL, displayName, id } = useAuthUser()
+   // const { photoURL, displayName, id } = useAuthUser()
 
    const devit = {
       avatar: photoURL,

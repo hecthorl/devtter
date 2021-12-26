@@ -1,14 +1,11 @@
-import ContextProvider from 'context/Context'
-import initAuth from 'firebase/InitAuth'
+import { SessionProvider } from 'next-auth/react'
 import '../styles/globals.css'
 
-initAuth()
-
-const DevtterApp = ({ Component, pageProps }) => {
+const DevtterApp = ({ Component, pageProps: { session, ...pageProps } }) => {
    return (
-      <ContextProvider>
+      <SessionProvider session={session}>
          <Component {...pageProps} />
-      </ContextProvider>
+      </SessionProvider>
    )
 }
 

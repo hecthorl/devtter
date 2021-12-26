@@ -1,11 +1,8 @@
 import Link from 'next/link'
-import { useAuthUser } from 'next-firebase-auth'
 import AppbarNavigation from './AppBarNavigation'
 import MiniProfile from 'components/MiniProfile'
 
 const AppBar = () => {
-   const { displayName } = useAuthUser()
-
    return (
       <header className="appbar-container">
          <nav
@@ -23,7 +20,7 @@ const AppBar = () => {
                   />
                </a>
             </Link>
-            <AppbarNavigation isUser={displayName} />
+            <AppbarNavigation isUser={true} />
          </nav>
          <MiniProfile />
       </header>

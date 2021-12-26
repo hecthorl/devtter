@@ -1,6 +1,4 @@
-const Avatar = () => {
-   const { photoURL } = useAuthUser()
-
+const Avatar = ({ photoURL }) => {
    return (
       <div className="avatar-container">
          {photoURL ? (

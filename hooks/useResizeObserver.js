@@ -8,6 +8,7 @@ const useResizeObserver = () => {
    const resizeObserver = useRef(null)
 
    const onResize = useCallback(entries => {
+      console.log(entries)
       const { width, height } = entries[0].contentRect
       setSize({ width, height })
    }, [])
