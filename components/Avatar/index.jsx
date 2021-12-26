@@ -1,5 +1,3 @@
-import { useAuthUser } from 'next-firebase-auth'
-
 const Avatar = () => {
    const { photoURL } = useAuthUser()
 
