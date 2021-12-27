@@ -1,5 +1,6 @@
 import { DRAG_IMAGE_STATES } from 'helpers/constants'
 import { useState } from 'react'
+import useStore from 'store'
 import useGlobalContext from './useGlobalContext'
 
 /**
@@ -8,15 +9,16 @@ import useGlobalContext from './useGlobalContext'
  */
 const useHandlers = () => {
    const [message, setMessage] = useState('')
-   const { drag, setDrag } = useGlobalContext()
+   const setDragStates = useStore(state => state.setDragStates)
+   const dragStates = useStore(state => state.dragStates)
 
    const handleDragEnter = event => {
       event.preventDefault()
-      setDrag(DRAG_IMAGE_STATES.DRAG_OVER)
+      setDragStates(DRAG_IMAGE_STATES.DRAG_OVER)
    }
    const handleDragLeave = event => {
       event.preventDefault()
-      setDrag(DRAG_IMAGE_STATES.NONE)
+      setDragStates(DRAG_IMAGE_STATES.NONE)
    }
 
    return {
@@ -24,7 +26,7 @@ const useHandlers = () => {
       setMessage,
       handleDragEnter,
       handleDragLeave,
-      drag
+      dragStates
    }
 }
 

@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
 import ProfileMenu from 'components/ProfileMenu'
+import useAuthUser from 'hooks/useAuthUser'
 
 const Avatar = dynamic(() => import('components/Avatar'), { ssr: false })
 
 const MiniProfile = () => {
    const [isClicked, setIsClicked] = useState(false)
-   // const { displayName } = useAuthUser()
-   if (!displayName) return null
+   const { userData } = useAuthUser()
+
+   if (!userData.user.email) return null
    return (
       <div
          onClick={() => setIsClicked(!isClicked)}
@@ -17,18 +19,18 @@ const MiniProfile = () => {
          role="button"
       >
          <div className="miniprofile-avatar">
-            <Avatar />
+            <Avatar photoURL={userData.user.image} />
          </div>
          <div className="miniprofile-info">
             <div>
-               {!displayName ? (
+               {!userData.user.name ? (
                   <span className="miniprofile-loader"></span>
                ) : (
-                  <span className="font-bold">{displayName}</span>
+                  <span className="font-bold">{userData.user.name}</span>
                )}
 
                <div className="miniprofile-name">
-                  @{displayName.replace(' ', '_')}
+                  @{userData.user.name.replace(' ', '_')}
                </div>
             </div>
             <FiMoreHorizontal

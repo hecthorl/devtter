@@ -1,7 +1,8 @@
 import { DRAG_IMAGE_STATES } from 'helpers/constants'
 import { imgFormatSupported } from 'helpers/imgFormatSupported'
 import { useState } from 'react'
-import useGlobalContext from './useGlobalContext'
+import useStore from 'store'
+// import useGlobalContext from './useGlobalContext'
 
 /**
  * Hook para ver la preview local de una imagen antes de subirla.
@@ -9,11 +10,12 @@ import useGlobalContext from './useGlobalContext'
 const usePreview = () => {
    const [preview, setPreview] = useState(null)
    const [file, setFile] = useState(null)
-   const { setDrag } = useGlobalContext()
+   // const { setDrag } = useGlobalContext()
+   const setDragStates = useStore(state => state.setDragStates)
 
    const handleDrop = event => {
       event.preventDefault()
-      setDrag(DRAG_IMAGE_STATES.DROPED)
+      setDragStates(DRAG_IMAGE_STATES.DROPED)
       const [file] = event.dataTransfer.files
       const isFormat = imgFormatSupported(file.type)
 

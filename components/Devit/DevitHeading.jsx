@@ -8,7 +8,7 @@ const DevitHeading = ({ username, createdAt }) => {
          <div className="devit-heading-usernames">
             <span className="devit-heading-username">{username}</span>
             <span className="devit-heading-link">
-               @{username.replace(' ', '_')}
+               @{username?.replace(' ', '_')}
             </span>
             <span className="mx-1">•</span>
             <time>{date.replace(/hace | /g, '')}</time>

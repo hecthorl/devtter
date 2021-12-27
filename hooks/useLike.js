@@ -1,19 +1,20 @@
 /* eslint-disable no-useless-return */
-import { likeDevitt, unLikeDevitt } from 'firebase/cliente'
 import { LIKES_STATES } from 'helpers/constants'
 import likeBlame from 'helpers/likeBlame'
 import throwError from 'helpers/throwError'
+import { likeDevitt, unLikeDevitt } from 'ownFirebase/cliente'
 import { useEffect, useState } from 'react'
+import useAuthUser from './useAuthUser'
 
 const { DEF4ULT, UNLIKING, UNLIKED, LIKED, LIKING } = LIKES_STATES
 
 const useLike = devittId => {
    const [likeState, setLikeState] = useState(DEF4ULT)
-
-   //userId y displayName
+   const { userData } = useAuthUser()
+   // userId y displayName
 
    useEffect(() => {
-      likeBlame(userId, devittId)
+      likeBlame('asdasd', devittId)
          .then(iLikeIt => {
             iLikeIt ? setLikeState(LIKED) : setLikeState(UNLIKED)
          })
@@ -25,14 +26,17 @@ const useLike = devittId => {
 
       if (likeState === UNLIKED) {
          setLikeState(LIKING)
-         likeDevitt({ userName, userId }, devittId)
+         likeDevitt({ userName: userData.user.name, userId: 'asasd' }, devittId)
             .then(() => setLikeState(LIKED))
             .catch(throwError)
          return
       }
       if (likeState === LIKED) {
          setLikeState(UNLIKING)
-         unLikeDevitt({ userName, userId }, devittId)
+         unLikeDevitt(
+            { userName: userData.user.name, userId: 'asasd' },
+            devittId
+         )
             .then(() => setLikeState(UNLIKED))
             .catch(throwError)
          return

@@ -1,8 +1,11 @@
-const Avatar = ({ photoURL }) => {
+import useAuthUser from 'hooks/useAuthUser'
+
+const Avatar = () => {
+   const { userData } = useAuthUser()
    return (
       <div className="avatar-container">
-         {photoURL ? (
-            <img src={photoURL} alt="Current image profile" />
+         {userData.user.image ? (
+            <img src={userData.user.image} alt="Current image profile" />
          ) : (
             <div className="avatar-loader"></div>
          )}

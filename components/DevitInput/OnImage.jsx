@@ -1,10 +1,10 @@
 import useGlobalContext from 'hooks/useGlobalContext'
 import { useEffect } from 'react'
 import { FiX } from 'react-icons/fi'
+import useStore from 'store'
 
 const OnImage = ({ preview, setPreview }) => {
-   const { devitStates } = useGlobalContext()
-
+   const devitStates = useStore(state => state.devitStates)
    useEffect(() => {
       setPreview(null)
    }, [devitStates])

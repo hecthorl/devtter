@@ -5,7 +5,11 @@ import Head from 'next/head'
 const SignIn = ({ providers }) => {
    return (
       <>
-         <Head title="Sign In" />
+         <Head>
+            <title>Devtter App</title>
+            <meta name="description" content="Devtter, un twitter para devs" />
+            <link rel="icon" href="/faviconLogo.ico" />
+         </Head>
          <div className="flex flex-col justify-center items-center h-screen w-screen">
             <h1 className="mb-5 text-3xl">Google meet - Clone</h1>
             {Object.values(providers).map(provider => (

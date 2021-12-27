@@ -1,11 +1,9 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/Devit/SkeletonDevit'
-import useGlobalContext from 'hooks/useGlobalContext'
 import Avatar from './Avatar'
 import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
-   const { width } = useGlobalContext()
    return (
       <main className="timeline-container">
          <div className="timeline-heading">
@@ -17,7 +15,7 @@ const TimeLine = ({ devits }) => {
                ✨
             </span>
          </div>
-         {!(width <= 500) && (
+         {false <= 500 && (
             <>
                <DevitInput />
                <div className="timeline__separator"></div>

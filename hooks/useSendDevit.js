@@ -1,21 +1,23 @@
-import { addDevit, uploadImage } from 'firebase/cliente'
+import { addDevit, uploadImage } from 'ownFirebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
 import throwError from 'helpers/throwError'
 import { useRouter } from 'next/router'
+import useAuthUser from './useAuthUser'
 import useGlobalContext from './useGlobalContext'
 
 const useSendDevit = ({ file, message, setMessage }) => {
-   const { devitStates, setDevitStates, setpopUp, popUp } = useGlobalContext()
+   // const { devitStates, setDevitStates, setpopUp, popUp } = useGlobalContext()
+   const { userData } = useAuthUser()
    const { DONE, UPLOADING } = UPLOADING_STATES
 
    const { push } = useRouter()
    // const { photoURL, displayName, id } = useAuthUser()
 
    const devit = {
-      avatar: photoURL,
+      avatar: userData.user.image,
       content: message.trim(),
-      userId: id,
-      username: displayName
+      userId: 'id',
+      username: userData.user.name
    }
 
    const handleSubmit = () => {

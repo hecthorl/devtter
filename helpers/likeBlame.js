@@ -1,4 +1,4 @@
-import { devittStats } from 'firebase/cliente'
+import { devittStats } from 'ownFirebase/cliente'
 import throwError from './throwError'
 
 /**
