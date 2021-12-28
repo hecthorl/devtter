@@ -1,9 +1,8 @@
 import NotLoggedUser from 'components/NotLoggedUser'
 import Head from 'next/head'
-import { useSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 
 const Index = () => {
-   console.log(useSession())
    return (
       <>
          <Head>
@@ -14,6 +13,22 @@ const Index = () => {
          <NotLoggedUser />
       </>
    )
+}
+
+// eslint-disable-next-line space-before-function-paren
+export async function getServerSideProps(context) {
+   const session = await getSession(context)
+   if (!session) {
+      return {
+         props: {}
+      }
+   }
+   return {
+      redirect: {
+         destination: '/home',
+         permanent: false
+      }
+   }
 }
 
 export default Index
