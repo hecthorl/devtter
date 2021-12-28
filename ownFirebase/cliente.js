@@ -49,11 +49,16 @@ export const addDevit = ({ avatar, content, userId, img, username }) => {
  * @param {Function} upDateDevitts Callback para actualizar el array de devits en el timeline.
  * @returns {Promise<Array>} Retorna una promesa con toda la colección de objetos.
  */
-export const listenLatestDevits = async upDateDevitts => {
+export const listenLatestDevits = upDateDevitts => {
    const devitsRef = collection(db, 'devits')
    const consulta = query(devitsRef, orderBy('createdAt', 'desc'))
-   const devitSnap = await getDocs(consulta)
-   upDateDevitts(devitSnap.docs.map(mapDevitfromFirebase))
+   const unSubscribe = onSnapshot(consulta, querySnapshot => {
+      const newDevits = querySnapshot.docs.map(mapDevitfromFirebase)
+      upDateDevitts(newDevits)
+   })
+   return unSubscribe
+   // const devitSnap = await getDocs(consulta)
+   // upDateDevitts(devitSnap.docs.map(mapDevitfromFirebase))
 
    // if (true) {
    //    return (
