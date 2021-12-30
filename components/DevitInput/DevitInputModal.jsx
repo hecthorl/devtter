@@ -1,12 +1,12 @@
-import useGlobalContext from 'hooks/useGlobalContext'
 import { FiX } from 'react-icons/fi'
+import useStore from 'store'
 import DevitInput from '.'
 
 const DevitInputModal = () => {
-   const { setpopUp } = useGlobalContext()
+   const setPopUp = useStore(state => state.setPopUp)
    return (
       <div
-         onClick={() => setpopUp(false)}
+         onClick={() => setPopUp(false)}
          className="fixed top-0 right-0 w-screen h-screen bg-white bg-opacity-20 z-50"
       >
          <dialog
@@ -17,7 +17,7 @@ const DevitInputModal = () => {
             <div className="border-b border-secondary w-full py-2 px-4">
                <button
                   onClick={() => {
-                     setpopUp(false)
+                     setPopUp(false)
                   }}
                   className="text-2xl text-green-500 p-2 rounded-full bg-green-500 bg-opacity-0 hover:bg-opacity-20 transition-colors"
                >

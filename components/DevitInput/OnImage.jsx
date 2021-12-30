@@ -1,4 +1,3 @@
-import useGlobalContext from 'hooks/useGlobalContext'
 import { useEffect } from 'react'
 import { FiX } from 'react-icons/fi'
 import useStore from 'store'

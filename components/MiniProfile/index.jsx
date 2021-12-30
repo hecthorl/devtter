@@ -19,7 +19,7 @@ const MiniProfile = () => {
          role="button"
       >
          <div className="miniprofile-avatar">
-            <Avatar photoURL={userData.user.image} />
+            <Avatar />
          </div>
          <div className="miniprofile-info">
             <div>

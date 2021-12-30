@@ -8,11 +8,11 @@ import TimeLine from 'components/TimeLine'
 import useAuthUser from 'hooks/useAuthUser'
 import { getSession } from 'next-auth/react'
 import { listenLatestDevits } from 'ownFirebase/cliente'
+import useStore from 'store'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
-   // const { ref, popUp } = useGlobalContext()
-
+   const popUp = useStore(state => state.popUp)
    const { userData } = useAuthUser()
 
    useEffect(() => {
@@ -33,7 +33,7 @@ const Home = () => {
             <AppBar />
             <TimeLine devits={timeLine} />
             <Aside />
-            {false && <DevitInput />}
+            {popUp && <DevitInput />}
          </div>
       </>
    )
@@ -42,8 +42,16 @@ const Home = () => {
 // eslint-disable-next-line space-before-function-paren
 export async function getServerSideProps(context) {
    const session = await getSession(context)
-   return {
+   const authenticated = {
       props: { session }
    }
+   const unAuth = {
+      redirect: {
+         destination: '/',
+         permanent: false
+      }
+   }
+   if (session) return authenticated
+   return unAuth
 }
 export default Home

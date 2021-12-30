@@ -2,12 +2,11 @@ import { initializeApp } from 'firebase/app'
 import {
    collection,
    doc,
-   getDoc,
-   getDocs,
    getFirestore,
    onSnapshot,
    orderBy,
-   query
+   query,
+   setDoc
 } from 'firebase/firestore'
 import 'firebase/storage'
 import { configFirebase } from 'helpers/constants'
@@ -28,20 +27,17 @@ const db = getFirestore(app)
  * @returns {Promise} Retorna una promesa de firebase para agregar una nuevo devit a la colección.
  */
 export const addDevit = ({ avatar, content, userId, img, username }) => {
-   // if (firebase.apps.length !== 0) {
-   //    return firebase.app().firestore().collection('devits').add({
-   //       username,
-   //       avatar,
-   //       content,
-   //       userId,
-   //       img,
-   //       createdAt: new Date().getTime(),
-   //       likesCount: [],
-   //       sharedCounts: []
-   //    })
-   // } else {
-   //    throwError('Error al agregar devit')
-   // }
+   const devvitsReff = doc(collection(db, 'devits'))
+   return setDoc(devvitsReff, {
+      avatar,
+      content,
+      userId,
+      img,
+      username,
+      createdAt: new Date().getTime(),
+      likesCount: [],
+      sharedCounts: []
+   })
 }
 
 /**
@@ -57,25 +53,6 @@ export const listenLatestDevits = upDateDevitts => {
       upDateDevitts(newDevits)
    })
    return unSubscribe
-   // const devitSnap = await getDocs(consulta)
-   // upDateDevitts(devitSnap.docs.map(mapDevitfromFirebase))
-
-   // if (true) {
-   //    return (
-   //       firebase
-   //          .app()
-   //          .firestore()
-   //          .collection('devits')
-   //          .orderBy('createdAt', 'desc')
-   //          // .limit(2)
-   //          .onSnapshot(({ docs }) => {
-   //             const newDevits = docs.map(mapDevitfromFirebase)
-   //             upDateDevitts(newDevits)
-   //          })
-   //    )
-   // } else {
-   //    throwError('Error al obtener colección de devit')
-   // }
 }
 
 /**

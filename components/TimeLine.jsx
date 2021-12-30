@@ -1,9 +1,12 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/Devit/SkeletonDevit'
+import useWindowSize from 'hooks/useWindowSize'
 import Avatar from './Avatar'
 import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
+   const { width } = useWindowSize()
+
    return (
       <main className="timeline-container">
          <div className="timeline-heading">
@@ -15,7 +18,7 @@ const TimeLine = ({ devits }) => {
                ✨
             </span>
          </div>
-         {false <= 500 && (
+         {!(width <= 500) && (
             <>
                <DevitInput />
                <div className="timeline__separator"></div>

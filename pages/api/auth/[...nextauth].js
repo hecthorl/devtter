@@ -8,10 +8,10 @@ export default NextAuth({
          clientId: process.env.GITHUB_ID,
          clientSecret: process.env.GITHUB_SECRET
       })
-      // ...add more providers here
    ],
    secret: 'asdasdasdasd_mi:Secreto',
    pages: {
-      signIn: '/signin'
+      signIn: '/signin',
+      signOut: '/'
    }
 })
