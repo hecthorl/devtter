@@ -1,16 +1,9 @@
 // import DevitInput from 'components/DevitInput/DevitInputModal'
 
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 // import { HiArrowLeft } from 'react-icons/hi'
 
 const Tweet = () => {
-   const { push } = useRouter()
-
-   useEffect(() => {
-      push('/home')
-   }, [])
    return (
       <>
          <Head>
