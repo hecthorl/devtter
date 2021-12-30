@@ -1,12 +1,12 @@
-import DevitInput from 'components/DevitInput/DevitInputModal'
+// import DevitInput from 'components/DevitInput/DevitInputModal'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { HiArrowLeft } from 'react-icons/hi'
+// import { HiArrowLeft } from 'react-icons/hi'
 
 const Tweet = () => {
-   const { back, push } = useRouter()
+   const { push } = useRouter()
 
    useEffect(() => {
       push('/home')
@@ -17,7 +17,7 @@ const Tweet = () => {
             <title>Publicar nuevo Devit</title>
          </Head>
          <div>
-            <header className="flex justify-between px-3 py-2 border-b border-blue-300">
+            {/* <header className="flex justify-between px-3 py-2 border-b border-blue-300">
                <button onClick={() => back()}>
                   <HiArrowLeft className="pointer-events-none text-2xl text-green-500" />
                </button>
@@ -33,7 +33,8 @@ const Tweet = () => {
                <div>
                   <DevitInput />
                </div>
-            </div>
+            </div> */}
+            <div>Holi</div>
          </div>
       </>
    )
