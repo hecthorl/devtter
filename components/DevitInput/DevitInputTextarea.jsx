@@ -9,13 +9,14 @@ import WordsCounter from './WordsCounter'
 
 const DevitInputTextarea = () => {
    const { preview, handleDrop, setPreview, file } = usePreview()
-   const { setMessage, message, drag, handleDragEnter, handleDragLeave } =
+   const { dragStates, handleDragEnter, handleDragLeave, message, setMessage } =
       useHandlers()
 
    const border =
-      drag === DRAG_IMAGE_STATES.DRAG_OVER
+      dragStates === DRAG_IMAGE_STATES.DRAG_OVER
          ? 'border-dashed border-2 border-green-500'
          : 'border-transparent'
+
    return (
       <>
          <div className="w-full">

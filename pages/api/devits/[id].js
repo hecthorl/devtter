@@ -15,5 +15,5 @@ export default (req, res) => {
    //       console.log(err)
    //       return res.status(400).json({ error: true })
    //    })
-   return res.status(404).json({ msg: 'Que haces aqui? >:v' })
+   res.status(404).json({ msg: 'Que haces aqui? >:v' })
 }

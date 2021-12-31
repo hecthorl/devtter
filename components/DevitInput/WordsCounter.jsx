@@ -3,7 +3,7 @@ import 'react-circular-progressbar/dist/styles.css'
 
 const WordsCounter = ({ words, maxValue }) => {
    const limitColor = words >= maxValue ? 'red' : '#17bf63'
-   const textExcesed = words >= maxValue ? maxValue - words : ''
+   const textExceeded = words >= maxValue ? maxValue - words : ''
 
    const estilos = buildStyles({
       strokeLinecap: 'round',
@@ -19,7 +19,7 @@ const WordsCounter = ({ words, maxValue }) => {
             <CircularProgressbar
                value={words}
                strokeWidth={7}
-               text={textExcesed + ''}
+               text={textExceeded + ''}
                minValue={0}
                maxValue={maxValue}
                styles={estilos}

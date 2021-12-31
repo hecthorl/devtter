@@ -42,6 +42,7 @@ const Home = () => {
 // eslint-disable-next-line space-before-function-paren
 export async function getServerSideProps(context) {
    const session = await getSession(context)
+
    const authenticated = {
       props: { session }
    }

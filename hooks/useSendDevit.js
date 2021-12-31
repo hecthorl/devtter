@@ -1,9 +1,9 @@
-import { addDevit, uploadImage } from 'ownFirebase/cliente'
+import { addDevit } from 'ownFirebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
-import throwError from 'helpers/throwError'
 import { useRouter } from 'next/router'
 import useAuthUser from './useAuthUser'
 import useStore from 'store'
+import upLoadImage from 'helpers/upLoadImage'
 
 const useSendDevit = ({ file, message, setMessage }) => {
    const devitStates = useStore(state => state.devitStates)
@@ -22,7 +22,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
       username: userData.user.name
    }
 
-   const handleSubmit = () => {
+   const handleSubmit = async () => {
       // Entra en la fase carga para enviar el devit
       setDevitStates(UPLOADING)
 
@@ -56,40 +56,31 @@ const useSendDevit = ({ file, message, setMessage }) => {
        * en el devit. Para luego enviar esa url en la promesa, una vez
        * sea resuelta.
        */
-      const iPromiseYouTheImage = new Promise(resolve => {
-         const tarea = uploadImage(file)
-         tarea.on('state_changed', null, null, () => {
-            tarea.snapshot.ref.getDownloadURL().then(resolve)
-         })
-      })
+      const img = await upLoadImage(file).catch(console.error)
 
       /**
        * Luego, en el then con la url de la imagen ya disponible,
        * la añado al objeto para crear el devit y terminar de enviarlo
        */
-      iPromiseYouTheImage
-         .then(img => {
-            addDevit({
-               ...devit,
-               img
-            })
-               .then(() => {
-                  if (!popUp) {
-                     setMessage('')
-                     setDevitStates(DONE)
-                     return
-                  }
-                  push('/home')
-                  setMessage('')
-                  setpopUp(false)
-                  setDevitStates(DONE)
-               })
-               .catch(err => {
-                  console.log(err)
-                  setDevitStates(DONE)
-               })
+      addDevit({
+         ...devit,
+         img: img.secure_url
+      })
+         .then(() => {
+            if (!popUp) {
+               setMessage('')
+               setDevitStates(DONE)
+               return
+            }
+            push('/home')
+            setMessage('')
+            setpopUp(false)
+            setDevitStates(DONE)
          })
-         .catch(() => throwError('Error al subir devit con imagen'))
+         .catch(err => {
+            console.log(err)
+            setDevitStates(DONE)
+         })
    }
 
    const isButtonDisable =

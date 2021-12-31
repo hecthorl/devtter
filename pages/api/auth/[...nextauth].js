@@ -14,4 +14,14 @@ export default NextAuth({
       signIn: '/signin',
       signOut: '/'
    }
+   // callbacks: {
+   //    // eslint-disable-next-line space-before-function-paren
+   //    async session({ session, token, user }) {
+   //       // console.log({
+   //       //    sessionWithIK: imgSet.getAuthenticationParameters()
+   //       // })
+   //       session.accessToken = imgSet.getAuthenticationParameters()
+   //       return session
+   //    }
+   // }
 })
