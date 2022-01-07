@@ -6,8 +6,10 @@ import useVisorImg from 'hooks/useVisorImg'
 
 const DevitMedia = ({ img, id, likesCount }) => {
    const [isLoaded, setIsLoaded] = useState(false)
-   const { visor, handleState } = useVisorImg()
+   const { visor, handleState } = useVisorImg(img.img_url)
    const { pathname } = useRouter()
+
+   const dominantColor = img.dominant_color
 
    const imageContainer = classNames('devit_media-container', {
       'h-[283px]': pathname.includes('home')
@@ -31,15 +33,19 @@ const DevitMedia = ({ img, id, likesCount }) => {
             onClick={() => handleState(true)}
             loading="lazy"
             className={toimage}
-            src={img}
+            src={img.img_url}
          />
-         <div className={toFallbackImg}></div>
+         <div
+            style={{ background: dominantColor }}
+            className={toFallbackImg}
+         ></div>
          {visor && (
             <VisorImg
                handleVisor={handleState}
-               img={img}
+               img={img.img_url}
                id={id}
                likesCount={likesCount}
+               color={dominantColor}
             />
          )}
       </div>

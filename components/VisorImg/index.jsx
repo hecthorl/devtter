@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import classNames from 'classnames'
-// import { BsThreeDots } from 'react-icons/bs'
+
 import { MdClose } from 'react-icons/md'
 import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi'
 import DevitReactions from 'components/DevitReactions'
 
-const VisorImg = ({ handleVisor, img, id, likesCount }) => {
+const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
    document.body.onkeyup = e => {
       if (e.code === 'Escape') handleVisor(false)
    }
@@ -14,11 +14,12 @@ const VisorImg = ({ handleVisor, img, id, likesCount }) => {
    const aside = classNames('visor_img-aside', {
       hidden: toggleWindow
    })
-
+   console.log(color)
    return (
       <div
          style={{
-            gridTemplateColumns: toggleWindow ? '1fr' : '1fr 350px'
+            gridTemplateColumns: toggleWindow ? '1fr' : '1fr 350px',
+            background: `${color}E6`
          }}
          className="visor_img-container"
       >
@@ -34,7 +35,6 @@ const VisorImg = ({ handleVisor, img, id, likesCount }) => {
                   aria-label={toggleWindow ? 'Ver devit' : 'Ocultar devit'}
                   onClick={() => setToggleWindow(!toggleWindow)}
                >
-                  {/* <BsThreeDots aria-hidden /> */}
                   {!toggleWindow ? (
                      <HiChevronDoubleRight aria-hidden />
                   ) : (

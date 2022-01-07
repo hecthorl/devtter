@@ -1,9 +1,10 @@
+import { useRouter } from 'next/router'
 import { addDevit } from 'ownFirebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
-import { useRouter } from 'next/router'
 import useAuthUser from './useAuthUser'
 import useStore from 'store'
 import upLoadImage from 'helpers/upLoadImage'
+import ImageKit from 'imagekit-javascript'
 
 const useSendDevit = ({ file, message, setMessage }) => {
    const devitStates = useStore(state => state.devitStates)
@@ -25,9 +26,8 @@ const useSendDevit = ({ file, message, setMessage }) => {
    const handleSubmit = async () => {
       // Entra en la fase carga para enviar el devit
       setDevitStates(UPLOADING)
-
-      // Evalua si hay que subir el devit con una imagen o no
-      // En este caso si NO hay imagen
+      // // Evalua si hay que subir el devit con una imagen o no
+      // // En este caso si NO hay imagen
       if (!file) {
          addDevit({
             ...devit,
@@ -50,21 +50,39 @@ const useSendDevit = ({ file, message, setMessage }) => {
             })
          return // creo que este return esta por las puras 🧐
       }
-
       /**
        * Me aseguro de obtener la url de la imagen que se va a adjuntar
        * en el devit. Para luego enviar esa url en la promesa, una vez
        * sea resuelta.
        */
-      const img = await upLoadImage(file).catch(console.error)
+      const imgInfo = await upLoadImage(file).catch(console.error)
 
+      // const imagekit = new ImageKit({
+      //    authenticationEndpoint: 'http://localhost:3000/api/kit',
+      //    urlEndpoint: 'https://ik.imagekit.io/xu5iwk94yzf',
+      //    publicKey: 'public_Bzq8oUoOLM9KK07U2qPuw6V0LEQ='
+      // })
+      // console.log(file)
+      // imagekit.upload(
+      //    {
+      //       file,
+      //       fileName: file.name
+      //    },
+      //    (err, result) => {
+      //       if (err) console.log(err)
+      //       console.log(result)
+      //    }
+      // )
       /**
        * Luego, en el then con la url de la imagen ya disponible,
        * la añado al objeto para crear el devit y terminar de enviarlo
        */
       addDevit({
          ...devit,
-         img: img.secure_url
+         img: {
+            dominant_color: imgInfo.colors[0][0],
+            img_url: imgInfo.secure_url
+         }
       })
          .then(() => {
             if (!popUp) {
