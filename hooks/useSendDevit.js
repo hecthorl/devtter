@@ -4,7 +4,6 @@ import { UPLOADING_STATES } from 'helpers/constants'
 import useAuthUser from './useAuthUser'
 import useStore from 'store'
 import upLoadImage from 'helpers/upLoadImage'
-import ImageKit from 'imagekit-javascript'
 
 const useSendDevit = ({ file, message, setMessage }) => {
    const devitStates = useStore(state => state.devitStates)

@@ -1,5 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary'
 
+/**
+ * Ejemplo tomado del repo: https://github.com/cloudinary-devs/cld-signed-upload-examples/tree/main/signed-uploads/public
+ */
+
 export default (req, res) => {
    cloudinary.config({
       api_key: process.env.Cloudinary_API_KEY,
@@ -11,7 +15,7 @@ export default (req, res) => {
       timestamp: new Date().getTime(),
       folder: 'Devtter',
       colors: true,
-      upload_preset: 'punk'
+      upload_preset: process.env.Cloudinary_UPLOAD_PRESET
    }
 
    const apiSecret = cloudinary.config().api_secret

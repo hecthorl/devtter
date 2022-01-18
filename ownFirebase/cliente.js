@@ -1,12 +1,14 @@
 import { initializeApp } from 'firebase/app'
 import {
+   arrayUnion,
    collection,
    doc,
    getFirestore,
    onSnapshot,
    orderBy,
    query,
-   setDoc
+   setDoc,
+   updateDoc
 } from 'firebase/firestore'
 import 'firebase/storage'
 import { configFirebase } from 'helpers/constants'
@@ -56,29 +58,18 @@ export const listenLatestDevits = upDateDevitts => {
 }
 
 /**
- * Función con la que se obtiene la url de la imágen que se acaba de subir
- * @param {Object} file Referencia a la imagen
- * @returns Retorna una tarea de firebase.
- */
-export const uploadImage = file => {
-   // if (firebase.apps.length !== 0) {
-   //    const ref = firebase
-   //       .app()
-   //       .storage(configFirebase.storageBucket)
-   //       .ref(`images/${file.name}`)
-   //    const task = ref.put(file)
-   //    return task
-   // }
-}
-
-/**
  * funcion que sirve para demostrar que aún soy un JR sad
  * @param {string} user ID del usuario
  * @param {string} doc ID del devit
  * @returns {Promise} Retorna una promesa si se actualizó correctamente.
  */
-export const likeDevitt = (user, doc) => {
-   // const devitRef = firebase.app().firestore().collection('devits').doc(doc)
+export const likeDevitt = async (user, docId) => {
+   // const collInstance = collection(db, 'devits')
+   const docRef = doc(db, 'devits', docId)
+   await updateDoc(docRef, {
+      likesCount: arrayUnion(user)
+   })
+   // const devitRef = firebase.app().firestore().collection('devits').doc(docId)
    // return devitRef.update({
    //    likesCount: firebase.firestore.FieldValue.arrayUnion(user)
    // })

@@ -2,9 +2,6 @@ const upLoadImage = async file => {
    const formData = new FormData()
    const cloudinaryURI = process.env.NEXT_PUBLIC_CloudinaryURI
    const cldCredentialsURI = process.env.NEXT_PUBLIC_CredentialsURI
-   // const uri = 'https://api.cloudinary.com/v1_1/dqctqykk0/auto/upload'
-   // const preset = process.env.NEXT_PUBLIC_UploadPreset
-   // const apiKey = process.env.NEXT_PUBLIC_CloudinaryApi_Key
 
    const signatureRes = await fetch(cldCredentialsURI).catch(console.error)
    const signatureData = await signatureRes.json()

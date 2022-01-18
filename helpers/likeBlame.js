@@ -12,8 +12,7 @@ const likeBlame = async (userId, devitId) => {
    const likesList = devitt.data().likesCount
 
    if (likesList.length === 0) return null
-   const iLikeIt = likesList.some(item => item.userId === userId)
-   return iLikeIt
+   return likesList.some(item => item.userId === userId)
 }
 
 export default likeBlame

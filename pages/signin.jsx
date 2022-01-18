@@ -1,6 +1,6 @@
-import { DiGithubBadge } from 'react-icons/di'
-import { getProviders, signIn } from 'next-auth/react'
 import Head from 'next/head'
+import { getProviders, signIn } from 'next-auth/react'
+import { DiGithubBadge } from 'react-icons/di'
 
 const SignIn = ({ providers }) => {
    return (
