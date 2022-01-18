@@ -6,7 +6,7 @@ import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
    const { width } = useWindowSize()
-
+   console.log({ devits })
    return (
       <main className="timeline-container">
          <div className="timeline-heading">
@@ -24,7 +24,7 @@ const TimeLine = ({ devits }) => {
                <div className="timeline__separator"></div>
             </>
          )}
-         {devits.length
+         {devits.length !== 0
             ? devits.map(item => {
                  const {
                     avatar,
