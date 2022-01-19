@@ -6,7 +6,7 @@ import DevitInput from './DevitInput'
 
 const TimeLine = ({ devits }) => {
    const { width } = useWindowSize()
-   console.log({ devits })
+
    return (
       <main className="timeline-container">
          <div className="timeline-heading">

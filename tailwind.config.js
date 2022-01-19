@@ -24,9 +24,6 @@ module.exports = {
          '2xl': '1282px'
       }
    },
-   variants: {
-      extend: { opacity: ['disabled'] }
-   },
    plugins: [],
    corePlugins: {
       ringWidth: false,

@@ -19,10 +19,11 @@ const Home = () => {
       let unSubscribe = null
       if (userData.user.email) {
          unSubscribe = listenLatestDevits(setTimeLine)
+         console.log(userData?.user)
       }
       return () => unSubscribe && unSubscribe()
    }, [userData.user])
-
+   console.log({ timeLine })
    return (
       <>
          <Head>
