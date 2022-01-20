@@ -18,7 +18,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
    const devit = {
       avatar: userData.user.image,
       content: message.trim(),
-      userId: 'Oo7mMIls6HfCJSWLQq2d5oqLGPt2',
+      userId: userData.user.uuid,
       username: userData.user.name
    }
 

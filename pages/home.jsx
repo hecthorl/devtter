@@ -7,8 +7,11 @@ import DevitInput from 'components/DevitInput/DevitInputModal'
 import TimeLine from 'components/TimeLine'
 import useAuthUser from 'hooks/useAuthUser'
 import { getSession } from 'next-auth/react'
-import { listenLatestDevits } from 'ownFirebase/cliente'
+import { db, listenLatestDevits } from 'ownFirebase/cliente'
 import useStore from 'store'
+import getLatesetDevits from 'helpers/getLatesetDevits'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
@@ -18,9 +21,21 @@ const Home = () => {
    useEffect(() => {
       let unSubscribe = null
       if (userData.user.email) {
-         unSubscribe = listenLatestDevits(setTimeLine)
-         console.log(userData?.user)
+         const consulta = query(
+            collection(db, 'devits'),
+            orderBy('createdAt', 'desc')
+         )
+         unSubscribe = onSnapshot(consulta, querySnapshot => {
+            const newDevits = querySnapshot.docs.map(mapDevitfromFirebase)
+            setTimeLine(newDevits)
+         })
       }
+      // getLatesetDevits()
+      // let unSubscribe = null
+      // if (userData.user.email) {
+      //    unSubscribe = listenLatestDevits(setTimeLine)
+      //    console.log(userData?.user)
+      // }
       return () => unSubscribe && unSubscribe()
    }, [userData.user])
    console.log({ timeLine })

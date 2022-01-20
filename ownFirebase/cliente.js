@@ -16,7 +16,7 @@ import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 import throwError from 'helpers/throwError'
 
 const app = initializeApp(configFirebase)
-const db = getFirestore(app)
+export const db = getFirestore(app)
 
 /**
  * Función para añadir devit a la colección.
