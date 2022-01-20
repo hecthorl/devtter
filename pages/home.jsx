@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-
 import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import DevitInput from 'components/DevitInput/DevitInputModal'
@@ -19,24 +18,28 @@ const Home = () => {
    const { userData } = useAuthUser()
 
    useEffect(() => {
-      let unSubscribe = null
-      if (userData.user.email) {
-         const consulta = query(
-            collection(db, 'devits'),
-            orderBy('createdAt', 'desc')
-         )
-         unSubscribe = onSnapshot(consulta, querySnapshot => {
+      const consulta = query(
+         collection(db, 'devits'),
+         orderBy('createdAt', 'desc')
+      )
+      const unSubscribe = onSnapshot(
+         consulta,
+         querySnapshot => {
             const newDevits = querySnapshot.docs.map(mapDevitfromFirebase)
             setTimeLine(newDevits)
-         })
-      }
+         },
+         err => {
+            console.log(err)
+         }
+      )
+
       // getLatesetDevits()
       // let unSubscribe = null
       // if (userData.user.email) {
       //    unSubscribe = listenLatestDevits(setTimeLine)
       //    console.log(userData?.user)
       // }
-      return () => unSubscribe && unSubscribe()
+      return () => unSubscribe()
    }, [userData.user])
    console.log({ timeLine })
    return (
