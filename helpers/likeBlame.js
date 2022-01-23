@@ -7,12 +7,10 @@ import throwError from './throwError'
  * @param {string} devitId ID del devitt
  * @returns {boolean} True o False si el usuario actual le ha dado like o no al devit actual
  */
-const likeBlame = async (userId, devitId) => {
+export default async (userId, devitId) => {
    const devitt = await devittStats(devitId).catch(throwError)
    const likesList = devitt.data().likesCount
 
    if (likesList.length === 0) return null
    return likesList.some(item => item.userId === userId)
 }
-
-export default likeBlame

@@ -4,44 +4,30 @@ import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import DevitInput from 'components/DevitInput/DevitInputModal'
 import TimeLine from 'components/TimeLine'
-import useAuthUser from 'hooks/useAuthUser'
+// import useAuthUser from 'hooks/useAuthUser'
 import { getSession } from 'next-auth/react'
-import { db, listenLatestDevits } from 'ownFirebase/cliente'
+// import { db, listenLatestDevits } from 'ownFirebase/cliente'
 import useStore from 'store'
-import getLatesetDevits from 'helpers/getLatesetDevits'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
+// import getLatesetDevits from 'helpers/getLatesetDevits'
+// import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+// import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
+import { getLatesetDevits } from 'helpers/getLatesetDevits'
 
 const Home = () => {
    const [timeLine, setTimeLine] = useState([])
    const popUp = useStore(state => state.popUp)
-   const { userData } = useAuthUser()
-
+   // const { userData } = useAuthUser()
    useEffect(() => {
-      const consulta = query(
-         collection(db, 'devits'),
-         orderBy('createdAt', 'desc')
-      )
-      const unSubscribe = onSnapshot(
-         consulta,
-         querySnapshot => {
-            const newDevits = querySnapshot.docs.map(mapDevitfromFirebase)
-            setTimeLine(newDevits)
-         },
-         err => {
-            console.log(err)
-         }
-      )
+      getLatesetDevits(setTimeLine)
 
-      // getLatesetDevits()
-      // let unSubscribe = null
-      // if (userData.user.email) {
-      //    unSubscribe = listenLatestDevits(setTimeLine)
-      //    console.log(userData?.user)
-      // }
-      return () => unSubscribe()
-   }, [userData.user])
-   console.log({ timeLine })
+      // // let unSubscribe = null
+      // // if (userData.user.email) {
+      // //    unSubscribe = listenLatestDevits(setTimeLine)
+      // //    console.log(userData?.user)
+      // // }
+      // return () => unSubscribe()
+   }, [])
+   // console.log({ timeLine })
    return (
       <>
          <Head>

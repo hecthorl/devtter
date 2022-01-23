@@ -1,7 +1,7 @@
 // import seed from 'helpers/seed'
 // import { firestore } from 'ownFirebase/admin'
 // import { writeFile } from 'fs/promises'
-
+// import clientdb from 'services/db-client'
 export default async (req, res) => {
    // const algo = firestore.collection('devits')
    // seed.forEach(async doc => {
@@ -22,7 +22,8 @@ export default async (req, res) => {
    //          console.log({ err })
    //       })
    // })
-   // res.send('ok')
+   // const seed = await algo.get()
+   // const data = seed.docs.map(doc => doc.data())
    // const data = await algo.get()
    // const seed = data.docs.map(doc => {
    //    return {
@@ -31,5 +32,9 @@ export default async (req, res) => {
    //    }
    // })
    // await writeFile('./zeed.js', JSON.stringify(seed, null, 2))
-   // res.json({ ok: true, seed })
+   // await clientdb.connect()
+   // const devitsColl = clientdb.db().collection('Devits')
+
+   // const data = await devitsColl.insertMany(seed)
+   res.json({ ok: true, data: 'lol' })
 }

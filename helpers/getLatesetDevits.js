@@ -1,33 +1,19 @@
-// import { query } from 'faunadb'
-import {
-   Collection,
-   Create,
-   Documents,
-   Get,
-   Lambda,
-   Map,
-   Paginate
-} from 'faunadb'
-import fdbCli from './faunadb'
+import { pusherClient } from 'services/pusher'
 
-// const { Ref, Collection } = query
-
-const getLatesetDevits = async () => {
-   const devits = Map(
-      Paginate(Documents(Collection('Devits'))),
-      Lambda(i => Get(i))
-   )
-   // fdbCli.stream
-   //    .document(devits)
-   //    .on('snapshot', (data, event) => {
-   //       console.log({ data, event })
-   //    })
-   //    .on('error', err => {
-   //       console.log(err)
-   //    })
-   //    .start()
-   const data = await fdbCli.query(devits).catch(console.log)
-   // console.log({ data })
+export const getLatesetDevits = async setTimeline => {
+   const res = await fetch('/api/tres')
+   const devits = await res.json()
+   const devitsParsed = devits.map(doc => {
+      const { _id, ...rest } = doc
+      return {
+         id: _id,
+         ...rest
+      }
+   })
+   setTimeline(devitsParsed)
+   const channel = pusherClient.subscribe('my-chann')
+   console.log(channel.name)
+   channel.bind('my-event', data => {
+      console.log(data)
+   })
 }
-
-export default getLatesetDevits

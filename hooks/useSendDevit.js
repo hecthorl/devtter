@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
-import { addDevit } from 'ownFirebase/cliente'
 import { UPLOADING_STATES } from 'helpers/constants'
 import useAuthUser from './useAuthUser'
 import useStore from 'store'
 import upLoadImage from 'helpers/upLoadImage'
+import addDevit from 'helpers/addDevit'
 
 const useSendDevit = ({ file, message, setMessage }) => {
    const devitStates = useStore(state => state.devitStates)
@@ -19,7 +19,11 @@ const useSendDevit = ({ file, message, setMessage }) => {
       avatar: userData.user.image,
       content: message.trim(),
       userId: userData.user.uuid,
-      username: userData.user.name
+      username: userData.user.name,
+      createdAt: new Date().getTime(),
+      likesCount: [],
+      sharedCounts: [],
+      devitResponses: []
    }
 
    const handleSubmit = async () => {
