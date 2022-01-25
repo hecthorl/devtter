@@ -1,46 +1,36 @@
-// import { initializeApp } from 'firebase/app'
-// import {
-//    arrayUnion,
-//    collection,
-//    doc,
-//    getFirestore,
-//    onSnapshot,
-//    orderBy,
-//    query,
-//    setDoc,
-//    updateDoc
-// } from 'firebase/firestore'
-// import 'firebase/storage'
-// import { configFirebase } from 'helpers/constants'
+import { initializeApp } from 'firebase/app'
+import {
+   // arrayUnion,
+   collection,
+   doc,
+   getFirestore,
+   // onSnapshot,
+   // orderBy,
+   // query,
+   setDoc
+   // updateDoc
+} from 'firebase/firestore'
+import { configFirebase } from 'helpers/constants'
 // import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 // import throwError from 'helpers/throwError'
 
-// const app = initializeApp(configFirebase)
-// export const db = getFirestore(app)
+const app = initializeApp(configFirebase)
+export const db = getFirestore(app)
 
-// /**
-//  * Función para añadir devit a la colección.
-//  * @param {Object} devitInputs - Información que conforma el cuerpo de un devit.
-//  * @param {string} devitInputs.avatar - URL, Foto del usuario que crea el devit.
-//  * @param {string} devitInputs.content - Texto plano. Puede venir o no
-//  * @param {string} devitInputs.userId - ID del usuario, dado por firebase.
-//  * @param {string} devitInputs.img - URL, Imágen que usuario sube con el devit. Puede venir o no.
-//  * @param {string} devitInputs.username - Nombre del usuario en Github.
-//  * @returns {Promise} Retorna una promesa de firebase para agregar una nuevo devit a la colección.
-//  */
-// export const addDevit = ({ avatar, content, userId, img, username }) => {
-//    const devvitsReff = doc(collection(db, 'devits'))
-//    return setDoc(devvitsReff, {
-//       avatar,
-//       content,
-//       userId,
-//       img,
-//       username,
-//       createdAt: new Date().getTime(),
-//       likesCount: [],
-//       sharedCounts: []
-//    })
-// }
+/**
+ * Función para añadir devit a la colección.
+ * @param {Object} devitInputs - Información que conforma el cuerpo de un devit.
+ * @param {string} devitInputs.avatar - URL, Foto del usuario que crea el devit.
+ * @param {string} devitInputs.content - Texto plano. Puede venir o no
+ * @param {string} devitInputs.userId - ID del usuario, dado por firebase.
+ * @param {string} devitInputs.img - URL, Imágen que usuario sube con el devit. Puede venir o no.
+ * @param {string} devitInputs.username - Nombre del usuario en Github.
+ * @returns {Promise} Retorna una promesa de firebase para agregar una nuevo devit a la colección.
+ */
+export const addDevit = devit => {
+   const devvitsReff = doc(collection(db, 'devits'))
+   return setDoc(devvitsReff, devit)
+}
 
 // /**
 //  * Función para obtener la lista de devits actualizada desde firebase.

@@ -1,11 +1,28 @@
 import Devit from 'components/Devit'
 import SkeletonDevit from 'components/Devit/SkeletonDevit'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { mapDevitfromFirebase } from 'helpers/devitsFromFirestore'
 import useWindowSize from 'hooks/useWindowSize'
+import { useEffect, useState } from 'react'
+import { db } from 'services/firebaseClient'
 import Avatar from './Avatar'
 import DevitInput from './DevitInput'
 
-const TimeLine = ({ devits }) => {
+const TimeLine = () => {
+   const [timeline, setTimeline] = useState([])
    const { width } = useWindowSize()
+
+   useEffect(() => {
+      const queryDevits = query(
+         collection(db, 'devits'),
+         orderBy('createdAt', 'desc')
+      )
+      const unSubscribe = onSnapshot(queryDevits, querySnapshot => {
+         const newDevits = querySnapshot.docs.map(mapDevitfromFirebase)
+         setTimeline(newDevits)
+      })
+      return () => unSubscribe()
+   }, [])
 
    return (
       <main className="timeline-container">
@@ -24,8 +41,8 @@ const TimeLine = ({ devits }) => {
                <div className="timeline__separator"></div>
             </>
          )}
-         {devits.length !== 0
-            ? devits.map(item => {
+         {timeline.length !== 0
+            ? timeline.map(item => {
                  const {
                     avatar,
                     img,

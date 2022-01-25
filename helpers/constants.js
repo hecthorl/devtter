@@ -36,12 +36,12 @@ export const DATE_UNITS = [
 ]
 
 export const configFirebase = {
-   apiKey: 'AIzaSyBBDq8aN58spe3fEcYmngFU1m143VcE8Qs',
-   authDomain: 'chat-app-hector.firebaseapp.com',
-   projectId: 'chat-app-hector',
-   storageBucket: 'chat-app-hector.appspot.com',
-   messagingSenderId: '835835726435',
-   appId: '1:835835726435:web:827febe7c8f24cd92a0656'
+   apiKey: 'AIzaSyDlecImONDPjwgU2sr_QI_GBYg7_ZBnRoc',
+   authDomain: 'devtter-app.firebaseapp.com',
+   projectId: 'devtter-app',
+   storageBucket: 'devtter-app.appspot.com',
+   messagingSenderId: '1036537531069',
+   appId: '1:1036537531069:web:a836b456faed0b134045d4'
 }
 
 export const LIKES_STATES = {

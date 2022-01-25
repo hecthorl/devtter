@@ -16,9 +16,9 @@ const uuid = () => {
    const halfMays = randomLetters.slice(0, Math.floor(randomLetters.length / 2))
    const mayus = halfMays.map(item => item.toUpperCase())
    const minus = randomLetters.slice(mayus.length, -1)
-   const finalArr = shuffle([...mayus, ...minus])
+   const finalLettersArr = shuffle([...mayus, ...minus])
 
-   return shuffle([...finalArr, ...numResult])
+   return shuffle([...finalLettersArr, ...numResult])
       .toString()
       .replaceAll(',', '')
 }

@@ -1,9 +1,25 @@
-// import seed from 'helpers/seed'
-// import { firestore } from 'ownFirebase/admin'
-// import { writeFile } from 'fs/promises'
-// import clientdb from 'services/db-client'
+import { firestore } from 'services/firebaseAdmin'
+
+/**
+ * @param {import("next").NextApiRequest} req
+ * @param {import("next").NextApiResponse} res
+ */
 export default async (req, res) => {
-   // const algo = firestore.collection('devits')
+   const algo = firestore.collection('devits')
+
+   await algo
+      .add({
+         content: 'Prueba de Texto para el nuevo componente',
+         img: 'No image',
+         avatar: 'https://avatars.githubusercontent.com/u/67394936?v=4',
+         userId: 'Oo7mMIls6HfCJSWLQq2d5oqLGPt2',
+         sharedCounts: [],
+         likesCount: [],
+         createdAt: 1626209988217,
+         username: 'hector vargas'
+      })
+      .catch(console.log)
+
    // seed.forEach(async doc => {
    //    const imageSchema = {
    //       img_url: doc.img.img_url,
@@ -34,7 +50,6 @@ export default async (req, res) => {
    // await writeFile('./zeed.js', JSON.stringify(seed, null, 2))
    // await clientdb.connect()
    // const devitsColl = clientdb.db().collection('Devits')
-
    // const data = await devitsColl.insertMany(seed)
    res.json({ ok: true, data: 'lol' })
 }

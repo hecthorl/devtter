@@ -1,8 +1,7 @@
-/* eslint-disable no-useless-return */
 import { LIKES_STATES } from 'helpers/constants'
 import likeBlame from 'helpers/likeBlame'
 import throwError from 'helpers/throwError'
-import { likeDevitt, unLikeDevitt } from 'ownFirebase/cliente'
+import { likeDevitt, unLikeDevitt } from 'services/firebaseClient'
 import { useEffect, useState } from 'react'
 import useAuthUser from './useAuthUser'
 
@@ -39,7 +38,6 @@ const useLike = devittId => {
          )
             .then(() => setLikeState(UNLIKED))
             .catch(throwError)
-         return
       }
    }
    const disableButton =

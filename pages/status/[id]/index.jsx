@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { getSession } from 'next-auth/react'
-import { firestore } from 'ownFirebase/admin'
+import { firestore } from 'services/firebaseAdmin'
 import { HiArrowLeft } from 'react-icons/hi'
 import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'

@@ -2,8 +2,9 @@ import { v2 as cloudinary } from 'cloudinary'
 
 /**
  * Ejemplo tomado del repo: https://github.com/cloudinary-devs/cld-signed-upload-examples/tree/main/signed-uploads/public
+ * @param {import("next").NextApiRequest} req
+ * @param {import("next").NextApiResponse} res
  */
-
 export default (req, res) => {
    cloudinary.config({
       api_key: process.env.Cloudinary_API_KEY,
@@ -21,7 +22,7 @@ export default (req, res) => {
    const apiSecret = cloudinary.config().api_secret
    const signature = cloudinary.utils.api_sign_request(paramsToSign, apiSecret)
 
-   res.json({
+   res.status(201).json({
       timestamp: paramsToSign.timestamp,
       signature,
       api_key: cloudinary.config().api_key,

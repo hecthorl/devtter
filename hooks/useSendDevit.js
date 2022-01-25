@@ -3,7 +3,7 @@ import { UPLOADING_STATES } from 'helpers/constants'
 import useAuthUser from './useAuthUser'
 import useStore from 'store'
 import upLoadImage from 'helpers/upLoadImage'
-import addDevit from 'helpers/addDevit'
+import { addDevit } from 'services/firebaseClient'
 
 const useSendDevit = ({ file, message, setMessage }) => {
    const devitStates = useStore(state => state.devitStates)
@@ -18,7 +18,7 @@ const useSendDevit = ({ file, message, setMessage }) => {
    const devit = {
       avatar: userData.user.image,
       content: message.trim(),
-      userId: userData.user.uuid,
+      userId: userData.user.email,
       username: userData.user.name,
       createdAt: new Date().getTime(),
       likesCount: [],
@@ -60,22 +60,6 @@ const useSendDevit = ({ file, message, setMessage }) => {
        */
       const imgInfo = await upLoadImage(file).catch(console.error)
 
-      // const imagekit = new ImageKit({
-      //    authenticationEndpoint: 'http://localhost:3000/api/kit',
-      //    urlEndpoint: 'https://ik.imagekit.io/xu5iwk94yzf',
-      //    publicKey: 'public_Bzq8oUoOLM9KK07U2qPuw6V0LEQ='
-      // })
-      // console.log(file)
-      // imagekit.upload(
-      //    {
-      //       file,
-      //       fileName: file.name
-      //    },
-      //    (err, result) => {
-      //       if (err) console.log(err)
-      //       console.log(result)
-      //    }
-      // )
       /**
        * Luego, en el then con la url de la imagen ya disponible,
        * la añado al objeto para crear el devit y terminar de enviarlo
