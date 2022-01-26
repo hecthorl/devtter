@@ -1,10 +1,16 @@
 import Head from 'next/head'
+import Dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
 import useStore from 'store'
 import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
 import DevitInput from 'components/DevitInput/DevitInputModal'
-import TimeLine from 'components/TimeLine'
+import SkeletonDevit from 'components/Devit/SkeletonDevit'
+
+const TimeLine = Dynamic(() => import('components/TimeLine'), {
+   ssr: false,
+   loading: () => <SkeletonDevit />
+})
 
 const Home = () => {
    const popUp = useStore(state => state.popUp)
