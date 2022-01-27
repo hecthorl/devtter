@@ -1,35 +1,62 @@
 {
    "name": "devtter",
-   "version": "1.1.0",
    "private": true,
    "scripts": {
       "dev": "next dev",
       "build": "next build",
-      "start": "next start"
+      "start": "next start",
+      "lint": "next lint"
    },
    "dependencies": {
-      "classnames": "2.3.1",
-      "cloudinary": "1.28.1",
       "firebase": "9.6.4",
-      "firebase-admin": "10.0.2",
       "next": "12.0.8",
       "next-auth": "4.1.2",
       "react": "17.0.2",
-      "react-circular-progressbar": "2.0.4",
-      "react-dom": "17.0.2",
-      "react-icons": "4.3.1",
-      "react-textarea-autosize": "8.3.3",
-      "zustand": "3.6.9"
+      "react-dom": "17.0.2"
    },
    "devDependencies": {
       "autoprefixer": "10.4.2",
-      "eslint": "8.7.0",
+      "eslint": "7.32.0",
       "eslint-config-standard": "16.0.3",
       "eslint-plugin-import": "2.25.4",
       "eslint-plugin-node": "11.1.0",
-      "eslint-plugin-promise": "6.0.0",
+      "eslint-plugin-promise": "5.2.0",
       "eslint-plugin-react": "7.28.0",
       "postcss": "8.4.5",
-      "tailwindcss": "3.0.15"
+      "tailwindcss": "3.0.17"
+   },
+   "eslintConfig": {
+      "env": {
+         "browser": true,
+         "es2021": true,
+         "node": true
+      },
+      "extends": [
+         "plugin:react/recommended",
+         "standard"
+      ],
+      "parserOptions": {
+         "ecmaFeatures": {
+            "jsx": true
+         },
+         "ecmaVersion": "latest",
+         "sourceType": "module"
+      },
+      "plugins": [
+         "react"
+      ],
+      "rules": {
+         "react/react-in-jsx-scope": "off",
+         "react/prop-types": "off",
+         "indent": "off",
+         "space-before-function-paren": "off"
+      }
+   },
+   "prettier": {
+      "semi": false,
+      "singleQuote": true,
+      "trailingComma": "none",
+      "tabWidth": 3,
+      "arrowParens": "avoid"
    }
 }

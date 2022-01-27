@@ -1,19 +1,9 @@
 import Head from 'next/head'
-import Dynamic from 'next/dynamic'
-import { getSession } from 'next-auth/react'
-import useStore from 'store'
-import AppBar from 'components/AppBar'
-import Aside from 'components/Aside'
-import DevitInput from 'components/DevitInput/DevitInputModal'
-import SkeletonDevit from 'components/Devit/SkeletonDevit'
-
-const TimeLine = Dynamic(() => import('components/TimeLine'), {
-   ssr: false,
-   loading: () => <SkeletonDevit />
-})
+import { getSession, signOut } from 'next-auth/react'
+import useTimeline from 'hooks/useTimeline'
 
 const Home = () => {
-   const popUp = useStore(state => state.popUp)
+   const timeline = useTimeline()
    return (
       <>
          <Head>
@@ -21,16 +11,15 @@ const Home = () => {
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
          <div className="home-container">
-            <AppBar />
-            <TimeLine />
-            <Aside />
-            {popUp && <DevitInput />}
+            <button onClick={() => signOut()}>SALIR</button>
+            <pre>
+               <code>{JSON.stringify(timeline, null, 3)}</code>
+            </pre>
          </div>
       </>
    )
 }
 
-// eslint-disable-next-line space-before-function-paren
 export async function getServerSideProps(context) {
    const session = await getSession(context)
 

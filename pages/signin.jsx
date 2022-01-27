@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { getProviders, signIn } from 'next-auth/react'
-import { DiGithubBadge } from 'react-icons/di'
 
 const SignIn = ({ providers }) => {
    return (
@@ -11,7 +10,7 @@ const SignIn = ({ providers }) => {
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
          <div className="flex flex-col justify-center items-center h-screen w-screen">
-            <h1 className="mb-5 text-3xl">Google meet - Clone</h1>
+            <h1 className="mb-5 text-3xl">Ingreso Devtter-App</h1>
             {Object.values(providers).map(provider => (
                <div key={provider.name}>
                   <button
@@ -23,7 +22,6 @@ const SignIn = ({ providers }) => {
                         })
                      }
                   >
-                     <DiGithubBadge />
                      <span>Inicia sesión con {provider.name}</span>
                   </button>
                </div>
@@ -35,7 +33,6 @@ const SignIn = ({ providers }) => {
 
 export default SignIn
 
-// eslint-disable-next-line space-before-function-paren
 export async function getServerSideProps() {
    const providers = await getProviders()
    return {
