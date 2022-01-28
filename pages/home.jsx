@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { getSession } from 'next-auth/react'
 import { Flex } from '@chakra-ui/react'
-import Timeline from 'components/Timeline'
 import Aside from 'components/Aside'
 import AppBar from 'components/AppBar'
+import TimelineLayout from 'components/TimelineLayout'
 
 const Home = () => {
    return (
@@ -14,7 +14,7 @@ const Home = () => {
          </Head>
          <Flex bg="#15202b" minH="100vh" justify="center" w="full">
             <AppBar />
-            <Timeline />
+            <TimelineLayout />
             <Aside />
          </Flex>
       </>

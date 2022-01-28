@@ -1,4 +1,6 @@
-import { Flex, Box, Image } from '@chakra-ui/react'
+import { Flex, Box, Image, Icon } from '@chakra-ui/react'
+import DevitHeading from './DevitHeading'
+import DevitReactions from './DevitReactions'
 
 const Devit = ({ devit }) => {
    const {
@@ -11,17 +13,32 @@ const Devit = ({ devit }) => {
       sharedCounts,
       username
    } = devit
-   console.log({ devitResponses })
+
    return (
-      <Flex direction="column" color="white">
-         <Box>{img}</Box>
-         <Box>{content}</Box>
-         <Box>{createdAt}</Box>
-         <Box>{devitResponses.length || 'xd'}</Box>
-         <Image src={avatar} boxSize="48px" rounded="full" />
-         <Box>{likesCount.length || 'xd'}</Box>
-         <Box>{sharedCounts.length || 'xd'}</Box>
-         <Box>{username}</Box>
+      <Flex
+         px="16px"
+         py="12px"
+         color="white"
+         w="full"
+         borderBottomWidth="1px"
+         borderBottomColor="#38444d"
+         cursor="pointer"
+         transitionDuration="0.2s"
+         _hover={{
+            bg: 'rgba(255 255 255 / 3%)'
+         }}
+      >
+         <Image mr="12px" boxSize="48px" rounded="full" src={avatar} />
+         <Flex direction="column" w="full" fontSize="16px">
+            <DevitHeading username={username} createdAt={createdAt} />
+            <Flex>{content}</Flex>
+            <Flex>{img === 'No image' ? null : img}</Flex>
+            <DevitReactions
+               devitResponses={devitResponses}
+               likesCount={likesCount}
+               sharedCounts={sharedCounts}
+            />
+         </Flex>
       </Flex>
    )
 }
