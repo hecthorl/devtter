@@ -1,21 +1,22 @@
 import Head from 'next/head'
-import { getSession, signOut } from 'next-auth/react'
-import useTimeline from 'hooks/useTimeline'
+import { getSession } from 'next-auth/react'
+import { Flex } from '@chakra-ui/react'
+import Timeline from 'components/Timeline'
+import Aside from 'components/Aside'
+import AppBar from 'components/AppBar'
 
 const Home = () => {
-   const timeline = useTimeline()
    return (
       <>
          <Head>
             <title>Inicio / Devtter</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
-         <div className="home-container">
-            <button onClick={() => signOut()}>SALIR</button>
-            <pre>
-               <code>{JSON.stringify(timeline, null, 3)}</code>
-            </pre>
-         </div>
+         <Flex bg="#15202b" minH="100vh" justify="center" w="full">
+            <AppBar />
+            <Timeline />
+            <Aside />
+         </Flex>
       </>
    )
 }

@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import { getProviders, signIn, getSession } from 'next-auth/react'
-import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react'
+import { Button, CloseButton, Flex, Icon, Image, Text } from '@chakra-ui/react'
 import { GoMarkGithub } from 'react-icons/go'
-import { FiX } from 'react-icons/fi'
 
 const SignIn = ({ providers }) => {
    return (
@@ -23,7 +22,7 @@ const SignIn = ({ providers }) => {
                direction="column"
                pt={3}
             >
-               <Button
+               <CloseButton
                   rounded="full"
                   top="10px"
                   left="10px"
@@ -36,8 +35,8 @@ const SignIn = ({ providers }) => {
                      bg: 'rgba(239, 243, 244, 0.1)'
                   }}
                >
-                  <Icon fontSize="xl" as={FiX} />
-               </Button>
+                  {/* <Icon fontSize="xl" as={FiX} /> */}
+               </CloseButton>
                <Image w={10} src="/faviconLogo.svg" />
                <Flex
                   flex={1}
