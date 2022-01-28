@@ -19,12 +19,12 @@ const DevitReactions = ({ devitResponses, likesCount, sharedCounts }) => {
             <Box px="12px">{devitResponses.length}</Box>
          </Flex>
          <Flex justify="center" align="center">
-            <Icon as={AiOutlineHeart} />
-            <Box px="12px">{likesCount.length}</Box>
-         </Flex>
-         <Flex justify="center" align="center">
             <Icon as={FaRetweet} />
             <Box px="12px">{sharedCounts.length}</Box>
+         </Flex>
+         <Flex justify="center" align="center">
+            <Icon as={AiOutlineHeart} />
+            <Box px="12px">{likesCount.length}</Box>
          </Flex>
          <Icon as={FiShare} />
       </Flex>

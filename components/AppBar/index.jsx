@@ -1,4 +1,4 @@
-import { Flex, Stack } from '@chakra-ui/react'
+import { Box, Flex, VStack } from '@chakra-ui/react'
 import { ICONS } from 'helpers/iconsArray'
 import AppBarItem from './AppBarItem'
 
@@ -9,16 +9,21 @@ const AppBar = () => {
          as="header"
          maxW="275px"
          w="full"
-         position="sticky"
-         left={0}
          textColor="white"
       >
-         <Flex direction="column">
-            {ICONS.map(({ href, icon, title }) => (
-               <AppBarItem key={title} href={href} icon={icon} title={title} />
-            ))}
-         </Flex>
-         <div>mini-profile</div>
+         <Box position="fixed" top={0}>
+            <VStack spacing={0} align="flex-start">
+               {ICONS.map(({ href, icon, title }) => (
+                  <AppBarItem
+                     key={title}
+                     href={href}
+                     icon={icon}
+                     title={title}
+                  />
+               ))}
+            </VStack>
+            <div>mini-profile</div>
+         </Box>
       </Flex>
    )
 }
