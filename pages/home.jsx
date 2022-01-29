@@ -1,9 +1,13 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
 import { Flex } from '@chakra-ui/react'
 import Aside from 'components/Aside'
-import AppBar from 'components/AppBar'
 import TimelineLayout from 'components/TimelineLayout'
+
+const AppBar = dynamic(() => import('components/AppBar'), {
+   ssr: false
+})
 
 const Home = () => {
    return (

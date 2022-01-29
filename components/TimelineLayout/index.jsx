@@ -12,6 +12,8 @@ const TimelineLayout = () => {
          maxW="600px"
       >
          <Flex
+            bg="rgb(21 32 43 / 75%)"
+            backdropBlur="10px"
             cursor="pointer"
             align="center"
             h="53px"
@@ -28,7 +30,6 @@ const TimelineLayout = () => {
             <Box as="span">✨</Box>
          </Flex>
          <Box w="inherit">
-            {/* <div>input</div> */}
             <Timeline />
          </Box>
       </VStack>

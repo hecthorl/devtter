@@ -5,6 +5,7 @@ const AppBarItem = ({ icon, title, href }) => {
    return (
       <Link href={href} passHref>
          <LinkChacra
+            w="full"
             rounded="full"
             _hover={{
                textDecoration: 'none'
@@ -16,14 +17,14 @@ const AppBarItem = ({ icon, title, href }) => {
             <Flex
                align="center"
                rounded="full"
-               p="12px"
+               p="11px"
                w="fit-content"
                _groupHover={{
                   bg: 'rgba(255 255 255 / 10%)'
                }}
             >
                <Icon as={icon} />
-               <Text ml="12px" mr="16px">
+               <Text ml="20px" mr="16px">
                   {title}
                </Text>
             </Flex>

@@ -1,4 +1,4 @@
-import { Flex, Box, Image, Icon } from '@chakra-ui/react'
+import { Flex, Image } from '@chakra-ui/react'
 import DevitHeading from './DevitHeading'
 import DevitReactions from './DevitReactions'
 

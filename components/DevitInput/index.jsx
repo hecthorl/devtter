@@ -42,8 +42,7 @@ const DevitInput = () => {
                borderBottomColor="#38444d"
                my={1}
                borderBottomWidth="1px"
-            ></Box>
-            {/* <Flex>anywya</Flex> */}
+            />
             <Flex pt="12px" justify="space-between" align="center" w="full">
                <HStack spacing={6}>
                   <Box>🐱‍🏍</Box>

@@ -1,6 +1,8 @@
-import { Box, Flex, VStack } from '@chakra-ui/react'
+import { Box, Button, Flex } from '@chakra-ui/react'
 import { ICONS } from 'helpers/iconsArray'
 import AppBarItem from './AppBarItem'
+import BrandIcon from 'components/DevitIcons/BrandIcon'
+import MiniProfile from 'components/MiniProfile'
 
 const AppBar = () => {
    return (
@@ -9,10 +11,39 @@ const AppBar = () => {
          as="header"
          maxW="275px"
          w="full"
+         h={`${window.innerHeight}px`}
          textColor="white"
+         mx="12px"
       >
-         <Box position="fixed" top={0}>
-            <VStack spacing={0} align="flex-start">
+         <Flex
+            justify="space-between"
+            direction="column"
+            h="full"
+            position="fixed"
+            top={0}
+            w="full"
+            maxWidth="275px"
+         >
+            <Flex direction="column" align="flex-start">
+               <Box
+                  my="2px"
+                  rounded="full"
+                  pos="relative"
+                  w="50px"
+                  h="50px"
+                  bg="inherit"
+                  cursor="pointer"
+                  _hover={{
+                     bg: 'rgba(29 155 240 / 10%)'
+                  }}
+               >
+                  <BrandIcon
+                     pos="absolute"
+                     top="10px"
+                     left="7px"
+                     fontSize="3xl"
+                  />
+               </Box>
                {ICONS.map(({ href, icon, title }) => (
                   <AppBarItem
                      key={title}
@@ -21,9 +52,20 @@ const AppBar = () => {
                      title={title}
                   />
                ))}
-            </VStack>
-            <div>mini-profile</div>
-         </Box>
+               <Button
+                  mt={2}
+                  rounded="full"
+                  bg="cadetblue"
+                  w="90%"
+                  h="52px"
+                  fontSize="xl"
+                  fontWeight="bold"
+               >
+                  Devittear
+               </Button>
+            </Flex>
+            <MiniProfile />
+         </Flex>
       </Flex>
    )
 }
