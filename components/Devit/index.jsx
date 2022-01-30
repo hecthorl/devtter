@@ -1,6 +1,7 @@
-import { Flex, Image } from '@chakra-ui/react'
+import { Box, Flex, Image } from '@chakra-ui/react'
 import DevitHeading from './DevitHeading'
-import DevitReactions from './DevitReactions'
+import DevitReactions from '../DevitReactions'
+import DevitMedia from 'components/DevitMedia'
 
 const Devit = ({ devit }) => {
    const {
@@ -31,8 +32,10 @@ const Devit = ({ devit }) => {
          <Image mr="12px" boxSize="48px" rounded="full" src={avatar} />
          <Flex direction="column" w="full" fontSize="16px">
             <DevitHeading username={username} createdAt={createdAt} />
-            <Flex>{content}</Flex>
-            <Flex>{img === 'No image' ? null : img}</Flex>
+            <Box as="p">{content}</Box>
+            <Flex>
+               <DevitMedia img={img} id={1} likesCount={likesCount} />
+            </Flex>
             <DevitReactions
                devitResponses={devitResponses}
                likesCount={likesCount}

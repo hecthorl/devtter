@@ -1,14 +1,8 @@
-import {
-   Avatar,
-   Box,
-   Button,
-   Flex,
-   HStack,
-   Text,
-   VStack
-} from '@chakra-ui/react'
-import Textarea from 'react-textarea-autosize'
+import { Avatar, Box, Flex, HStack, VStack } from '@chakra-ui/react'
+
 import useUserAuth from 'hooks/useAuthUser'
+import DevitInputTextarea from './DevitInputTextarea'
+import DevitSubmitBtn from './DevitSubmitBtn'
 
 const DevitInput = () => {
    const { userData } = useUserAuth()
@@ -25,18 +19,7 @@ const DevitInput = () => {
             name={userData.user.name}
          />
          <VStack width="full" spacing={0}>
-            <Textarea
-               placeholder="¿Qué esta pasando?"
-               minRows={2}
-               style={{
-                  width: '100%',
-                  background: '#15202b',
-                  resize: 'none',
-                  color: 'white',
-                  outline: 'none',
-                  fontSize: '20px'
-               }}
-            />
+            <DevitInputTextarea />
             <Box
                w="full"
                borderBottomColor="#38444d"
@@ -51,9 +34,7 @@ const DevitInput = () => {
                   <Box>🐱‍🐉</Box>
                   <Box>🐱‍👓</Box>
                </HStack>
-               <Button h="36px" rounded="full" bg="orange.700">
-                  <Text textColor="white"> Devittear</Text>
-               </Button>
+               <DevitSubmitBtn />
             </Flex>
          </VStack>
       </Flex>

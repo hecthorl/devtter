@@ -16,3 +16,18 @@ export const firebaseConfig = {
    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
    appId: process.env.NEXT_PUBLIC_APPID
 }
+
+export const DRAG_IMAGE_STATES = {
+   ERROR: -1,
+   NONE: 0,
+   DRAG_OVER: 1,
+   UPLOADING: 2,
+   COMPLETE: 3,
+   DROPED: 4
+}
+
+export const UPLOADING_STATES = {
+   NONE: 'nada',
+   UPLOADING: 'subiendo',
+   DONE: 'terminado'
+}

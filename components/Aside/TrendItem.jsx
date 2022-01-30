@@ -14,10 +14,10 @@ const TrendItem = () => {
             <Text>Tendencias en Perukistan</Text>
             <Icon />
          </Flex>
-         <Text fontSize="lg" fontWeight="bold" textColor="white">
+         <Text fontSize="md" fontWeight="bold" textColor="white">
             TEMA
          </Text>
-         <Text>4k Devits xddd</Text>
+         <Text fontSize="sm">4k Devits xddd</Text>
       </Flex>
    )
 }

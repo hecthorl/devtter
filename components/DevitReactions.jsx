@@ -4,7 +4,11 @@ import { FaRetweet } from 'react-icons/fa'
 import { FiShare } from 'react-icons/fi'
 import { IoChatboxOutline } from 'react-icons/io5'
 
-const DevitReactions = ({ devitResponses, likesCount, sharedCounts }) => {
+const DevitReactions = ({
+   devitResponses = [],
+   likesCount = [],
+   sharedCounts = []
+}) => {
    return (
       <Flex
          mt="12px"

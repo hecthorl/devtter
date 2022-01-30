@@ -14,6 +14,7 @@ const Aside = () => {
          pt="4px"
       >
          <Flex
+            top={0}
             bg="#15202b"
             pos="fixed"
             maxW="350px"
@@ -44,7 +45,7 @@ const Aside = () => {
                borderBottomColor="#38444d"
                borderBottomWidth="1px"
             >
-               <Text fontWeight="bold" fontSize="2xl">
+               <Text fontWeight="bold" fontSize="xl">
                   Tendencias para ti
                </Text>
                <Icon />
@@ -53,7 +54,7 @@ const Aside = () => {
             <TrendItem />
             <TrendItem />
             <TrendItem />
-            <Box p="16px" fontSize="xl" textColor="white">
+            <Box p="16px" fontSize="lg" textColor="white">
                <Text fontSize="md">Mostrar más</Text>
             </Box>
          </Flex>
@@ -80,7 +81,7 @@ const Aside = () => {
             fontSize="sm"
             textColor="rgba(255 255 255 / 50%)"
          >
-            © 2022 Devtter, Inc.
+            © 2022 Devtter, Inc. xD
          </Text>
       </Flex>
    )

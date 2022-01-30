@@ -34,9 +34,7 @@ const SignIn = ({ providers }) => {
                   _hover={{
                      bg: 'rgba(239, 243, 244, 0.1)'
                   }}
-               >
-                  {/* <Icon fontSize="xl" as={FiX} /> */}
-               </CloseButton>
+               />
                <Image w={10} src="/faviconLogo.svg" />
                <Flex
                   flex={1}
