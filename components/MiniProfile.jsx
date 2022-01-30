@@ -16,7 +16,7 @@ import { FcCheckmark } from 'react-icons/fc'
 import { BsThreeDots } from 'react-icons/bs'
 
 const MiniProfile = () => {
-   const { userData } = useUserAuth()
+   const { userData, signOut } = useUserAuth()
    return (
       <Popover>
          <PopoverTrigger>
@@ -80,7 +80,7 @@ const MiniProfile = () => {
                      <Icon fontSize="18px" as={FcCheckmark} />
                   </Flex>
                   <Text p="16px">Agregar una cuenta existente</Text>
-                  <Box p="16px" w="full" as="button">
+                  <Box onClick={() => signOut()} p="16px" w="full" as="button">
                      <Text>Cerrar la sesion de</Text>
                      <Text>@asdasd</Text>
                   </Box>

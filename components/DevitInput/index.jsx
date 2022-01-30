@@ -1,7 +1,7 @@
 import { Avatar, Box, Flex, HStack, VStack } from '@chakra-ui/react'
-
 import useUserAuth from 'hooks/useAuthUser'
 import DevitInputTextarea from './DevitInputTextarea'
+import DevitLoading from './DevitLoading'
 import DevitSubmitBtn from './DevitSubmitBtn'
 
 const DevitInput = () => {
@@ -12,6 +12,7 @@ const DevitInput = () => {
          pb="12px"
          borderBottomColor="#38444d"
          borderBottomWidth="1px"
+         pos="relative"
       >
          <Avatar
             mr="12px"
@@ -37,6 +38,7 @@ const DevitInput = () => {
                <DevitSubmitBtn />
             </Flex>
          </VStack>
+         <DevitLoading />
       </Flex>
    )
 }
