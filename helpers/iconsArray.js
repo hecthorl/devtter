@@ -40,7 +40,7 @@ export const ICONS = [
    },
    {
       title: 'Perfil',
-      href: '/',
+      href: '/profile',
       icon: ProfileIcon
    },
    {

@@ -1,6 +1,15 @@
-import { Box, Flex, Icon, Input, Text } from '@chakra-ui/react'
+import {
+   Box,
+   Flex,
+   Icon,
+   Input,
+   InputGroup,
+   InputLeftElement,
+   Text
+} from '@chakra-ui/react'
 import FollowItem from './FollowItem'
 import TrendItem from './TrendItem'
+import { BiSearch } from 'react-icons/bi'
 
 const Aside = () => {
    return (
@@ -22,18 +31,28 @@ const Aside = () => {
             h="53px"
             align="center"
          >
-            <Input
-               h="44px"
-               variant="filled"
-               py="12px"
-               bg="#253341"
-               textColor="white"
-               rounded="full"
-               _hover={{
-                  bg: '#253341'
-               }}
-               placeholder="Buscar en Devtter"
-            />
+            <InputGroup>
+               <InputLeftElement
+                  ml={1.5}
+                  mt="3px"
+                  pointerEvents="none"
+                  fontSize="2xl"
+               >
+                  <BiSearch color="white" />
+               </InputLeftElement>
+               <Input
+                  h="44px"
+                  variant="filled"
+                  py="12px"
+                  bg="#253341"
+                  textColor="white"
+                  rounded="full"
+                  _hover={{
+                     bg: '#253341'
+                  }}
+                  placeholder="Buscar en Devtter"
+               />
+            </InputGroup>
          </Flex>
          <Flex mt="65px" rounded="2xl" direction="column" bg="#192734">
             <Flex

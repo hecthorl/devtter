@@ -2,8 +2,10 @@ import { Box, Flex, Image } from '@chakra-ui/react'
 import DevitHeading from './DevitHeading'
 import DevitReactions from '../DevitReactions'
 import DevitMedia from 'components/DevitMedia'
+import { useRouter } from 'next/router'
 
 const Devit = ({ devit }) => {
+   const { push } = useRouter()
    const {
       avatar,
       content,
@@ -12,18 +14,21 @@ const Devit = ({ devit }) => {
       img,
       likesCount,
       sharedCounts,
-      username
+      username,
+      id: devitId
    } = devit
 
    return (
       <Flex
-         px="16px"
-         py="12px"
+         onClick={() => {
+            push(`/home?devitId=${devitId}`, `/status/${devitId}`, {
+               shallow: true
+            })
+         }}
+         as="article"
+         p="12px 16px"
          color="white"
-         w="full"
-         borderBottomWidth="1px"
-         borderBottomColor="#38444d"
-         cursor="pointer"
+         borderBottom="1px solid #38444d"
          transitionDuration="0.2s"
          _hover={{
             bg: 'rgba(255 255 255 / 3%)'

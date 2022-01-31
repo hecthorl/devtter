@@ -1,5 +1,6 @@
 import { SessionProvider } from 'next-auth/react'
 import { ChakraProvider } from '@chakra-ui/react'
+import theme from 'helpers/theme'
 
 export default function DevtterApp({
    Component,
@@ -7,7 +8,7 @@ export default function DevtterApp({
 }) {
    return (
       <SessionProvider session={session}>
-         <ChakraProvider>
+         <ChakraProvider theme={theme}>
             <Component {...pageProps} />
          </ChakraProvider>
       </SessionProvider>

@@ -8,6 +8,7 @@ const DevitInput = () => {
    const { userData } = useUserAuth()
    return (
       <Flex
+         w="full"
          px="16px"
          pb="12px"
          borderBottomColor="#38444d"

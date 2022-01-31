@@ -55,7 +55,14 @@ const AppBar = () => {
                <Button
                   mt={2}
                   rounded="full"
-                  bg="cadetblue"
+                  bg="leela.500"
+                  _disabled={{
+                     pointerEvents: 'none',
+                     opacity: 0.5
+                  }}
+                  _hover={{
+                     opacity: 0.9
+                  }}
                   w="90%"
                   h="52px"
                   fontSize="xl"

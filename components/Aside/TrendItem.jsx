@@ -11,7 +11,7 @@ const TrendItem = () => {
          py="12px"
       >
          <Flex align="center" justify="space-between">
-            <Text>Tendencias en Perukistan</Text>
+            <Text fontSize="sm">Tendencias en Perukistan</Text>
             <Icon />
          </Flex>
          <Text fontSize="md" fontWeight="bold" textColor="white">
