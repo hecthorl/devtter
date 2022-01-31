@@ -1,4 +1,4 @@
-const { Flex, Text, Box } = require('@chakra-ui/react')
+import { Flex, Text, Box } from '@chakra-ui/react'
 
 const Letterhead = () => {
    return (

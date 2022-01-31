@@ -1,20 +1,29 @@
-import { Box, Text } from '@chakra-ui/react'
+import Head from 'next/head'
+import { getSession } from 'next-auth/react'
+import Layout from 'components/Layout'
+import LetterheadStatus from 'components/LetterheadStatus'
 import SingleDevit from 'components/SingleDevit'
-// import { useRouter } from 'next/router'
 
 const StatusPage = () => {
-   // const router = useRouter()
-   // console.log(router)
    return (
-      <Box w="full">
-         <Text fontSize="7xl">Sou Paulo</Text>
-         <SingleDevit />
-      </Box>
+      <>
+         <Head>
+            <title>Status</title>
+            <link rel="icon" href="/faviconLogo.ico" />
+         </Head>
+         <Layout>
+            <LetterheadStatus />
+            <SingleDevit />
+         </Layout>
+      </>
    )
 }
 
 export default StatusPage
 
-// export async function getServerSideProps() {
-//    //
-// }
+export async function getServerSideProps(context) {
+   const session = await getSession(context)
+   return {
+      props: { session }
+   }
+}

@@ -32,8 +32,18 @@ const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
          bg={`${color}E6`}
          zIndex={10}
       >
-         <Flex direction="column" onClick={() => handleVisor(false)}>
-            <Flex justify="space-between" onClick={e => e.stopPropagation()}>
+         <Flex
+            pos="relative"
+            direction="column"
+            onClick={() => handleVisor(false)}
+         >
+            <Flex
+               w="full"
+               pos="absolute"
+               p="12px"
+               justify="space-between"
+               onClick={e => e.stopPropagation()}
+            >
                <CloseButton
                   w="40px"
                   h="40px"

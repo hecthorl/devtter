@@ -1,13 +1,8 @@
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
-import { Flex } from '@chakra-ui/react'
-import Aside from 'components/Aside'
-import TimelineLayout from 'components/TimelineLayout'
-
-const AppBar = dynamic(() => import('components/AppBar'), {
-   ssr: false
-})
+import Layout from 'components/Layout'
+import Letterhead from 'components/Letterhead'
+import BodySwitch from 'components/Layout/BodySwitch'
 
 const Home = () => {
    return (
@@ -16,11 +11,10 @@ const Home = () => {
             <title>Inicio / Devtter</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
-         <Flex bg="#15202b" minH="100vh" justify="center" w="full">
-            <AppBar />
-            <TimelineLayout />
-            <Aside />
-         </Flex>
+         <Layout>
+            <Letterhead />
+            <BodySwitch />
+         </Layout>
       </>
    )
 }
