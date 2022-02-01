@@ -23,6 +23,7 @@ const Aside = () => {
          pt="4px"
       >
          <Flex
+            zIndex={10}
             top={0}
             bg="#15202b"
             pos="fixed"

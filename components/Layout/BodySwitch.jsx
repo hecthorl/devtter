@@ -11,8 +11,6 @@ const COMPONENTS = {
 const BodySwitch = () => {
    const router = useRouter()
 
-   console.log(router)
-
    const path = aspath => {
       if (aspath.includes('home')) return 'home'
       if (aspath.includes('status')) return 'status'
