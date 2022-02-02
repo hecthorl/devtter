@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { Avatar, Box, Flex, Icon, Text } from '@chakra-ui/react'
 import DevitMedia from 'components/DevitMedia'
 import DevitReactions from 'components/DevitReactions'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import getDevit from 'services/getDevit'
 
 const SigleDevit = () => {
@@ -11,10 +11,11 @@ const SigleDevit = () => {
 
    useEffect(async () => {
       if (!query.devitId) return
+      // Podría intentar usar SWR
       const data = await getDevit(query.devitId)
       setDevit(data)
    }, [query.devitId])
-   if (!devit) return null
+   if (!devit) return <Box w="full" h={10} bg="red"></Box>
    return (
       <Flex
          w="full"

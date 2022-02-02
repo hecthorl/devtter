@@ -1,21 +1,17 @@
 import { Box } from '@chakra-ui/react'
-import Error from 'components/Error'
 import Timeline from 'components/Timeline'
 import SingleDevit from 'components/SingleDevit'
-import { useRouter } from 'next/router'
+import { Route, Switch } from 'wouter'
 
-const COMPONENTS = {
-   home: <Timeline />,
-   status: <SingleDevit />
-}
 const BodySwitch = () => {
-   const router = useRouter()
-
-   const path = aspath => {
-      if (aspath.includes('home')) return 'home'
-      if (aspath.includes('status')) return 'status'
-   }
-   return <Box w="full">{COMPONENTS[path(router.asPath)] || <Error />}</Box>
+   return (
+      <Box w="full">
+         <Switch>
+            <Route path="/home" component={Timeline} />
+            <Route path="/status/:devitId" component={SingleDevit} />
+         </Switch>
+      </Box>
+   )
 }
 
 export default BodySwitch

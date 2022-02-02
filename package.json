@@ -12,14 +12,15 @@
       "@emotion/react": "11.7.1",
       "@emotion/styled": "11.6.0",
       "cloudinary": "1.28.1",
-      "firebase": "9.6.4",
+      "firebase": "9.6.5",
       "framer-motion": "6.2.3",
-      "next": "12.0.9",
+      "next": "12.0.10",
       "next-auth": "4.1.2",
       "react": "17.0.2",
       "react-dom": "17.0.2",
       "react-icons": "4.3.1",
       "react-textarea-autosize": "8.3.3",
+      "wouter": "2.8.0-alpha.2",
       "zustand": "3.6.9"
    },
    "devDependencies": {
