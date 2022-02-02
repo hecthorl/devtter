@@ -2,7 +2,11 @@ import Head from 'next/head'
 import { getSession } from 'next-auth/react'
 import Layout from 'components/Layout'
 import Letterhead from 'components/Letterhead'
-import BodySwitch from 'components/Layout/BodySwitch'
+// import BodySwitch from 'components/Layout/BodySwitch'
+import dynamic from 'next/dynamic'
+const BodySwitch = dynamic(() => import('components/Layout/BodySwitch'), {
+   ssr: false
+})
 
 const Home = () => {
    return (
