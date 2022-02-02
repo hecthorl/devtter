@@ -16,6 +16,12 @@ import useUserAuth from 'hooks/useAuthUser'
 import findUser from 'services/findUser'
 
 const Profile = ({ user }) => {
+   /**
+    * No usar destructuring para el user y usar condicional:
+    *    if (user === currentUserSession)
+    *    if (user === otroUsario)
+    *    if (noExisteUsuario)
+    */
    const { userData } = useUserAuth()
    return (
       <>

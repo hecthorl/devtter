@@ -1,6 +1,7 @@
-import { Button, Flex, Icon, Image, Text, VStack } from '@chakra-ui/react'
+import { Button, Flex, Icon, Text, VStack } from '@chakra-ui/react'
 import useUserAuth from 'hooks/useAuthUser'
 import { GoMarkGithub } from 'react-icons/go'
+import BrandIcon from './DevitIcons/BrandIcon'
 
 const NotLoggedUser = () => {
    const { signIn } = useUserAuth()
@@ -13,6 +14,7 @@ const NotLoggedUser = () => {
          minH="100vh"
       >
          <Flex
+            bg="#006fd6"
             justify="center"
             align="center"
             backgroundPosition="center"
@@ -20,7 +22,7 @@ const NotLoggedUser = () => {
             flex={1}
             backgroundImage="url('/devtterWall.png')"
          >
-            <Image h="50%" maxHeight="380px" p="32px" src="/logoDevvter.svg" />
+            <Icon as={BrandIcon} w="80%" h="80%" p="32px" textColor="white" />
          </Flex>
          <Flex flex={1} p="16px" align="center" bg="black">
             <VStack
@@ -30,7 +32,7 @@ const NotLoggedUser = () => {
                align="flex-start"
                textColor="#d9d9d9"
             >
-               <Image h="3rem" src="/logoDevvter.svg" />
+               <Icon as={BrandIcon} fontSize="5xl" />
                <Text as="span" fontSize="7xl" fontWeight="bold">
                   Lo que está pasando ahora
                </Text>
