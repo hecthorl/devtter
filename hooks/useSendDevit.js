@@ -35,10 +35,10 @@ const useSendDevit = () => {
    const setTextareaMsg = useZtndStore(state => state.setTextareaMsg)
 
    const devit = {
-      avatar: userData.user.image,
+      avatar: userData.image,
       content: textareaMsg.trim(),
-      userId: userData.user.email,
-      username: userData.user.name,
+      userId: userData.email,
+      username: userData.name,
       createdAt: new Date().getTime(),
       likesCount: [],
       sharedCounts: [],

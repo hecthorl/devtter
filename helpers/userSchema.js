@@ -20,7 +20,6 @@ const userSchema = profile => ({
    },
    preferences: {
       img_banner: '',
-      username: profile.login,
       bio: '',
       location: '',
       website_url: '',

@@ -15,11 +15,7 @@ const DevitInput = () => {
          borderBottomWidth="1px"
          pos="relative"
       >
-         <Avatar
-            mr="12px"
-            src={userData.user.image}
-            name={userData.user.name}
-         />
+         <Avatar mr="12px" src={userData.image} name={userData.name} />
          <VStack width="full" spacing={0}>
             <DevitInputTextarea />
             <Box

@@ -1,9 +1,9 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
 
 const useUserAuth = () => {
-   const { data: userData } = useSession()
+   const { data } = useSession()
 
-   return { userData, signIn, signOut }
+   return { userData: data.user, signIn, signOut }
 }
 
 export default useUserAuth

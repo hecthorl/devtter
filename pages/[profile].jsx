@@ -1,10 +1,22 @@
-import { Box, Button, Flex, Icon, Text, VStack } from '@chakra-ui/react'
+import Head from 'next/head'
+import { getSession } from 'next-auth/react'
+import {
+   Avatar,
+   Box,
+   Button,
+   Flex,
+   Icon,
+   Image,
+   Text,
+   VStack
+} from '@chakra-ui/react'
 import Layout from 'components/Layout'
 import Letterhead from 'components/Letterhead'
-import { getSession } from 'next-auth/react'
-import Head from 'next/head'
+import useUserAuth from 'hooks/useAuthUser'
+import findUser from 'services/findUser'
 
-const Profile = () => {
+const Profile = ({ user }) => {
+   const { userData } = useUserAuth()
    return (
       <>
          <Head>
@@ -15,8 +27,8 @@ const Profile = () => {
             <Letterhead />
             <Box textColor="#8899a6" w="full">
                <Flex direction="column">
-                  <Box h="200px" bg="leela.500">
-                     Para la Imagen
+                  <Box h="200px" bg="#3d5466">
+                     <Image src="https://pbs.twimg.com/profile_banners/333176262/1628715538/1500x500" />
                   </Box>
                   <VStack
                      fontSize="15px"
@@ -34,10 +46,31 @@ const Profile = () => {
                            // TODO: Poner mediaqueries a w/h
                            w="141.5px"
                            h="141.5px"
-                        ></Box>
+                        >
+                           <Avatar
+                              w="full"
+                              h="full"
+                              name={user.name}
+                              src={user?.img}
+                           />
+                        </Box>
                         <Flex>
-                           <Button bg="leela.500" rounded="full">
-                              config
+                           <Button
+                              textColor="white"
+                              maxH="36px"
+                              fontWeight="bold"
+                              bg="transparent"
+                              border="1px solid #536471"
+                              rounded="full"
+                              _hover={{
+                                 bg: 'rgba(239 243 244 / 10%)'
+                              }}
+                           >
+                              <Text>
+                                 {user.nickname === userData.nickname
+                                    ? 'Editar perfil'
+                                    : 'Seguir'}
+                              </Text>
                            </Button>
                         </Flex>
                      </Flex>
@@ -47,27 +80,36 @@ const Profile = () => {
                            fontSize="20px"
                            fontWeight="bold"
                         >
-                           Nombre de Usuario
+                           {user.name}
                         </Text>
-                        <Text opacity={0.5}>@NombreConArroba</Text>
+                        <Text opacity={0.5}>@{user.nickname}</Text>
                      </Box>
-                     <Box textColor="white">
-                        Desde Alemania para América Latina. Todo lo que necesita
-                        saber del mundo. Aquí y ahora. Señal en vivo 24/7
-                        http://youtube.com/dwespanol
-                     </Box>
+                     <Box textColor="white">{user.preferences.bio}</Box>
                      <Flex gap={5}>
                         <Flex gap={2} align="center">
-                           <Icon />
-                           <Text>Berlin, Germany</Text>
+                           {user.preferences.location && (
+                              <>
+                                 <Icon />
+                                 <Text>{user.preferences.location}</Text>
+                              </>
+                           )}
                         </Flex>
                         <Flex gap={2} align="center">
                            <Icon />
-                           <Text>DW.com</Text>
+                           <Text>{user.github_url}</Text>
                         </Flex>
                         <Flex gap={2} align="center">
                            <Icon />
-                           <Text>Se unió en mayo de 2007</Text>
+                           <Text as="span">
+                              Se unió el
+                              <Text as="time" ml={1}>
+                                 {new Intl.DateTimeFormat('es-ES', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
+                                 }).format(user.created_at)}
+                              </Text>
+                           </Text>
                         </Flex>
                      </Flex>
                      <Box>149 Siguiendo 1,1 M Seguidores</Box>
@@ -85,8 +127,10 @@ export default Profile
 
 export async function getServerSideProps(context) {
    const session = await getSession(context)
+   const nickname = context.query.profile
+   const user = await findUser(nickname)
 
    return {
-      props: { session }
+      props: { session, user }
    }
 }

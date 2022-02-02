@@ -34,12 +34,12 @@ const MiniProfile = () => {
                <Avatar
                   w="40px"
                   h="40px"
-                  src={userData.user.image}
-                  name={userData.user.name}
+                  src={userData.image}
+                  name={userData.name}
                />
                <Box lineHeight="21px" mx="12px" overflow="hidden">
-                  <Text isTruncated>{userData.user.name}</Text>
-                  <Text>{'@' + userData.user.name.replace(' ', '_')}</Text>
+                  <Text isTruncated>{userData.name}</Text>
+                  <Text>{'@' + userData.name.replace(' ', '_')}</Text>
                </Box>
                <Icon fontSize="18px" as={BsThreeDots} />
             </Flex>
@@ -68,14 +68,12 @@ const MiniProfile = () => {
                      <Avatar
                         w="48px"
                         h="48px"
-                        src={userData.user.image}
-                        name={userData.user.name}
+                        src={userData.image}
+                        name={userData.name}
                      />
                      <Box lineHeight="21px" mx="12px" overflow="hidden">
-                        <Text isTruncated>{userData.user.name}</Text>
-                        <Text>
-                           {'@' + userData.user.name.replace(' ', '_')}
-                        </Text>
+                        <Text isTruncated>{userData.name}</Text>
+                        <Text>{'@' + userData.name.replace(' ', '_')}</Text>
                      </Box>
                      <Icon fontSize="18px" as={FcCheckmark} />
                   </Flex>

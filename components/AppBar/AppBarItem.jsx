@@ -1,9 +1,12 @@
 import Link from 'next/link'
 import { Flex, Icon, Link as LinkChacra, Text } from '@chakra-ui/react'
+import useUserAuth from 'hooks/useAuthUser'
 
 const AppBarItem = ({ icon, title, href }) => {
+   const { userData } = useUserAuth()
+   const justProfile = title === 'Perfil' ? `/${userData.nickname}` : href
    return (
-      <Link href={href} passHref>
+      <Link href={justProfile} passHref>
          <LinkChacra
             w="full"
             rounded="full"
