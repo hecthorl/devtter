@@ -1,15 +1,21 @@
-import { Box, Button, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { ICONS } from 'helpers/iconsArray'
 import AppBarItem from './AppBarItem'
 import BrandIcon from 'components/DevitIcons/BrandIcon'
 import MiniProfile from 'components/MiniProfile'
+import DevitearBtn from 'components/Buttons/DevitearBtn'
 
 const AppBar = () => {
    return (
       <Flex
-         direction="column"
          as="header"
-         maxW="275px"
+         direction="column"
+         maxW={{
+            sm: '88px',
+            md: '88px',
+            lg: '88px',
+            xl: '275px'
+         }}
          w="full"
          h={`${window.innerHeight}px`}
          textColor="white"
@@ -18,13 +24,34 @@ const AppBar = () => {
          <Flex
             justify="space-between"
             direction="column"
-            h="full"
             position="fixed"
+            align={{
+               sm: 'center',
+               md: 'center',
+               lg: 'center',
+               xl: 'unset'
+            }}
             top={0}
+            maxW={{
+               sm: '88px',
+               md: '88px',
+               lg: '88px',
+               xl: '275px'
+            }}
             w="full"
-            maxWidth="275px"
+            h="full"
          >
-            <Flex direction="column" align="flex-start">
+            <Flex
+               px="12px"
+               w="inherit"
+               direction="column"
+               align={{
+                  sm: 'center',
+                  md: 'center',
+                  lg: 'center',
+                  xl: 'flex-start'
+               }}
+            >
                <Box
                   my="2px"
                   rounded="full"
@@ -52,24 +79,7 @@ const AppBar = () => {
                      title={title}
                   />
                ))}
-               <Button
-                  mt={2}
-                  rounded="full"
-                  bg="leela.500"
-                  _disabled={{
-                     pointerEvents: 'none',
-                     opacity: 0.5
-                  }}
-                  _hover={{
-                     opacity: 0.9
-                  }}
-                  w="90%"
-                  h="52px"
-                  fontSize="xl"
-                  fontWeight="bold"
-               >
-                  Devittear
-               </Button>
+               <DevitearBtn />
             </Flex>
             <MiniProfile />
          </Flex>

@@ -23,8 +23,14 @@ const MiniProfile = () => {
             <Flex
                rounded="full"
                cursor="pointer"
-               justify="space-between"
                align="center"
+               transitionDuration="0.2s"
+               justify={{
+                  sm: 'center',
+                  md: 'center',
+                  lg: 'center',
+                  xl: 'flex-start'
+               }}
                my="12px"
                p="12px"
                _hover={{
@@ -37,11 +43,23 @@ const MiniProfile = () => {
                   src={userData.image}
                   name={userData.name}
                />
-               <Box lineHeight="21px" mx="12px" overflow="hidden">
-                  <Text isTruncated>{userData.name}</Text>
-                  <Text>{'@' + userData.name.replace(' ', '_')}</Text>
+               <Box
+                  w="full"
+                  display={{
+                     sm: 'none',
+                     md: 'none',
+                     lg: 'none',
+                     xl: 'flex'
+                  }}
+                  justifyContent="space-between"
+                  alignItems="center"
+               >
+                  <Box lineHeight="21px" mx="12px" overflow="hidden">
+                     <Text isTruncated>{userData.name}</Text>
+                     <Text>{'@' + userData.name.replace(' ', '_')}</Text>
+                  </Box>
+                  <Icon fontSize="18px" as={BsThreeDots} />
                </Box>
-               <Icon fontSize="18px" as={BsThreeDots} />
             </Flex>
          </PopoverTrigger>
          <PopoverContent

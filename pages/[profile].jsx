@@ -13,7 +13,7 @@ const Profile = ({ user }) => {
     *    if (user === otroUsario)
     *    if (noExisteUsuario)
     */
-   console.log({ user })
+
    return (
       <>
          <Head>
