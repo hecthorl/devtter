@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { getSession } from 'next-auth/react'
-import Layout from 'components/Layout'
+import Layouts from 'components/Layouts'
 import LetterheadStatus from 'components/LetterheadStatus'
 import SingleDevit from 'components/SingleDevit'
 
@@ -11,10 +11,10 @@ const StatusPage = () => {
             <title>Status</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
-         <Layout>
+         <Layouts>
             <LetterheadStatus />
             <SingleDevit />
-         </Layout>
+         </Layouts>
       </>
    )
 }

@@ -6,7 +6,7 @@
 -  Base de datos para devits y usuarios
 -  Autentificación de usuarios con Github
 -  Páginas: inicio, home, status y profile
--  Enrutamiento superficial con NextJS
+-  Enrutamiento superficial con Wouter
 
 ### Lo que quiero que tengo
 

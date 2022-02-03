@@ -7,7 +7,7 @@ const Timeline = () => {
    const timeline = useTimeline()
 
    return (
-      <Flex direction="column" w="full">
+      <Flex minH="200vh" direction="column" w="full">
          <DevitInput />
          {timeline.length
             ? timeline.map(devit => <Devit key={devit.id} devit={devit} />)

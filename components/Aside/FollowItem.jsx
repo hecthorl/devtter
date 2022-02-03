@@ -1,4 +1,5 @@
-import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Box, Flex, Text } from '@chakra-ui/react'
+import FollowBtn from 'components/Buttons/FollowBtn'
 
 const FollowItem = () => {
    return (
@@ -13,9 +14,7 @@ const FollowItem = () => {
                <Text>ReactJS</Text>
                <Text>@ReactJS</Text>
             </Box>
-            <Button minW="77px" h="32px" rounded="full">
-               Seguir
-            </Button>
+            <FollowBtn />
          </Flex>
       </Flex>
    )
