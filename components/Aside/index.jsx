@@ -13,13 +13,24 @@ import { BiSearch } from 'react-icons/bi'
 
 const Aside = () => {
    return (
-      <Flex
+      <Box
+         as="aside"
+         display={{
+            base: 'none',
+            md: 'flex'
+         }}
          top="-298px"
          pos="sticky"
-         direction="column"
-         maxW="350px"
+         flexDirection="column"
+         maxW={{
+            base: '290px',
+            lg: '350px'
+         }}
          w="full"
-         ml="30px"
+         ml={{
+            base: '20px',
+            md: '30px'
+         }}
          pt="4px"
       >
          <Flex
@@ -27,7 +38,10 @@ const Aside = () => {
             top={0}
             bg="#15202b"
             pos="fixed"
-            maxW="350px"
+            maxW={{
+               base: '290px',
+               lg: '350px'
+            }}
             w="full"
             h="53px"
             align="center"
@@ -103,7 +117,7 @@ const Aside = () => {
          >
             © 2022 Devtter, Inc. xD
          </Text>
-      </Flex>
+      </Box>
    )
 }
 

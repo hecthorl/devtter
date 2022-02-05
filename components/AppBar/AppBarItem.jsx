@@ -1,19 +1,15 @@
 import Link from 'next/link'
 import { Flex, Icon, Link as LinkChacra, Text } from '@chakra-ui/react'
 import useUserAuth from 'hooks/useAuthUser'
-import useWindowSize from 'hooks/useWindowSize'
 
 const AppBarItem = ({ icon, title, href }) => {
    const { userData } = useUserAuth()
-   const { width } = useWindowSize()
    const justProfile = title === 'Perfil' ? `/${userData.nickname}` : href
    return (
       <Link href={justProfile} passHref>
          <LinkChacra
             w={{
-               sm: 'fit-content',
-               md: 'fit-content',
-               lg: 'fit-content',
+               base: 'fit-content',
                xl: 'full'
             }}
             rounded="full"
@@ -34,11 +30,18 @@ const AppBarItem = ({ icon, title, href }) => {
                }}
             >
                <Icon as={icon} />
-               {width > 1282 && (
-                  <Text ml="20px" mr="16px">
-                     {title}
-                  </Text>
-               )}
+               <Text
+                  display={{
+                     base: 'none',
+                     xl: 'block'
+                  }}
+                  ml="20px"
+                  mr="16px"
+               >
+                  {title}
+               </Text>
+               {/* {width > 1282 && (
+               )} */}
             </Flex>
          </LinkChacra>
       </Link>

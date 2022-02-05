@@ -35,7 +35,7 @@ const Devit = ({ devit }) => {
          }}
       >
          <Image mr="12px" boxSize="48px" rounded="full" src={avatar} />
-         <Flex direction="column" w="full" fontSize="16px">
+         <Flex minW={0} direction="column" w="full" fontSize="16px">
             <DevitHeading username={username} createdAt={createdAt} />
             <Box as="p">{content}</Box>
             <Flex>

@@ -6,29 +6,35 @@ const DevitHeading = ({ username, createdAt }) => {
    const timeAgo = useTimeAgo(createdAt)
    return (
       <Flex justify="space-between" align="center">
-         <Flex gap={1} textColor="rgb(136, 153, 166)">
+         <Flex minW={0} gap={1} textColor="rgb(136, 153, 166)">
             <Box
-               _hover={{
-                  textDecoration: 'underline'
-               }}
-               textColor="white"
-               fontWeight="bold"
+               textOverflow="ellipsis"
+               flexShrink={1}
+               overflow="hidden"
+               whiteSpace="nowrap"
             >
-               {username}
+               <Box
+                  as="span"
+                  _hover={{
+                     textDecoration: 'underline'
+                  }}
+                  textColor="white"
+                  fontWeight="bold"
+               >
+                  {username}
+               </Box>
+               <Box ml={1} as="span">
+                  {'@' + username.replaceAll(' ', '_')}
+               </Box>
             </Box>
-            <Box>{'@' + username.replaceAll(' ', '_')}</Box>
-            <Box>·</Box>
+            <Box flexShrink={0}>·</Box>
             <Tooltip
                gutter={0}
                openDelay={600}
                label={timeAgo}
                aria-label="A tooltip"
             >
-               <Box
-                  _hover={{
-                     textDecoration: 'underline'
-                  }}
-               >
+               <Box whiteSpace="nowrap" flexShrink={0} as="time">
                   {timeAgo}
                </Box>
             </Tooltip>

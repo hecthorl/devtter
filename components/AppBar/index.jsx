@@ -4,86 +4,86 @@ import AppBarItem from './AppBarItem'
 import BrandIcon from 'components/DevitIcons/BrandIcon'
 import MiniProfile from 'components/MiniProfile'
 import DevitearBtn from 'components/Buttons/DevitearBtn'
+import AppBarMobile from 'components/AppBarMobile'
+// import useWindowSize from 'hooks/useWindowSize'
 
 const AppBar = () => {
+   // const { width } = useWindowSize()
+   // console.log(width)
    return (
-      <Flex
-         as="header"
-         direction="column"
-         maxW={{
-            sm: '88px',
-            md: '88px',
-            lg: '88px',
-            xl: '275px'
-         }}
-         w="full"
-         h={`${window.innerHeight}px`}
-         textColor="white"
-         mx="12px"
-      >
+      <>
+         <AppBarMobile />
          <Flex
-            justify="space-between"
+            display={['none', 'flex']}
+            as="header"
             direction="column"
-            position="fixed"
-            align={{
-               sm: 'center',
-               md: 'center',
-               lg: 'center',
-               xl: 'unset'
-            }}
-            top={0}
             maxW={{
-               sm: '88px',
-               md: '88px',
-               lg: '88px',
+               base: '88px',
                xl: '275px'
             }}
             w="full"
-            h="full"
+            h={`${window.innerHeight}px`}
+            textColor="white"
+            mx={{
+               base: '0',
+               xl: '12px'
+            }}
          >
             <Flex
-               px="12px"
-               w="inherit"
+               justify="space-between"
                direction="column"
+               position="fixed"
                align={{
-                  sm: 'center',
-                  md: 'center',
-                  lg: 'center',
-                  xl: 'flex-start'
+                  base: 'center',
+                  xl: 'unset'
                }}
+               top={0}
+               maxW="inherit"
+               w="full"
+               h="full"
             >
-               <Box
-                  my="2px"
-                  rounded="full"
-                  pos="relative"
-                  w="50px"
-                  h="50px"
-                  bg="inherit"
-                  cursor="pointer"
-                  _hover={{
-                     bg: 'rgba(29 155 240 / 10%)'
+               <Flex
+                  px="12px"
+                  w="inherit"
+                  direction="column"
+                  align={{
+                     base: 'center',
+                     xl: 'flex-start'
                   }}
                >
-                  <BrandIcon
-                     pos="absolute"
-                     top="10px"
-                     left="7px"
-                     fontSize="3xl"
-                  />
-               </Box>
-               {ICONS.map(({ href, icon, title }) => (
-                  <AppBarItem
-                     key={title}
-                     href={href}
-                     icon={icon}
-                     title={title}
-                  />
-               ))}
-               <DevitearBtn />
+                  <Box
+                     my="2px"
+                     rounded="full"
+                     pos="relative"
+                     w="50px"
+                     h="50px"
+                     bg="inherit"
+                     cursor="pointer"
+                     _hover={{
+                        bg: 'rgba(29 155 240 / 10%)'
+                     }}
+                  >
+                     <BrandIcon
+                        pos="absolute"
+                        top="10px"
+                        left="7px"
+                        fontSize="3xl"
+                     />
+                  </Box>
+                  {ICONS.map(({ href, icon, title }) => (
+                     <AppBarItem
+                        key={title}
+                        href={href}
+                        icon={icon}
+                        title={title}
+                     />
+                  ))}
+                  <DevitearBtn />
+               </Flex>
+               <MiniProfile />
             </Flex>
-            <MiniProfile />
          </Flex>
-      </Flex>
+      </>
    )
 }
 

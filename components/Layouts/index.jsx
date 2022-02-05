@@ -13,7 +13,8 @@ const Layout = ({ children }) => {
          <VStack
             borderLeft="1px solid #38444d"
             borderRight="1px solid #38444d"
-            w="600px"
+            w="full"
+            maxW="600px"
          >
             {children}
          </VStack>

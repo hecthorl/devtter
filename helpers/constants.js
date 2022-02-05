@@ -35,10 +35,11 @@ export const UPLOADING_STATES = {
 // prettier-ignore
 export const WORDS_ARR = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+// https://chakra-ui.com/docs/features/responsive-styles#customizing-breakpoints
 export const breackPoints = {
    sm: '500px',
    md: '1004px',
    lg: '1094px',
-   xl: '1282px'
-   // '2xl': '1282px'
+   xl: '1282px',
+   '2xl': '1536px'
 }

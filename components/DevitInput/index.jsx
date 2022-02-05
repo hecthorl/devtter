@@ -7,7 +7,8 @@ import DevitSubmitBtn from './DevitSubmitBtn'
 const DevitInput = () => {
    const { userData } = useUserAuth()
    return (
-      <Flex
+      <Box
+         display={['none', 'flex']}
          w="full"
          px="16px"
          pb="12px"
@@ -36,7 +37,7 @@ const DevitInput = () => {
             </Flex>
          </VStack>
          <DevitLoading />
-      </Flex>
+      </Box>
    )
 }
 
