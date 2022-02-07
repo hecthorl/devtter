@@ -1,10 +1,11 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Flex, Link as ChakraLink } from '@chakra-ui/react'
 import { ICONS } from 'helpers/iconsArray'
 import AppBarItem from './AppBarItem'
 import BrandIcon from 'components/DevitIcons/BrandIcon'
 import MiniProfile from 'components/MiniProfile'
 import DevitearBtn from 'components/Buttons/DevitearBtn'
 import AppBarMobile from 'components/AppBarMobile'
+import Link from 'next/link'
 // import useWindowSize from 'hooks/useWindowSize'
 
 const AppBar = () => {
@@ -51,25 +52,27 @@ const AppBar = () => {
                      xl: 'flex-start'
                   }}
                >
-                  <Box
-                     my="2px"
-                     rounded="full"
-                     pos="relative"
-                     w="50px"
-                     h="50px"
-                     bg="inherit"
-                     cursor="pointer"
-                     _hover={{
-                        bg: 'rgba(29 155 240 / 10%)'
-                     }}
-                  >
-                     <BrandIcon
-                        pos="absolute"
-                        top="10px"
-                        left="7px"
-                        fontSize="3xl"
-                     />
-                  </Box>
+                  <Link href="/home" passHref>
+                     <ChakraLink
+                        my="2px"
+                        rounded="full"
+                        pos="relative"
+                        w="50px"
+                        h="50px"
+                        bg="inherit"
+                        cursor="pointer"
+                        _hover={{
+                           bg: 'rgba(29 155 240 / 10%)'
+                        }}
+                     >
+                        <BrandIcon
+                           pos="absolute"
+                           top="10px"
+                           left="7px"
+                           fontSize="3xl"
+                        />
+                     </ChakraLink>
+                  </Link>
                   {ICONS.map(({ href, icon, title }) => (
                      <AppBarItem
                         key={title}

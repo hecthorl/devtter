@@ -1,11 +1,20 @@
-import { Avatar, Box, Flex, HStack, VStack } from '@chakra-ui/react'
+import {
+   Avatar,
+   Box,
+   Flex,
+   HStack,
+   VStack,
+   Link as ChakraLink
+} from '@chakra-ui/react'
 import useUserAuth from 'hooks/useAuthUser'
+import Link from 'next/link'
 import DevitInputTextarea from './DevitInputTextarea'
 import DevitLoading from './DevitLoading'
 import DevitSubmitBtn from './DevitSubmitBtn'
 
 const DevitInput = () => {
    const { userData } = useUserAuth()
+
    return (
       <Box
          display={['none', 'flex']}
@@ -16,7 +25,11 @@ const DevitInput = () => {
          borderBottomWidth="1px"
          pos="relative"
       >
-         <Avatar mr="12px" src={userData.image} name={userData.name} />
+         <Link passHref href={`/${userData.nickname}`}>
+            <ChakraLink onClick={e => e.stopPropagation()}>
+               <Avatar mr="12px" src={userData.image} name={userData.name} />
+            </ChakraLink>
+         </Link>
          <VStack width="full" spacing={0}>
             <DevitInputTextarea />
             <Box

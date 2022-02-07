@@ -21,7 +21,7 @@ const DevitLoading = () => {
          pos="absolute"
          backdropFilter="blur(10px)"
       >
-         <Spinner color="red.500" />
+         <Spinner color="leela.500" />
       </Flex>
    )
 }

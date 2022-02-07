@@ -3,12 +3,19 @@ import useVisorImg from 'hooks/useVisorImg'
 import VisorImg from './VisorImg'
 
 const DevitMedia = ({ img, id, likesCount }) => {
-   const { visor, handleState } = useVisorImg(img.img_url)
+   const { visor, handleState } = useVisorImg()
    const dominantColor = img.dominant_color
 
    if (img === 'No image') return null
    return (
-      <Box rounded="2xl" border="1px solid #38444d" overflow="hidden">
+      <Box
+         onClick={e => {
+            e.stopPropagation()
+         }}
+         rounded="2xl"
+         border="1px solid #38444d"
+         overflow="hidden"
+      >
          <Image
             cursor="pointer"
             objectFit="cover"

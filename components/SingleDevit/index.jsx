@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Avatar, Box, Flex, Icon, Text } from '@chakra-ui/react'
+import {
+   Avatar,
+   Box,
+   Flex,
+   Icon,
+   Text,
+   Spinner,
+   Center
+} from '@chakra-ui/react'
 import DevitMedia from 'components/DevitMedia'
 import DevitReactions from 'components/DevitReactions'
 import getDevit from 'services/getDevit'
@@ -15,7 +23,14 @@ const SigleDevit = () => {
       const data = await getDevit(query.devitId)
       setDevit(data)
    }, [query.devitId])
-   if (!devit) return <Box w="full" h={10} bg="red"></Box>
+   if (!devit) {
+      return (
+         <Center w="full">
+            <Spinner color="leela.500" />
+         </Center>
+      )
+   }
+
    return (
       <Flex
          w="full"
