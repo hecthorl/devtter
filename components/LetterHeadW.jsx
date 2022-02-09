@@ -1,11 +1,12 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex, Icon } from '@chakra-ui/react'
+import { FiArrowLeft } from 'react-icons/fi'
 
-const LetterHeadW = () => {
+const LetterHeadW = ({ children }) => {
    return (
       <Flex
          zIndex={10}
          bg="rgb(21 32 43 / 75%)"
-         backdropFilter="blur(10px)"
+         backdropFilter="blur(12px)"
          cursor="pointer"
          align="center"
          h="53px"
@@ -17,7 +18,13 @@ const LetterHeadW = () => {
          fontSize="xl"
          borderLeft="1px solid #38444d"
          borderRight="1px solid #38444d"
-      ></Flex>
+      >
+         <Box minW="56px" minH="32">
+            <Icon as={FiArrowLeft} />
+         </Box>
+         <Box></Box>
+         <Box></Box>
+      </Flex>
    )
 }
 

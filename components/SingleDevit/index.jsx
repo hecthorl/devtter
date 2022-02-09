@@ -1,35 +1,18 @@
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import {
-   Avatar,
-   Box,
-   Flex,
-   Icon,
-   Text,
-   Spinner,
-   Center
-} from '@chakra-ui/react'
+import useSWR from 'swr'
+import { Avatar, Box, Flex, Icon, Text } from '@chakra-ui/react'
+import { BsThreeDots } from 'react-icons/bs'
 import DevitMedia from 'components/DevitMedia'
 import DevitReactions from 'components/DevitReactions'
 import getDevit from 'services/getDevit'
+import Loading from './Loading'
+import NotDevitFound from './NotDevitFound'
 
 const SigleDevit = () => {
-   const [devit, setDevit] = useState(null)
    const { query } = useRouter()
-
-   useEffect(async () => {
-      if (!query.devitId) return
-      // Podría intentar usar SWR
-      const data = await getDevit(query.devitId)
-      setDevit(data)
-   }, [query.devitId])
-   if (!devit) {
-      return (
-         <Center w="full">
-            <Spinner color="leela.500" />
-         </Center>
-      )
-   }
+   const { data: devit, error } = useSWR(query.devitId, getDevit)
+   if (error) return <NotDevitFound />
+   if (!devit) return <Loading />
 
    return (
       <Flex
@@ -51,7 +34,9 @@ const SigleDevit = () => {
                   fontSize="15px"
                >
                   <Text fontWeight="bold">{devit.username}</Text>
-                  <Text opacity={0.5}>{devit.username}</Text>
+                  <Text opacity={0.5}>
+                     {'@' + devit.username.replaceAll(' ', '_')}
+                  </Text>
                </Flex>
             </Flex>
             <Flex
@@ -65,7 +50,7 @@ const SigleDevit = () => {
                w="34.75px"
                h="34.75px"
             >
-               <Icon />
+               <Icon as={BsThreeDots} />
             </Flex>
          </Flex>
          <Text my={2}>{devit.content}</Text>

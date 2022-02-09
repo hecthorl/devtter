@@ -15,7 +15,16 @@ export default ProfileNav
 
 function Acc({ title }) {
    return (
-      <Flex as="button" direction="column" align="center" flex={1}>
+      <Flex
+         transition="background-color 0.2s ease"
+         _hover={{
+            bg: 'rgba(255 255 255 / 10%)'
+         }}
+         as="button"
+         direction="column"
+         align="center"
+         flex={1}
+      >
          <Box textAlign="center" w="fit-content">
             <Text textColor="white" py="16px">
                {title}
