@@ -7,13 +7,6 @@ import ProfileLayout from 'components/Layouts/ProfileLayout'
 import NotProfileUserFound from 'components/NotProfileFound'
 
 const Profile = ({ user }) => {
-   /**
-    * No usar destructuring para el user, en vez usar condicional:
-    *    if (user === currentUserSession)
-    *    if (user === otroUsario)
-    *    if (noExisteUsuario)
-    */
-
    return (
       <>
          <Head>
@@ -32,8 +25,7 @@ export default Profile
 
 export async function getServerSideProps(context) {
    const session = await getSession(context)
-   const nickname = context.query.profile
-   const user = await findUser(nickname)
+   const user = await findUser(context.query.profile)
 
    return {
       props: { session, user }

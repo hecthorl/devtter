@@ -8,7 +8,7 @@ const ProfileLayout = ({ user }) => {
       user.preferences.img_banner ||
       'https://pbs.twimg.com/profile_banners/333176262/1628715538/1500x500'
    return (
-      <Box textColor="#8899a6" w="full">
+      <Box textColor="#8899a6" w="full" mt="0 !important">
          <Flex direction="column">
             <Box
                // Por alguna razón, no funciona el backgroundSize="cover"
