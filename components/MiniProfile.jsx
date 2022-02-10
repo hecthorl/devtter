@@ -56,7 +56,7 @@ const MiniProfile = () => {
                >
                   <Box lineHeight="21px" mx="12px" overflow="hidden">
                      <Text isTruncated>{userData.name}</Text>
-                     <Text>{'@' + userData.name.replace(' ', '_')}</Text>
+                     <Text opacity={0.5}>{'@' + userData.nickname}</Text>
                   </Box>
                   <Icon fontSize="18px" as={BsThreeDots} />
                </Box>

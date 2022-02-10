@@ -34,9 +34,7 @@ const SigleDevit = () => {
                   fontSize="15px"
                >
                   <Text fontWeight="bold">{devit.username}</Text>
-                  <Text opacity={0.5}>
-                     {'@' + devit.username.replaceAll(' ', '_')}
-                  </Text>
+                  <Text opacity={0.5}>{devit.nickname}</Text>
                </Flex>
             </Flex>
             <Flex

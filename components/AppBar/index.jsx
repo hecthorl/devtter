@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Flex, Link as ChakraLink } from '@chakra-ui/react'
 import { ICONS } from 'helpers/iconsArray'
 import AppBarItem from './AppBarItem'
@@ -5,12 +6,8 @@ import BrandIcon from 'components/DevitIcons/BrandIcon'
 import MiniProfile from 'components/MiniProfile'
 import DevitearBtn from 'components/Buttons/DevitearBtn'
 import AppBarMobile from 'components/AppBarMobile'
-import Link from 'next/link'
-// import useWindowSize from 'hooks/useWindowSize'
 
 const AppBar = () => {
-   // const { width } = useWindowSize()
-   // console.log(width)
    return (
       <>
          <AppBarMobile />
