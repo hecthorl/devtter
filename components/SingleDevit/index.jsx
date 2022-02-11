@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import { Avatar, Box, Flex, Icon, Text } from '@chakra-ui/react'
-import { BsThreeDots } from 'react-icons/bs'
+import { Avatar, Box, Flex, Text } from '@chakra-ui/react'
 import DevitMedia from 'components/DevitMedia'
 import DevitReactions from 'components/DevitReactions'
 import getDevit from 'services/getDevit'
 import Loading from './Loading'
 import NotDevitFound from './NotDevitFound'
+import OptionsBtn from 'components/Buttons/OptionsBtn'
 
 const SigleDevit = () => {
    const { query } = useRouter()
@@ -26,30 +26,22 @@ const SigleDevit = () => {
       >
          <Flex align="center" justify="space-between" w="full">
             <Flex>
-               <Avatar mr="12px" src={devit.avatar} name={devit.username} />
+               <Avatar
+                  mr="12px"
+                  src={devit.userInfo.avatar}
+                  name={devit.userInfo.name}
+               />
                <Flex
                   direction="column"
                   justify="center"
                   lineHeight={1.3}
                   fontSize="15px"
                >
-                  <Text fontWeight="bold">{devit.username}</Text>
-                  <Text opacity={0.5}>{devit.nickname}</Text>
+                  <Text fontWeight="bold">{devit.userInfo.name}</Text>
+                  <Text opacity={0.5}>{devit.userInfo.nickname}</Text>
                </Flex>
             </Flex>
-            <Flex
-               as="button"
-               align="center"
-               justify="center"
-               _hover={{
-                  bg: 'rgba(255 255 255 / 10%)'
-               }}
-               rounded="full"
-               w="34.75px"
-               h="34.75px"
-            >
-               <Icon as={BsThreeDots} />
-            </Flex>
+            <OptionsBtn />
          </Flex>
          <Text my={2}>{devit.content}</Text>
          <DevitMedia img={devit.img} />

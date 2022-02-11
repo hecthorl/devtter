@@ -1,4 +1,5 @@
-import { Flex, Link, Text, useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
+import Toast from 'components/Toast'
 import { UPLOADING_STATES } from 'helpers/constants'
 import addDevit from 'services/addDevit'
 import upLoadImage from 'services/upLoadImage'
@@ -12,33 +13,22 @@ const useSendDevit = () => {
       position: 'bottom',
       isClosable: false,
       duration: 6e3,
-      render: () => (
-         <Flex
-            width="fit-content"
-            p="12px 20px"
-            columnGap="13px"
-            textColor="white"
-            bg="leela.500"
-            rounded="md"
-         >
-            <Text>Tu devit se envió.</Text>
-            <Link fontWeight="bold" href="/home">
-               Ver
-            </Link>
-         </Flex>
-      )
+      render: () => <Toast />
    })
    const file = useZtndStore(state => state.file)
    const devitStates = useZtndStore(state => state.devitStates)
    const textareaMsg = useZtndStore(state => state.textareaMsg)
    const setDevitStates = useZtndStore(state => state.setDevitStates)
    const setTextareaMsg = useZtndStore(state => state.setTextareaMsg)
+   const setFile = useZtndStore(state => state.setFile)
 
    const devit = {
-      avatar: userData.image,
+      userInfo: {
+         avatar: userData.image,
+         name: userData.name,
+         nickname: `@${userData.nickname}`
+      },
       content: textareaMsg.trim(),
-      userId: userData.email,
-      username: userData.name,
       createdAt: new Date().getTime(),
       likesCount: [],
       sharedCounts: [],
@@ -95,8 +85,10 @@ const useSendDevit = () => {
             if (!popUp) {
                setTextareaMsg('')
                setDevitStates(DONE)
+               setFile(null)
                return
             }
+            setFile(null)
             toast()
             // push('/home')
             setTextareaMsg('')

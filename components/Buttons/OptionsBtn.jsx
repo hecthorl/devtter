@@ -1,11 +1,37 @@
-import { Icon } from '@chakra-ui/react'
+import { Flex, Icon, Tooltip } from '@chakra-ui/react'
 import { BsThreeDots } from 'react-icons/bs'
-import BtnWrapper from './BtnWrapper'
+
 const OptionsBtn = () => {
    return (
-      <BtnWrapper>
-         <Icon fontSize="xl" as={BsThreeDots} />
-      </BtnWrapper>
+      <Tooltip
+         gutter={0}
+         openDelay={600}
+         label="Más opciones"
+         aria-label="Más opciones"
+         fontSize="12px"
+      >
+         <Flex
+            role="group"
+            as="button"
+            align="center"
+            justify="center"
+            fontSize="lg"
+            rounded="full"
+            bg="rgba(29 155 240 / 0%)"
+            w="34.75px"
+            h="34.75px"
+            _hover={{
+               bg: 'rgba(29 155 240 / 10%)'
+            }}
+         >
+            <Icon
+               as={BsThreeDots}
+               _groupHover={{
+                  textColor: 'rgba(29 155 240 / 100%)'
+               }}
+            />
+         </Flex>
+      </Tooltip>
    )
 }
 

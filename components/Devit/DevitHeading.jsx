@@ -1,8 +1,8 @@
-import { Box, Flex, Icon, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, Tooltip } from '@chakra-ui/react'
+import OptionsBtn from 'components/Buttons/OptionsBtn'
 import useTimeAgo from 'hooks/useTimeAgo'
-import { BsThreeDots } from 'react-icons/bs'
 
-const DevitHeading = ({ username, createdAt }) => {
+const DevitHeading = ({ username, createdAt, nickname }) => {
    const timeAgo = useTimeAgo(createdAt)
    return (
       <Flex justify="space-between" align="center">
@@ -24,7 +24,7 @@ const DevitHeading = ({ username, createdAt }) => {
                   {username}
                </Box>
                <Box ml={1} as="span">
-                  {'@' + username.replaceAll(' ', '_')}
+                  {nickname}
                </Box>
             </Box>
             <Box flexShrink={0}>·</Box>
@@ -32,34 +32,15 @@ const DevitHeading = ({ username, createdAt }) => {
                gutter={0}
                openDelay={600}
                label={timeAgo}
-               aria-label="A tooltip"
+               aria-label={timeAgo}
+               fontSize="12px"
             >
                <Box whiteSpace="nowrap" flexShrink={0} as="time">
                   {timeAgo}
                </Box>
             </Tooltip>
          </Flex>
-         <Flex
-            role="group"
-            as="button"
-            align="center"
-            justify="center"
-            fontSize="lg"
-            rounded="full"
-            bg="rgba(29 155 240 / 0%)"
-            w="34.75px"
-            h="34.75px"
-            _hover={{
-               bg: 'rgba(29 155 240 / 10%)'
-            }}
-         >
-            <Icon
-               as={BsThreeDots}
-               _groupHover={{
-                  textColor: 'rgba(29 155 240 / 100%)'
-               }}
-            />
-         </Flex>
+         <OptionsBtn />
       </Flex>
    )
 }

@@ -20,7 +20,7 @@ export default NextAuth({
          const isUser = await findUser(profile.email)
          if (isUser) return true
          const newUser = userSchema(profile)
-         // TODDO: Manejar Errores
+         // TODO: Manejar Errores
          await addUser(newUser)
          return true
       },
