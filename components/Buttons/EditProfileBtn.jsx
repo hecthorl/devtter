@@ -1,11 +1,27 @@
-import { Text } from '@chakra-ui/react'
-import BtnWrapper from './BtnWrapper'
+import { Button, Text } from '@chakra-ui/react'
+import useNearScreen from 'hooks/useNearScreen'
+import { useRef } from 'react'
 
 const EditProfileBtn = () => {
+   const btnRef = useRef(null)
+   const is = useNearScreen(btnRef)
+   console.log(is)
    return (
-      <BtnWrapper>
-         <Text margin="0 16px">Editar perfil</Text>
-      </BtnWrapper>
+      <Button
+         ref={btnRef}
+         minW="36px"
+         maxH="36px"
+         rounded="full"
+         border="1px solid #536471"
+         transitionDuration="0.2s"
+         bg="transparent"
+         textColor="white"
+         _hover={{
+            bg: 'rgba(239 243 244 / 10%)'
+         }}
+      >
+         <Text>Editar perfil</Text>
+      </Button>
    )
 }
 

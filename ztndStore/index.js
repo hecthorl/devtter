@@ -5,18 +5,22 @@ const useZtndStore = create(set => ({
    // Drag_N_Drop_Image Management
    dragStates: DRAG_IMAGE_STATES.NONE,
    setDragStates: newState => set(() => ({ dragStates: newState })),
-   // ImgFile_Management
 
+   // ImgFile_Management
    file: null,
    setFile: newState => set(() => ({ file: newState })),
-   // Textarea_Management
 
+   // Textarea_Management
    textareaMsg: '',
    setTextareaMsg: newState => set(() => ({ textareaMsg: newState })),
-   // Devit_Management
 
+   // Devit_Management
    devitStates: UPLOADING_STATES.NONE,
-   setDevitStates: newState => set(() => ({ devitStates: newState }))
+   setDevitStates: newState => set(() => ({ devitStates: newState })),
+
+   // Is intersecting
+   show: false,
+   setShow: newState => set(() => ({ show: newState }))
 }))
 
 export default useZtndStore

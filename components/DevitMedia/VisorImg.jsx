@@ -79,6 +79,7 @@ const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
             </Flex>
             <Center flex={1}>
                <Image
+                  maxH="calc(100vh - 48px)"
                   border="1px solid #38444d"
                   onClick={e => e.stopPropagation()}
                   src={img}

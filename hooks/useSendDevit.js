@@ -63,17 +63,8 @@ const useSendDevit = () => {
             })
          return // creo que este return esta por las puras 🧐
       }
-      /**
-       * Me aseguro de obtener la url de la imagen que se va a adjuntar
-       * en el devit. Para luego enviar esa url en la promesa, una vez
-       * sea resuelta.
-       */
       const imgInfo = await upLoadImage(file).catch(console.error)
 
-      /**
-       * Luego, en el then con la url de la imagen ya disponible,
-       * la añado al objeto para crear el devit y terminar de enviarlo
-       */
       addDevit({
          ...devit,
          img: {
