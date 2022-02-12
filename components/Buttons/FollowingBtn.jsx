@@ -3,7 +3,7 @@ import useZtndStore from 'ztndStore'
 
 const FollowingBtn = () => {
    const show = useZtndStore(state => state.show)
-   console.log({ show })
+
    if (show) return null
    return (
       <Button

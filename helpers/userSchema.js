@@ -2,7 +2,7 @@ import uuid from './uuid'
 
 const userSchema = profile => ({
    uuid: uuid(),
-   nickname: profile.login,
+   nickname: '@' + profile.login,
    name: profile.name || profile.login,
    email: profile.email,
    img: profile.avatar_url,

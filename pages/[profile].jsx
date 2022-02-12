@@ -1,20 +1,48 @@
 import Head from 'next/head'
 import { getSession } from 'next-auth/react'
+import { Box, Flex, Text } from '@chakra-ui/react'
+import useUserAuth from 'hooks/useAuthUser'
+import findUser from 'services/findUser'
 import Layouts from 'components/Layouts'
 import Letterhead from 'components/Letterhead'
-import findUser from 'services/findUser'
 import ProfileLayout from 'components/Layouts/ProfileLayout'
 import NotProfileUserFound from 'components/NotProfileFound'
+import GoBackBtn from 'components/Buttons/GoBackBtn'
+import FollowBtn from 'components/Buttons/FollowBtn'
 
 const Profile = ({ user }) => {
+   const { userData } = useUserAuth()
+   const title = user ? `${user?.name} (@${user?.nickname})` : 'Perfil'
    return (
       <>
          <Head>
-            <title>Profile Page</title>
+            <title>{`${title} / Devtter`}</title>
             <link rel="icon" href="/faviconLogo.ico" />
          </Head>
          <Layouts>
-            <Letterhead />
+            <Letterhead>
+               <Box minW="56px" minH="32px">
+                  <GoBackBtn />
+               </Box>
+               <Flex
+                  flex={1}
+                  h="full"
+                  direction="column"
+                  justify="center"
+                  align="start"
+                  lineHeight="18px"
+               >
+                  <Text fontSize="xl" fontWeight="bold" color="white">
+                     {user?.name || 'Perfil'}
+                  </Text>
+                  <Text fontSize="sm" opacity={0.5} color="white">
+                     {user && 'Total de Devits :v'}
+                  </Text>
+               </Flex>
+               <Box minW="56px" minH="32px">
+                  {userData.nickname !== user?.nickname && <FollowBtn />}
+               </Box>
+            </Letterhead>
             {user ? <ProfileLayout user={user} /> : <NotProfileUserFound />}
          </Layouts>
       </>

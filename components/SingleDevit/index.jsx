@@ -11,9 +11,9 @@ import OptionsBtn from 'components/Buttons/OptionsBtn'
 const SigleDevit = () => {
    const { query } = useRouter()
    const { data: devit, error } = useSWR(query.devitId, getDevit)
+
    if (error) return <NotDevitFound />
    if (!devit) return <Loading />
-
    return (
       <Flex
          w="full"

@@ -4,8 +4,8 @@ import { useRef } from 'react'
 
 const EditProfileBtn = () => {
    const btnRef = useRef(null)
-   const is = useNearScreen(btnRef)
-   console.log(is)
+   useNearScreen(btnRef)
+
    return (
       <Button
          ref={btnRef}

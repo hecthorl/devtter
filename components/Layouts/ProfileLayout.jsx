@@ -17,6 +17,7 @@ const ProfileLayout = ({ user }) => {
                bg={`#3d5466 url(${imgBanner}) center/cover no-repeat`}
             >
                <Image
+                  alt="Image"
                   opacity="0"
                   src="https://pbs.twimg.com/profile_banners/333176262/1628715538/1500x500"
                />
