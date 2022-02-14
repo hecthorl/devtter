@@ -8,7 +8,7 @@
 -  Páginas: inicio, home, status y profile
 -  Enrutamiento superficial con Wouter
 
-### Lo que quiero que tengo
+### Lo que quiero que tenga
 
 -  Responsive al 100%
 -  El botón like de Twitter
