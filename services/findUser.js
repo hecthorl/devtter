@@ -4,7 +4,7 @@ import { db } from './firebaseClient'
 /**
  * Buscar un usario en la DB
  * @param {String} field Recibe un email o un nickname
- * @returns {Promise<DocumentData> | null} De no encontrar un usario en Firestore, retorna undefined, sino un objeto
+ * @returns {Promise<DocumentData> | null} De no encontrar un usario en Firestore, retorna null, sino un objeto
  */
 const findUser = async field => {
    const collRef = collection(db, 'users')

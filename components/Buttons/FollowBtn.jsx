@@ -1,8 +1,8 @@
 import { Button } from '@chakra-ui/react'
 import FollowingBtn from './FollowingBtn'
 
-const FollowBtn = ({ isFollowIt }) => {
-   return isFollowIt ? (
+const FollowBtn = ({ isFollowIt }) =>
+   isFollowIt ? (
       <FollowingBtn />
    ) : (
       <Button
@@ -17,6 +17,5 @@ const FollowBtn = ({ isFollowIt }) => {
          Seguir
       </Button>
    )
-}
 
 export default FollowBtn

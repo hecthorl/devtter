@@ -1,8 +1,8 @@
 export const DATE_UNITS = [
-   ['year', 31557600],
-   ['month', 2629800],
-   ['week', 604800],
-   ['day', 86400],
+   ['year', 31_557_600],
+   ['month', 2_629_800],
+   ['week', 604_800],
+   ['day', 86_400],
    ['hour', 3600],
    ['minute', 60],
    ['second', 1]
