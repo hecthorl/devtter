@@ -1,6 +1,6 @@
-import NotLoggedUser from 'components/NotLoggedUser'
-import { getSession } from 'next-auth/react'
 import Head from 'next/head'
+import { getSession } from 'next-auth/react'
+import NotLoggedUser from 'components/NotLoggedUser'
 
 const Index = () => {
    return (

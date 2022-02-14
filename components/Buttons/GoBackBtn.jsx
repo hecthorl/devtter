@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router'
 import { Flex, Icon, Tooltip } from '@chakra-ui/react'
 import { FiArrowLeft } from 'react-icons/fi'
 
 const GoBackBtn = () => {
+   const { back } = useRouter()
    return (
       <Tooltip
          gutter={0}
@@ -11,6 +13,8 @@ const GoBackBtn = () => {
          aria-label="Atrás"
       >
          <Flex
+            onClick={() => back()}
+            as="button"
             bg="transparent"
             justify="center"
             align="center"

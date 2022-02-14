@@ -43,10 +43,12 @@ const SigleDevit = () => {
             </Flex>
             <OptionsBtn />
          </Flex>
-         <Text my={2}>{devit.content}</Text>
+         <Text fontSize="23px" my={2}>
+            {devit.content}
+         </Text>
          <DevitMedia img={devit.img} />
          <Box py="16px">
-            <Text as="time">
+            <Text opacity={0.5} as="time">
                {new Intl.DateTimeFormat('es-ES', {
                   hour12: true,
                   day: 'numeric',
@@ -55,7 +57,7 @@ const SigleDevit = () => {
                   hour: 'numeric'
                }).format(devit.createdAt)}
             </Text>
-            <Text as="span" ml={2}>
+            <Text opacity={0.5} as="span" ml={2}>
                Twitter for web
             </Text>
          </Box>
