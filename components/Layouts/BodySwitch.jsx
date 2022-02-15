@@ -46,5 +46,5 @@ export default BodySwitch
  * Porque uso wouter en vez del useRouter de NextJS?
  * - Es mucho más rápido
  * Para que funcione solo debe renderizarse en el Client-side
- * por ello en pages/home.js se usa dynamic para mostrar este componente.
+ * por ello en pages/home.jsx se usa dynamic para mostrar este componente.
  */

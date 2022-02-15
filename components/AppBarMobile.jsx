@@ -21,10 +21,18 @@ const AppBarMobile = () => {
             pos="relative"
             textColor="white"
          >
-            <AppBarItem title="Home" icon={HomeIcon} href="/home" />
-            <AppBarItem title="Xd" icon={ExploreIcon} href="/home" />
-            <AppBarItem title="Xd" icon={NotificationsIcon} href="/home" />
-            <AppBarItem title="Xd" icon={MessagesIcon} href="/home" />
+            <AppBarItem title="Inicio" icon={HomeIcon} href="/home" />
+            <AppBarItem title="Explorar" icon={ExploreIcon} href="/home" />
+            <AppBarItem
+               title="Notificaiones"
+               icon={NotificationsIcon}
+               href="/home"
+            />
+            <AppBarItem
+               title="Mensajes directos"
+               icon={MessagesIcon}
+               href="/home"
+            />
             <Btn />
          </Flex>
       </Box>

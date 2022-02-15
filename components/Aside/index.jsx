@@ -18,6 +18,7 @@ const Aside = () => (
          base: 'none',
          md: 'flex'
       }}
+      h="100vh"
       top="-298px"
       pos="sticky"
       flexDirection="column"
