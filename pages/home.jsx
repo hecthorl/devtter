@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
 import Layouts from 'components/Layouts'
@@ -8,15 +7,9 @@ const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
 
 const Home = () => {
    return (
-      <>
-         <Head>
-            <title>Inicio / Devtter</title>
-            <link rel="icon" href="/faviconLogo.ico" />
-         </Head>
-         <Layouts>
-            <BodySwitch />
-         </Layouts>
-      </>
+      <Layouts>
+         <BodySwitch />
+      </Layouts>
    )
 }
 

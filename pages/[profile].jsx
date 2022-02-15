@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import { getSession } from 'next-auth/react'
 import { Box, Flex, Text } from '@chakra-ui/react'
+import SeoHead from 'components/SeoHead'
 import useUserAuth from 'hooks/useAuthUser'
 import findUser from 'services/findUser'
 import Layouts from 'components/Layouts'
@@ -15,10 +15,7 @@ const Profile = ({ user }) => {
    const title = user ? `${user?.name} (@${user?.nickname})` : 'Perfil'
    return (
       <>
-         <Head>
-            <title>{`${title} / Devtter`}</title>
-            <link rel="icon" href="/faviconLogo.ico" />
-         </Head>
+         <SeoHead title={`${title} / Devtter`} />
          <Layouts>
             <Letterhead>
                <Box minW="56px" minH="32px">

@@ -1,14 +1,10 @@
-import Head from 'next/head'
 import { getSession } from 'next-auth/react'
+import SeoHead from 'components/SeoHead'
 import NotLoggedUser from 'components/NotLoggedUser'
 
 const Index = () => (
    <>
-      <Head>
-         <title>Devtter</title>
-         <meta name="description" content="Un clon de Twitter" />
-         <link rel="icon" href="/faviconLogo.ico" />
-      </Head>
+      <SeoHead title="Devtter" />
       <NotLoggedUser />
    </>
 )

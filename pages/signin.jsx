@@ -1,15 +1,11 @@
-import Head from 'next/head'
+import SeoHead from 'components/SeoHead'
 import { getProviders, signIn, getSession } from 'next-auth/react'
 import { Button, CloseButton, Flex, Icon, Image, Text } from '@chakra-ui/react'
 import { GoMarkGithub } from 'react-icons/go'
 
 const SignIn = ({ providers }) => (
    <>
-      <Head>
-         <title>Devtter App / SignIn</title>
-         <meta name="description" content="Devtter, un twitter para devs" />
-         <link rel="icon" href="/faviconLogo.ico" />
-      </Head>
+      <SeoHead title="Devtter App / SignIn" />
       <Flex h="100vh" w="full" bg="#242d34" align="center" justify="center">
          <Flex
             w="600px"
