@@ -1,5 +1,10 @@
 import uuid from './uuid'
 
+/**
+ * Retorna el esquema único del usuario
+ * @param {object} profile Objeto usuario
+ * @returns {object}
+ */
 const userSchema = profile => ({
    uuid: uuid(),
    nickname: `@${profile.login}`,

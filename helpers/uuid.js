@@ -2,6 +2,10 @@ import randomNumInterval from './randomNumInterval'
 import shuffle from './shuffle'
 import { WORDS_ARR as letters } from './constants'
 
+/**
+ * Retorna un string único y aleatorio
+ * @returns {String} Un conjunto de letras y números mezclados
+ */
 const uuid = () => {
    const numResult = []
    const numLength = randomNumInterval(5, 9)

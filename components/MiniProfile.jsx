@@ -9,6 +9,7 @@ import {
    PopoverContent,
    PopoverTrigger,
    Text
+   // useBoolean
 } from '@chakra-ui/react'
 
 import useUserAuth from 'hooks/useAuthUser'
@@ -17,6 +18,7 @@ import { BsThreeDots } from 'react-icons/bs'
 
 const MiniProfile = () => {
    const { userData, signOut } = useUserAuth()
+   // const [flag ] = useBoolean()
    if (!userData) return null
    return (
       <Popover>
