@@ -17,6 +17,7 @@ import { BsThreeDots } from 'react-icons/bs'
 
 const MiniProfile = () => {
    const { userData, signOut } = useUserAuth()
+   if (!userData) return null
    return (
       <Popover>
          <PopoverTrigger>

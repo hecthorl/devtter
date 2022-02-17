@@ -12,10 +12,12 @@ import FollowBtn from 'components/Buttons/FollowBtn'
 
 const Profile = ({ user }) => {
    const { userData } = useUserAuth()
-   const title = user ? `${user?.name} (@${user?.nickname})` : 'Perfil'
+   const title = user
+      ? `${user.name} (@${user.nickname}) / Devtter`
+      : 'Perfil / Devtter'
    return (
       <>
-         <SeoHead title={`${title} / Devtter`} />
+         <SeoHead title={title} />
          <Layouts>
             <Letterhead>
                <Box minW="56px" minH="32px">
@@ -37,7 +39,7 @@ const Profile = ({ user }) => {
                   </Text>
                </Flex>
                <Box minW="56px" minH="32px">
-                  {userData.nickname !== user?.nickname && <FollowBtn />}
+                  {userData?.nickname !== user?.nickname && <FollowBtn />}
                </Box>
             </Letterhead>
             {user ? <ProfileLayout user={user} /> : <NotProfileUserFound />}
@@ -47,7 +49,9 @@ const Profile = ({ user }) => {
 }
 
 export default Profile
-
+/**
+ * @param {import('next').GetServerSidePropsContext} context
+ */
 export async function getServerSideProps(context) {
    const session = await getSession(context)
    const user = await findUser(context.query.profile)

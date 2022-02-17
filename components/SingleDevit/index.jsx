@@ -53,7 +53,11 @@ const SigleDevit = () => {
             </Text>
             <DevitMedia img={devit.img} />
             <Box py="16px">
-               <Text opacity={0.5} as="time">
+               <Text
+                  dateTime={new Date(devit.createdAt).toISOString()}
+                  opacity={0.5}
+                  as="time"
+               >
                   {new Intl.DateTimeFormat('es-ES', {
                      hour12: true,
                      day: 'numeric',

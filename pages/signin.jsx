@@ -83,8 +83,8 @@ export async function getServerSideProps(context) {
          permanent: false
       }
    }
-   const unAuthObj = {
+   const unAuthObjt = {
       props: { providers }
    }
-   return session ? authObjt : unAuthObj
+   return session ? authObjt : unAuthObjt
 }

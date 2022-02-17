@@ -35,7 +35,12 @@ const DevitHeading = ({ username, createdAt, nickname }) => {
                aria-label={timeAgo}
                fontSize="12px"
             >
-               <Box whiteSpace="nowrap" flexShrink={0} as="time">
+               <Box
+                  dateTime={new Date(createdAt).toISOString()}
+                  whiteSpace="nowrap"
+                  flexShrink={0}
+                  as="time"
+               >
                   {timeAgo}
                </Box>
             </Tooltip>

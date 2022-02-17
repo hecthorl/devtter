@@ -22,7 +22,7 @@
       "react-textarea-autosize": "8.3.3",
       "swr": "1.2.1",
       "wouter": "2.8.0-alpha.2",
-      "zustand": "3.6.9"
+      "zustand": "3.7.0"
    },
    "devDependencies": {
       "eslint": "8.8.0",

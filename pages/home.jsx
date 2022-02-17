@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
+import SeoHead from 'components/SeoHead'
 import Layouts from 'components/Layouts'
 const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
    ssr: false
@@ -7,9 +8,12 @@ const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
 
 const Home = () => {
    return (
-      <Layouts>
-         <BodySwitch />
-      </Layouts>
+      <>
+         <SeoHead title="Inicio / Devtter" />
+         <Layouts>
+            <BodySwitch />
+         </Layouts>
+      </>
    )
 }
 

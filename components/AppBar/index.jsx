@@ -19,7 +19,8 @@ const AppBar = () => (
             xl: '275px'
          }}
          w="full"
-         h={`${window.innerHeight}px`}
+         // h={`${window.innerHeight}px`}
+         h="100vh"
          textColor="white"
          mx={{
             base: '0',
