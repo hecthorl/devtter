@@ -1,10 +1,6 @@
-import dynamic from 'next/dynamic'
 import { Flex, VStack } from '@chakra-ui/react'
+import AppBar from 'components/AppBar'
 import Aside from 'components/Aside'
-
-const AppBar = dynamic(() => import('components/AppBar'), {
-   ssr: false
-})
 
 const Layout = ({ children }) => {
    return (

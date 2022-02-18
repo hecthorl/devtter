@@ -4,7 +4,8 @@ import useUserAuth from 'hooks/useAuthUser'
 
 const AppBarItem = ({ icon, title, href }) => {
    const { userData } = useUserAuth()
-   const justProfile = title === 'Perfil' ? `/${userData.nickname}` : href
+   const justProfile =
+      title === 'Perfil' ? `/${userData.nickname.slice(1)}` : href
    return (
       <Link href={justProfile} passHref>
          <LinkChacra
