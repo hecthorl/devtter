@@ -1,36 +1,45 @@
-import { Flex, Icon, Tooltip } from '@chakra-ui/react'
+import { Box, Icon, Tooltip } from '@chakra-ui/react'
 import { BsThreeDots } from 'react-icons/bs'
 
 const OptionsBtn = () => (
-   <Tooltip
-      gutter={0}
-      openDelay={600}
-      label="Más opciones"
-      aria-label="Más opciones"
-      fontSize="12px"
+   <Box
+      onClick={e => e.stopPropagation()}
+      lineHeight="17px"
+      role="group"
+      as="div"
+      h="18px"
+      w="18px"
+      fontSize="lg"
+      pos="relative"
+      cursor="pointer"
    >
-      <Flex
-         role="group"
-         as="button"
-         align="center"
-         justify="center"
-         fontSize="lg"
-         rounded="full"
-         bg="rgba(29 155 240 / 0%)"
-         w="34.75px"
-         h="34.75px"
-         _hover={{
-            bg: 'rgba(29 155 240 / 10%)'
+      <Icon
+         as={BsThreeDots}
+         _groupHover={{
+            textColor: 'rgba(29 155 240 / 100%)'
          }}
+      />
+      <Tooltip
+         gutter={0}
+         openDelay={600}
+         label="Más opciones"
+         aria-label="Más opciones"
+         fontSize="12px"
       >
-         <Icon
-            as={BsThreeDots}
-            _groupHover={{
-               textColor: 'rgba(29 155 240 / 100%)'
+         <Box
+            zIndex={0}
+            rounded="full"
+            bg="rgba(29 155 240 / 0%)"
+            w="34.75px"
+            h="34.75px"
+            pos="absolute"
+            _hover={{
+               bg: 'rgba(29 155 240 / 10%)'
             }}
+            transform="translate(-23%, -81%)"
          />
-      </Flex>
-   </Tooltip>
+      </Tooltip>
+   </Box>
 )
 
 export default OptionsBtn

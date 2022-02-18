@@ -92,7 +92,7 @@ const MiniProfile = () => {
                            <Text fontWeight="bold" isTruncated>
                               {userData.name}
                            </Text>
-                           <Text opacity={0.5}>{'@' + userData.nickname}</Text>
+                           <Text opacity={0.5}>{userData.nickname}</Text>
                         </Box>
                         <Icon
                            textColor="leela.500"
@@ -117,8 +117,8 @@ const MiniProfile = () => {
                      as="button"
                      textAlign="start"
                   >
-                     <Text as="span">Cerrar la sesion de</Text>
-                     <Text as="span">{'@' + userData.nickname}</Text>
+                     <Text as="span">Cerrar la sesión de</Text>
+                     <Text as="span">{userData.nickname}</Text>
                   </Box>
                </Flex>
             </PopoverBody>
