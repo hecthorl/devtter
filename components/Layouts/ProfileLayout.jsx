@@ -33,7 +33,7 @@ const ProfileLayout = ({ user }) => {
                   <Text textColor="white" fontSize="20px" fontWeight="bold">
                      {user.name}
                   </Text>
-                  <Text opacity={0.8}>@{user.nickname}</Text>
+                  <Text opacity={0.8}>{user.nickname}</Text>
                </Box>
                <Box textColor="white">{user.preferences.bio}</Box>
                <BodyInfo user={user} />

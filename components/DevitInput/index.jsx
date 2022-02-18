@@ -26,7 +26,7 @@ const DevitInput = () => {
          pos="relative"
       >
          <Link passHref href={`/${userData.nickname}`}>
-            <ChakraLink onClick={e => e.stopPropagation()}>
+            <ChakraLink w="fit-content" shadow="unset !important">
                <Avatar mr="12px" src={userData.image} name={userData.name} />
             </ChakraLink>
          </Link>

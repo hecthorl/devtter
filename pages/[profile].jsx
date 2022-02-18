@@ -54,7 +54,8 @@ export default Profile
  */
 export async function getServerSideProps(context) {
    const session = await getSession(context)
-   const user = await findUser(context.query.profile)
+   const profile = context.query.profile
+   const user = await findUser(`@${profile}`)
 
    return {
       props: { session, user }

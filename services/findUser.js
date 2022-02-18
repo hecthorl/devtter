@@ -8,7 +8,9 @@ import { db } from './firebaseClient'
  */
 const findUser = async field => {
    const collRef = collection(db, 'users')
-   const queryField = field.includes('@') ? 'email' : 'nickname'
+   const queryField = /(.+)@(.+){2,}\.(.+){2,}/.test(field)
+      ? 'email'
+      : 'nickname'
    const myQuery = where(queryField, '==', field)
    const docSnap = await getDocs(query(collRef, myQuery))
 

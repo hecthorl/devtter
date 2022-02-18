@@ -9,16 +9,15 @@ import {
    PopoverContent,
    PopoverTrigger,
    Text
-   // useBoolean
 } from '@chakra-ui/react'
 
 import useUserAuth from 'hooks/useAuthUser'
-import { FcCheckmark } from 'react-icons/fc'
 import { BsThreeDots } from 'react-icons/bs'
+import { GiCheckMark } from 'react-icons/gi'
 
 const MiniProfile = () => {
    const { userData, signOut } = useUserAuth()
-   // const [flag ] = useBoolean()
+
    if (!userData) return null
    return (
       <Popover>
@@ -29,9 +28,7 @@ const MiniProfile = () => {
                align="center"
                transitionDuration="0.2s"
                justify={{
-                  sm: 'center',
-                  md: 'center',
-                  lg: 'center',
+                  base: 'center',
                   xl: 'flex-start'
                }}
                my="12px"
@@ -47,11 +44,10 @@ const MiniProfile = () => {
                   name={userData.name}
                />
                <Box
+                  minW={0}
                   w="full"
                   display={{
-                     sm: 'none',
-                     md: 'none',
-                     lg: 'none',
+                     base: 'none',
                      xl: 'flex'
                   }}
                   justifyContent="space-between"
@@ -59,13 +55,14 @@ const MiniProfile = () => {
                >
                   <Box lineHeight="21px" mx="12px" overflow="hidden">
                      <Text isTruncated>{userData.name}</Text>
-                     <Text opacity={0.5}>{'@' + userData.nickname}</Text>
+                     <Text opacity={0.5}>{userData.nickname}</Text>
                   </Box>
                   <Icon fontSize="18px" as={BsThreeDots} />
                </Box>
             </Flex>
          </PopoverTrigger>
          <PopoverContent
+            as="div"
             style={{
                boxShadow:
                   'rgb(136 153 166 / 20%) 0px 0px 15px, rgb(136 153 166 / 15%) 0px 0px 3px 1px'
@@ -80,11 +77,9 @@ const MiniProfile = () => {
                   <Flex
                      justify="space-between"
                      align="center"
-                     my="12px"
                      py="12px"
                      px="16px"
-                     borderBottomColor="#38444d"
-                     borderBottomWidth="1px"
+                     borderBottom="1px solid #38444d"
                   >
                      <Avatar
                         w="48px"
@@ -92,16 +87,38 @@ const MiniProfile = () => {
                         src={userData.image}
                         name={userData.name}
                      />
-                     <Box lineHeight="21px" mx="12px" overflow="hidden">
-                        <Text isTruncated>{userData.name}</Text>
-                        <Text>{'@' + userData.name.replace(' ', '_')}</Text>
-                     </Box>
-                     <Icon fontSize="18px" as={FcCheckmark} />
+                     <Flex align="center" justify="space-between" flex={1}>
+                        <Box lineHeight="21px" mx="12px" overflow="hidden">
+                           <Text fontWeight="bold" isTruncated>
+                              {userData.name}
+                           </Text>
+                           <Text opacity={0.5}>{'@' + userData.nickname}</Text>
+                        </Box>
+                        <Icon
+                           textColor="leela.500"
+                           fontSize="18px"
+                           as={GiCheckMark}
+                        />
+                     </Flex>
                   </Flex>
-                  <Text p="16px">Agregar una cuenta existente</Text>
-                  <Box onClick={() => signOut()} p="16px" w="full" as="button">
-                     <Text>Cerrar la sesion de</Text>
-                     <Text>@asdasd</Text>
+                  <Text
+                     _hover={{ bg: 'rgb(25 39 52)' }}
+                     transition="background-color 0.2s ease"
+                     p="16px"
+                  >
+                     Agregar una cuenta existente
+                  </Text>
+                  <Box
+                     display="grid"
+                     _hover={{ bg: 'rgb(25 39 52)' }}
+                     transition="background-color 0.2s ease"
+                     onClick={() => signOut()}
+                     p="16px"
+                     as="button"
+                     textAlign="start"
+                  >
+                     <Text as="span">Cerrar la sesion de</Text>
+                     <Text as="span">{'@' + userData.nickname}</Text>
                   </Box>
                </Flex>
             </PopoverBody>
