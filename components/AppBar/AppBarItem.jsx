@@ -9,14 +9,9 @@ const AppBarItem = ({ icon, title, href }) => {
    return (
       <Link href={justProfile} passHref>
          <LinkChacra
-            w={{
-               base: 'fit-content',
-               xl: 'full'
-            }}
+            w={{ base: 'fit-content', xl: 'full' }}
             rounded="full"
-            _hover={{
-               textDecoration: 'none'
-            }}
+            _hover={{ textDecoration: 'none' }}
             fontSize="xl"
             py="4px"
             role="group"
@@ -26,23 +21,16 @@ const AppBarItem = ({ icon, title, href }) => {
                rounded="full"
                p="12px"
                w="fit-content"
-               _groupHover={{
-                  bg: 'rgba(255 255 255 / 10%)'
-               }}
+               _groupHover={{ bg: 'rgba(255 255 255 / 10%)' }}
             >
                <Icon as={icon} />
                <Text
-                  display={{
-                     base: 'none',
-                     xl: 'block'
-                  }}
+                  display={{ base: 'none', xl: 'block' }}
                   ml="20px"
                   mr="16px"
                >
                   {title}
                </Text>
-               {/* {width > 1282 && (
-               )} */}
             </Flex>
          </LinkChacra>
       </Link>

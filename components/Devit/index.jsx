@@ -31,9 +31,7 @@ const Devit = ({ devit }) => {
          color="white"
          borderBottom="1px solid #38444d"
          transitionDuration="0.2s"
-         _hover={{
-            bg: 'rgba(255 255 255 / 3%)'
-         }}
+         _hover={{ bg: 'rgba(255 255 255 / 3%)' }}
          cursor="pointer"
       >
          <CuratedLink str={userInfo.nickname}>

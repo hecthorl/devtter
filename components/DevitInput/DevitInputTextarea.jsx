@@ -17,8 +17,7 @@ const DevitInputTextarea = () => {
       textareaMsg
    } = useHandlers()
 
-   const textareaBorder =
-      dragStates === DRAG_OVER ? '2px dashed lime' : '2px dashed transparent'
+   const textareaBorder = dragStates === DRAG_OVER ? 'lime' : 'transparent'
    return (
       <Box w="full">
          <Textarea
@@ -36,7 +35,7 @@ const DevitInputTextarea = () => {
                color: 'white',
                outline: 'none',
                fontSize: '20px',
-               border: textareaBorder
+               border: `2px dashed ${textareaBorder}`
             }}
          />
          <OnImage preview={preview} setPreview={setPreview} />

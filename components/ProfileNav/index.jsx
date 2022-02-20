@@ -17,9 +17,7 @@ function Acc({ title }) {
    return (
       <Flex
          transition="background-color 0.2s ease"
-         _hover={{
-            bg: 'rgba(255 255 255 / 10%)'
-         }}
+         _hover={{ bg: 'rgba(255 255 255 / 10%)' }}
          as="button"
          direction="column"
          align="center"

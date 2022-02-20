@@ -10,13 +10,8 @@ const DevitSubmitBtn = () => {
          rounded="full"
          disabled={isBtnDisable}
          bg="leela.500"
-         _disabled={{
-            pointerEvents: 'none',
-            opacity: 0.5
-         }}
-         _hover={{
-            opacity: 0.9
-         }}
+         _disabled={{ pointerEvents: 'none', opacity: 0.5 }}
+         _hover={{ opacity: 0.9 }}
       >
          <Text textColor="white">Devittear</Text>
       </Button>

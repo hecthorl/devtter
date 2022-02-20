@@ -2,9 +2,8 @@ import Link from 'next/link'
 import { Link as ChakraLink } from '@chakra-ui/react'
 
 const CuratedLink = ({ children, str }) => {
-   const curatedNikname = str.slice(1)
    return (
-      <Link passHref href={`/${curatedNikname}`}>
+      <Link passHref href={`/${str.slice(1)}`}>
          <ChakraLink
             mr="12px"
             h="fit-content"

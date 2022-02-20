@@ -26,31 +26,3 @@ const Letterhead = ({ children }) => {
 }
 
 export default Letterhead
-
-/**
- * Para home
- * <Box flex={1}>
-               <Text fontSize="xl" fontWeight="bold" color="white">
-                  Inicio
-               </Text>
-            </Box>
-            <Flex justify="end" minW="56px">
-               <Box as="span">✨</Box>
-            </Flex>
- */
-
-/**
- * Para Perfil
- <Box minW="56px" minH="32px">
-               <GoBackBtn />
-            </Box>
-            <Flex h="full" direction="column" justify="start" align="center" flex={1}>
-               <Text fontSize="xl" fontWeight="bold" color="white">
-                  Nombre del Perfil
-               </Text>
-               <Text fontSize="sm" opacity={0.5} color="white">
-                  25,5 mill Devits
-               </Text>
-            </Flex>
-            <Box minW="56px" minH="32px"></Box>
- */

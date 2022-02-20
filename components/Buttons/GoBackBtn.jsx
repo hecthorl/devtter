@@ -23,9 +23,7 @@ const GoBackBtn = () => {
             rounded="full"
             textColor="white"
             fontSize="xl"
-            _hover={{
-               bg: 'rgba(239 243 244 / 10%)'
-            }}
+            _hover={{ bg: 'rgba(239 243 244 / 10%)' }}
          >
             <Icon as={FiArrowLeft} />
          </Flex>

@@ -14,12 +14,8 @@ const AppBar = () => (
          display={['none', 'flex']}
          as="header"
          direction="column"
-         maxW={{
-            base: '88px',
-            xl: '275px'
-         }}
+         maxW={{ base: '88px', xl: '275px' }}
          w="full"
-         // h={`${window.innerHeight}px`}
          h="100vh"
          textColor="white"
          mx={{
@@ -31,10 +27,7 @@ const AppBar = () => (
             justify="space-between"
             direction="column"
             position="fixed"
-            align={{
-               base: 'center',
-               xl: 'unset'
-            }}
+            align={{ base: 'center', xl: 'unset' }}
             top={0}
             maxW="inherit"
             w="full"

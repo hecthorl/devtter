@@ -15,9 +15,7 @@ const OptionsBtn = () => (
    >
       <Icon
          as={BsThreeDots}
-         _groupHover={{
-            textColor: 'rgba(29 155 240 / 100%)'
-         }}
+         _groupHover={{ textColor: 'rgba(29 155 240 / 100%)' }}
       />
       <Tooltip
          gutter={0}

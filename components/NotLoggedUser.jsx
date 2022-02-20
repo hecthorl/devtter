@@ -6,13 +6,7 @@ import BrandIcon from './DevitIcons/BrandIcon'
 const NotLoggedUser = () => {
    const { signIn } = useUserAuth()
    return (
-      <Flex
-         direction={{
-            md: 'row',
-            base: 'column-reverse'
-         }}
-         minH="100vh"
-      >
+      <Flex direction={{ md: 'row', base: 'column-reverse' }} minH="100vh">
          <Flex
             bg="#006fd6"
             justify="center"
@@ -47,10 +41,7 @@ const NotLoggedUser = () => {
                   borderColor="white"
                   textColor="white"
                   bg="black"
-                  _hover={{
-                     bg: 'white',
-                     textColor: 'black'
-                  }}
+                  _hover={{ bg: 'white', textColor: 'black' }}
                   onClick={() => signIn()}
                >
                   <Icon as={GoMarkGithub} w={6} h={6} marginRight={2} />

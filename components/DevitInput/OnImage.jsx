@@ -27,9 +27,7 @@ const OnImage = ({ preview, setPreview }) => {
             pos="absolute"
             top="0"
             left={0}
-            _hover={{
-               bg: 'rgba(239, 243, 244, 0.1)'
-            }}
+            _hover={{ bg: 'rgba(239, 243, 244, 0.1)' }}
          />
          <Image src={preview} rounded="2xl" h="18rem" objectFit="cover" />
       </Box>

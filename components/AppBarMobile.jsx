@@ -49,33 +49,17 @@ const Btn = () => {
          mt={[0, 2]}
          rounded="full"
          bg="leela.500"
-         _disabled={{
-            pointerEvents: 'none',
-            opacity: 0.5
-         }}
+         _disabled={{ pointerEvents: 'none', opacity: 0.5 }}
          _hover={{
             opacity: 0.9
          }}
-         w={{
-            base: '56px',
-            xl: '90%'
-         }}
+         w={{ base: '56px', xl: '90%' }}
          h="56px"
          fontWeight="bold"
       >
-         <Text
-            display={{
-               base: 'none',
-               xl: 'block'
-            }}
-         >
-            Devittear
-         </Text>
+         <Text display={{ base: 'none', xl: 'block' }}>Devittear</Text>
          <Icon
-            display={{
-               base: 'inline-block',
-               xl: 'none'
-            }}
+            display={{ base: 'inline-block', xl: 'none' }}
             fontSize="2xl"
             as={GiFeather}
          />

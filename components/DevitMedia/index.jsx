@@ -4,7 +4,6 @@ import VisorImg from './VisorImg'
 
 const DevitMedia = ({ img, id, likesCount }) => {
    const { visor, handleState } = useVisorImg()
-   const dominantColor = img.dominant_color
 
    if (img === 'No image') return null
    return (
@@ -29,7 +28,7 @@ const DevitMedia = ({ img, id, likesCount }) => {
                img={img.img_url}
                id={id}
                likesCount={likesCount}
-               color={dominantColor}
+               color={img.dominant_color}
             />
          )}
       </Box>

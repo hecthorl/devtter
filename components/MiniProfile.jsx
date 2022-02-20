@@ -27,10 +27,7 @@ const MiniProfile = () => {
                cursor="pointer"
                align="center"
                transitionDuration="0.2s"
-               justify={{
-                  base: 'center',
-                  xl: 'flex-start'
-               }}
+               justify={{ base: 'center', xl: 'flex-start' }}
                my="12px"
                p="12px"
                _hover={{
@@ -46,10 +43,7 @@ const MiniProfile = () => {
                <Box
                   minW={0}
                   w="full"
-                  display={{
-                     base: 'none',
-                     xl: 'flex'
-                  }}
+                  display={{ base: 'none', xl: 'flex' }}
                   justifyContent="space-between"
                   alignItems="center"
                >

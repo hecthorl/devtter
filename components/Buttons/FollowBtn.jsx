@@ -10,9 +10,7 @@ const FollowBtn = ({ isFollowIt }) =>
          minW="77px"
          h="36px"
          rounded="full"
-         _hover={{
-            opacity: '0.8'
-         }}
+         _hover={{ opacity: '0.8' }}
       >
          Seguir
       </Button>
