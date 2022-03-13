@@ -6,13 +6,9 @@ const { DRAG_OVER, NONE } = DRAG_IMAGE_STATES
 const useHandlers = () => {
    const setDragStates = useZtndStore(state => state.setDragStates)
    const dragStates = useZtndStore(state => state.dragStates)
-   const textareaMsg = useZtndStore(state => state.textareaMsg)
-   const setTextareaMsg = useZtndStore(state => state.setTextareaMsg)
 
    return {
-      textareaMsg,
       dragStates,
-      setTextareaMsg,
       handleDragEnter: event => {
          event.preventDefault()
          setDragStates(DRAG_OVER)

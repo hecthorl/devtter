@@ -18,10 +18,7 @@ const AppBar = () => (
          w="full"
          h="100vh"
          textColor="white"
-         mx={{
-            base: '0',
-            xl: '12px'
-         }}
+         mx={{ base: '0', xl: '12px' }}
       >
          <Flex
             justify="space-between"

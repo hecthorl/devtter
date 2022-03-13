@@ -6,6 +6,7 @@ import SingleDevit from 'components/SingleDevit'
 import Letterhead from 'components/Letterhead'
 import GoBackBtn from 'components/Buttons/GoBackBtn'
 import getDevit from 'services/getDevit'
+import MyModal from 'components/MyModal'
 
 const StatusPage = ({ devit }) => {
    const title = devit
@@ -25,6 +26,7 @@ const StatusPage = ({ devit }) => {
             </Letterhead>
             <Box w="full" h="12px" />
             <SingleDevit />
+            <MyModal />
          </Layouts>
       </>
    )

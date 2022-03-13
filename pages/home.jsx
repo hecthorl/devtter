@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import { getSession } from 'next-auth/react'
 import SeoHead from 'components/SeoHead'
 import Layouts from 'components/Layouts'
+import MyModal from 'components/MyModal'
 const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
    ssr: false
 })
@@ -13,6 +14,7 @@ const Home = () => {
          <Layouts>
             <BodySwitch />
          </Layouts>
+         <MyModal />
       </>
    )
 }

@@ -1,19 +1,26 @@
+import Link from 'next/link'
+import { useState } from 'react'
 import {
    Avatar,
    Box,
+   Button,
    Flex,
    HStack,
-   VStack,
-   Link as ChakraLink
+   Link as ChakraLink,
+   Text
 } from '@chakra-ui/react'
 import useUserAuth from 'hooks/useAuthUser'
-import Link from 'next/link'
 import DevitInputTextarea from './DevitInputTextarea'
 import DevitLoading from './DevitLoading'
-import DevitSubmitBtn from './DevitSubmitBtn'
+import useSendDevit from 'hooks/useSendDevit'
 
 const DevitInput = () => {
+   const [textareaMsg, setTextareaMsg] = useState('')
    const { userData } = useUserAuth()
+   const { handleSubmit, isBtnDisable } = useSendDevit(
+      textareaMsg,
+      setTextareaMsg
+   )
 
    return (
       <Box
@@ -21,23 +28,20 @@ const DevitInput = () => {
          w="full"
          px="16px"
          pb="12px"
-         borderBottomColor="#38444d"
-         borderBottomWidth="1px"
          pos="relative"
+         h="full"
       >
          <Link passHref href={`/${userData.nickname.slice(1)}`}>
             <ChakraLink shadow="unset !important">
                <Avatar mr="12px" src={userData.image} name={userData.name} />
             </ChakraLink>
          </Link>
-         <VStack width="full" spacing={0}>
-            <DevitInputTextarea />
-            <Box
-               w="full"
-               borderBottomColor="#38444d"
-               my={1}
-               borderBottomWidth="1px"
+         <Flex direction="column" width="full" height="full">
+            <DevitInputTextarea
+               value={textareaMsg}
+               onChange={e => setTextareaMsg(e.target.value)}
             />
+            <Box w="full" borderBottom="1px solid #38444d" my={1} />
             <Flex pt="12px" justify="space-between" align="center" w="full">
                <HStack spacing={6}>
                   <Box>🐱‍🏍</Box>
@@ -46,9 +50,19 @@ const DevitInput = () => {
                   <Box>🐱‍🐉</Box>
                   <Box>🐱‍👓</Box>
                </HStack>
-               <DevitSubmitBtn />
+               <Button
+                  onClick={handleSubmit}
+                  h="36px"
+                  rounded="full"
+                  disabled={isBtnDisable}
+                  bg="leela.500"
+                  _disabled={{ pointerEvents: 'none', opacity: 0.5 }}
+                  _hover={{ opacity: 0.9 }}
+               >
+                  <Text textColor="white">Devittear</Text>
+               </Button>
             </Flex>
-         </VStack>
+         </Flex>
          <DevitLoading />
       </Box>
    )

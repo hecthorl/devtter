@@ -15,9 +15,7 @@ const DevitHeading = ({ username, createdAt, nickname }) => {
             >
                <Box
                   as="span"
-                  _hover={{
-                     textDecoration: 'underline'
-                  }}
+                  _hover={{ textDecoration: 'underline' }}
                   textColor="white"
                   fontWeight="bold"
                >

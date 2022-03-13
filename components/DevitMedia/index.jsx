@@ -8,9 +8,7 @@ const DevitMedia = ({ img, id, likesCount }) => {
    if (img === 'No image') return null
    return (
       <Box
-         onClick={e => {
-            e.stopPropagation()
-         }}
+         onClick={e => e.stopPropagation()}
          rounded="2xl"
          border="1px solid #38444d"
          overflow="hidden"

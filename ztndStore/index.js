@@ -10,17 +10,17 @@ const useZtndStore = create(set => ({
    file: null,
    setFile: newState => set(() => ({ file: newState })),
 
-   // Textarea_Management
-   textareaMsg: '',
-   setTextareaMsg: newState => set(() => ({ textareaMsg: newState })),
-
    // Devit_Management
    devitStates: UPLOADING_STATES.NONE,
    setDevitStates: newState => set(() => ({ devitStates: newState })),
 
    // Is intersecting
    show: false,
-   setShow: newState => set(() => ({ show: newState }))
+   setShow: newState => set(() => ({ show: newState })),
+
+   // Popup
+   isPopup: false,
+   setIspopup: newState => set(() => ({ isPopup: newState }))
 }))
 
 export default useZtndStore

@@ -7,7 +7,7 @@ import useZtndStore from 'ztndStore'
 import useUserAuth from './useAuthUser'
 const { UPLOADING, DONE } = UPLOADING_STATES
 
-const useSendDevit = () => {
+const useSendDevit = (textareaMsg = '', setTextareaMsg) => {
    const { userData } = useUserAuth()
    const toast = useToast({
       position: 'bottom',
@@ -17,16 +17,14 @@ const useSendDevit = () => {
    })
    const file = useZtndStore(state => state.file)
    const devitStates = useZtndStore(state => state.devitStates)
-   const textareaMsg = useZtndStore(state => state.textareaMsg)
    const setDevitStates = useZtndStore(state => state.setDevitStates)
-   const setTextareaMsg = useZtndStore(state => state.setTextareaMsg)
    const setFile = useZtndStore(state => state.setFile)
 
    const devit = {
       userInfo: {
          avatar: userData.image,
          name: userData.name,
-         nickname: `@${userData.nickname}`
+         nickname: userData.nickname
       },
       content: textareaMsg.trim(),
       createdAt: new Date().getTime(),
@@ -36,10 +34,8 @@ const useSendDevit = () => {
    }
    const popUp = !false
    const handleSubmit = async () => {
-      // Entra en la fase carga para enviar el devit
       setDevitStates(UPLOADING)
-      // // Evalua si hay que subir el devit con una imagen o no
-      // // En este caso si NO hay imagen
+
       if (!file) {
          addDevit({
             ...devit,
