@@ -6,7 +6,7 @@ import findUser from 'services/findUser'
 import Layouts from 'components/Layouts'
 import Letterhead from 'components/Letterhead'
 import ProfileLayout from 'components/Layouts/ProfileLayout'
-import NotProfileUserFound from 'components/NotProfileFound'
+import ProfileNotFound from 'components/ProfileNotFound'
 import GoBackBtn from 'components/Buttons/GoBackBtn'
 import FollowBtn from 'components/Buttons/FollowBtn'
 import MyModal from 'components/MyModal'
@@ -14,7 +14,7 @@ import MyModal from 'components/MyModal'
 const Profile = ({ user }) => {
    const { userData } = useUserAuth()
    const title = user
-      ? `${user.name} (@${user.nickname}) / Devtter`
+      ? `${user.name} (${user.nickname}) / Devtter`
       : 'Perfil / Devtter'
    return (
       <>
@@ -43,7 +43,7 @@ const Profile = ({ user }) => {
                   {userData?.nickname !== user?.nickname && <FollowBtn />}
                </Box>
             </Letterhead>
-            {user ? <ProfileLayout user={user} /> : <NotProfileUserFound />}
+            {user ? <ProfileLayout user={user} /> : <ProfileNotFound />}
             <MyModal />
          </Layouts>
       </>
@@ -51,6 +51,7 @@ const Profile = ({ user }) => {
 }
 
 export default Profile
+
 /**
  * @param {import('next').GetServerSidePropsContext} context
  */

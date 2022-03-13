@@ -1,7 +1,7 @@
 import { Box, Flex, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-const NotProfileUserFound = () => {
+const ProfileNotFound = () => {
    const { query } = useRouter()
 
    return (
@@ -44,4 +44,4 @@ const NotProfileUserFound = () => {
    )
 }
 
-export default NotProfileUserFound
+export default ProfileNotFound
