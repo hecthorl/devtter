@@ -30,9 +30,7 @@ const MiniProfile = () => {
                justify={{ base: 'center', xl: 'flex-start' }}
                my="12px"
                p="12px"
-               _hover={{
-                  bg: 'rgba(255 255 255 / 10%)'
-               }}
+               _hover={{ bg: 'rgba(255 255 255 / 10%)' }}
             >
                <Avatar
                   w="40px"

@@ -13,7 +13,8 @@ const ProfileLayout = ({ user }) => {
             <Box
                // Por alguna razón, no funciona el backgroundSize="cover"
                // Solución: shorthand
-               h="200px"
+               h="100%"
+               maxH="200px"
                bg={`#3d5466 url(${imgBanner}) center/cover no-repeat`}
             >
                <Image

@@ -1,9 +1,9 @@
-import { Button, Flex, Icon, Text, VStack } from '@chakra-ui/react'
 import { getSession } from 'next-auth/react'
+import { Button, Flex, Icon, Text, VStack } from '@chakra-ui/react'
 import { GoMarkGithub } from 'react-icons/go'
 import SeoHead from 'components/SeoHead'
 import useUserAuth from 'hooks/useAuthUser'
-import BrandIcon from './DevitIcons/BrandIcon'
+import BrandIcon from 'components/DevitIcons/BrandIcon'
 
 const Index = () => {
    const { signIn } = useUserAuth()

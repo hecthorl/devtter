@@ -14,7 +14,7 @@ const Comp = ({ children, data }) => {
 
 const BodyInfo = ({ user }) => {
    return (
-      <Flex gap={5}>
+      <Flex gap={[1, 5]} direction={['column', 'row']}>
          <Comp data={user.preferences.location || 2222}>
             <Icon as={HiOutlineLocationMarker} />
             <Text>{user.preferences.location || 222}</Text>
