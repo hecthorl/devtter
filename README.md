@@ -11,7 +11,7 @@
 ### Lo que quiero que tenga
 
 -  Responsive al 100%
--  El botón like de Twitter
+-  El botón like de Twitter, dificil
 -  Página de error 404 personalizada
 -  Temas configurables
 -  Gestor de estado perfecto (xD)
