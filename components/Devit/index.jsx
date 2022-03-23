@@ -44,9 +44,7 @@ const Devit = ({ devit }) => {
                createdAt={createdAt}
             />
             <Box as="p">{content}</Box>
-            <Flex>
-               <DevitMedia img={img} id={1} likesCount={likesCount} />
-            </Flex>
+            <DevitMedia img={img} id={1} likesCount={likesCount} />
             <DevitReactions
                devitResponses={devitResponses}
                likesCount={likesCount}

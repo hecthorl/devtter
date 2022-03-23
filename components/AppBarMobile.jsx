@@ -14,6 +14,7 @@ const AppBarMobile = () => {
          pos="fixed"
          display={['block', 'none']}
          bottom={0}
+         zIndex={20}
       >
          <Flex
             borderTop="1px solid #38444d"
