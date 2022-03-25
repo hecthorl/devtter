@@ -12,6 +12,16 @@ const Comp = ({ children, data }) => {
    )
 }
 
+/**
+ *
+ * @param {object} props
+ * @param {object} props.user
+ * @param {object} props.user.preferences
+ * @param {string} props.user.preferences.location
+ * @param {string} props.user.github_url
+ * @param {number} props.user.created_at
+ * @returns
+ */
 const BodyInfo = ({ user }) => {
    return (
       <Flex gap={[1, 5]} direction={['column', 'row']}>

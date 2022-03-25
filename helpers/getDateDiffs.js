@@ -3,6 +3,7 @@ import { DATE_UNITS } from './constants'
 /**
  * Función que devuelve el tiempo que ha pasado y la unidad de tiempo
  * @param {number} timestamp Fecha sin parcear
+ * @returns {object} objeto
  */
 const getDateDiffs = timestamp => {
    const now = Date.now()

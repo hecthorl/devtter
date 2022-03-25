@@ -1,3 +1,7 @@
+/**
+ * @param {Array} array Array para mutar
+ * @returns {Array} Array mutado
+ */
 const shuffle = array => {
    let currentIndex = array.length
 

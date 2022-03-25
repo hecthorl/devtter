@@ -3,7 +3,7 @@ import getDateDiffs from 'helpers/getDateDiffs'
 
 /**
  * Devuelve la cantidad de tiempo restante entre el valor de entrada y el actual, legible para personas
- * @param {number} timestamp Fecha sin parcear
+ * @param {Number} timestamp Fecha sin parcear
  * @returns {string} Fecha parseada
  */
 const useTimeAgo = timestamp => {

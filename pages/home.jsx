@@ -7,24 +7,20 @@ const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
    ssr: false
 })
 
-const Home = () => {
-   return (
-      <>
-         <SeoHead title="Inicio / Devtter" />
-         <Layouts>
-            <BodySwitch />
-         </Layouts>
-         <MyModal />
-      </>
-   )
-}
+const Home = () => (
+   <>
+      <SeoHead title="Inicio / Devtter" />
+      <Layouts>
+         <BodySwitch />
+      </Layouts>
+      <MyModal />
+   </>
+)
 
 export async function getServerSideProps(context) {
    const session = await getSession(context)
 
-   const authenticated = {
-      props: { session }
-   }
+   const authenticated = { props: { session } }
    const unAuth = {
       redirect: {
          destination: '/',

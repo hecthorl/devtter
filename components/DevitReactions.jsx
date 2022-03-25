@@ -4,11 +4,17 @@ import { FaRetweet } from 'react-icons/fa'
 import { FiShare } from 'react-icons/fi'
 import { IoChatboxOutline } from 'react-icons/io5'
 
-const DevitReactions = ({
-   devitResponses = [],
-   likesCount = [],
-   sharedCounts = []
-}) => {
+/**
+ * ```js
+ *  console.log("xdddddddd")
+ * ```
+ *  @param {object} props
+ * @param {Array} props.devitResponses
+ * @param {Array} props.likesCount
+ * @param {Array} props.sharedCounts
+ * @returns {JSX.Element}
+ */
+const DevitReactions = ({ devitResponses, likesCount, sharedCounts }) => {
    return (
       <Flex
          mt="12px"

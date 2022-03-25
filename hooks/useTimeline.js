@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import { query, collection, orderBy, onSnapshot } from 'firebase/firestore'
 import { db } from 'services/firebaseClient'
 
+/**
+ *
+ * @returns {Array}
+ */
 const useTimeline = () => {
    const [timeline, setTimeline] = useState([])
 

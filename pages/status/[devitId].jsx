@@ -42,12 +42,8 @@ export async function getServerSideProps(context) {
 
    try {
       const devit = await getDevit(context.query.devitId)
-      return {
-         props: { session, devit }
-      }
+      return { props: { session, devit } }
    } catch (error) {
-      return {
-         props: { session, devit: null }
-      }
+      return { props: { session, devit: null } }
    }
 }
