@@ -15,6 +15,7 @@ const AppBarItem = ({ icon, title, href }) => {
             fontSize="xl"
             py="4px"
             role="group"
+            shadow="unset !important"
          >
             <Flex
                align="center"

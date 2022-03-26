@@ -1,4 +1,5 @@
-import { Flex, Icon, Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
+import OptionsBtn from 'components/Buttons/OptionsBtn'
 
 const TrendItem = () => (
    <Flex
@@ -11,7 +12,7 @@ const TrendItem = () => (
    >
       <Flex align="center" justify="space-between">
          <Text fontSize="sm">Tendencias en Perukistan</Text>
-         <Icon />
+         <OptionsBtn />
       </Flex>
       <Text fontSize="md" fontWeight="bold" textColor="white">
          TEMA

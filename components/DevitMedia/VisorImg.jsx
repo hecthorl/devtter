@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
    Box,
    Button,
@@ -9,13 +8,13 @@ import {
    Image
 } from '@chakra-ui/react'
 import { HiChevronDoubleRight, HiChevronDoubleLeft } from 'react-icons/hi'
-import DevitReactions from 'components/DevitReactions'
+import useBool from 'hooks/useBool'
 
-const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
+const VisorImg = ({ handleVisor, img, color, children }) => {
    document.body.onkeyup = e => {
       if (e.code === 'Escape') handleVisor(false)
    }
-   const [toggleWindow, setToggleWindow] = useState(!false)
+   const [toggleWindow, setToggleWindow] = useBool(!false)
 
    return (
       <Box
@@ -51,9 +50,7 @@ const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
                   bg="transparent"
                   textColor="white"
                   onClick={() => handleVisor(false)}
-                  _hover={{
-                     bg: 'rgba(255 255 255 / 20%)'
-                  }}
+                  _hover={{ bg: 'rgba(255 255 255 / 20%)' }}
                />
 
                <Button
@@ -65,7 +62,7 @@ const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
                      bg: 'rgba(255 255 255 / 20%)'
                   }}
                   aria-label={toggleWindow ? 'Ver devit' : 'Ocultar devit'}
-                  onClick={() => setToggleWindow(!toggleWindow)}
+                  onClick={setToggleWindow.toggle}
                >
                   <Icon
                      fontSize="xl"
@@ -86,7 +83,7 @@ const VisorImg = ({ handleVisor, img, id, likesCount, color }) => {
                />
             </Center>
             <Center pb={3} onClick={e => e.stopPropagation()}>
-               <DevitReactions id={id} likesCount={likesCount} />
+               {children}
             </Center>
          </Flex>
          <Box

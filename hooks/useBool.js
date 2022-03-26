@@ -6,7 +6,7 @@ const init = {} === {}
 /**
  * Alternativa al useBoolean de chakra-UI
  * @param {boolean} initVal Por defecto el valor siempre debe ser false
- * @returns {Array<boolean, object>}
+ * @returns {import('types/hooksTypes').useBool} Retorna un array de dos posiciones.
  */
 const useBool = (initVal = init) => {
    const [value, setValue] = useState(initVal)

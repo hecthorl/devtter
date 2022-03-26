@@ -1,36 +1,26 @@
 import {
    Box,
    Flex,
-   Icon,
    Input,
    InputGroup,
    InputLeftElement,
    Text
 } from '@chakra-ui/react'
+import { BiSearch } from 'react-icons/bi'
 import FollowItem from './FollowItem'
 import TrendItem from './TrendItem'
-import { BiSearch } from 'react-icons/bi'
 
 const Aside = () => (
    <Box
       as="aside"
-      display={{
-         base: 'none',
-         md: 'flex'
-      }}
+      display={{ base: 'none', md: 'flex' }}
       h="100vh"
       top="-298px"
       pos="sticky"
       flexDirection="column"
-      maxW={{
-         base: '290px',
-         lg: '350px'
-      }}
+      maxW={{ base: '290px', lg: '350px' }}
       w="full"
-      ml={{
-         base: '20px',
-         md: '30px'
-      }}
+      ml={{ base: '20px', md: '30px' }}
       pt="4px"
    >
       <Flex
@@ -38,10 +28,7 @@ const Aside = () => (
          top={0}
          bg="#15202b"
          pos="fixed"
-         maxW={{
-            base: '290px',
-            lg: '350px'
-         }}
+         maxW={{ base: '290px', lg: '350px' }}
          w="full"
          h="53px"
          align="center"
@@ -62,9 +49,7 @@ const Aside = () => (
                bg="#253341"
                textColor="white"
                rounded="full"
-               _hover={{
-                  bg: '#253341'
-               }}
+               _hover={{ bg: '#253341' }}
                placeholder="Buscar en Devtter"
             />
          </InputGroup>
@@ -82,7 +67,6 @@ const Aside = () => (
             <Text fontWeight="bold" fontSize="xl">
                Tendencias para ti
             </Text>
-            <Icon />
          </Flex>
          <TrendItem />
          <TrendItem />
@@ -101,7 +85,6 @@ const Aside = () => (
                textColor="rgba(255 255 255 / 50%)"
             >
                <Text fontSize="lg">Personas a quien Seguir</Text>
-               <Icon />
             </Flex>
          </Flex>
          <FollowItem />

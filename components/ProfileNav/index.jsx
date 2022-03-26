@@ -22,6 +22,11 @@ const ProfileNav = () => {
 
 export default ProfileNav
 
+/**
+ *
+ * @param {import("./Acc").AccProps} props.title
+ * @returns {JSX.Element}
+ */
 function Acc({ title }) {
    return (
       <Flex

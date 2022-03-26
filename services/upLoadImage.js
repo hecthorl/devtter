@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {File} file
+ * @returns {Promise<object>}
+ */
 const upLoadImage = async file => {
    const formData = new FormData()
    const cloudinaryURI = process.env.NEXT_PUBLIC_CloudinaryURI
