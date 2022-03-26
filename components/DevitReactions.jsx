@@ -14,7 +14,11 @@ import { IoChatboxOutline } from 'react-icons/io5'
  * @param {Array} props.sharedCounts
  * @returns {JSX.Element}
  */
-const DevitReactions = ({ devitResponses, likesCount, sharedCounts }) => {
+const DevitReactions = ({
+   devitResponses = [],
+   likesCount = [],
+   sharedCounts = []
+}) => {
    return (
       <Flex
          mt="12px"
