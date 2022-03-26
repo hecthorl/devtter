@@ -1,13 +1,12 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
 
 /**
- * @returns { import("types/hooksTypes").useAuthUser | null }
+ * @returns { import("types/hooksTypes").useAuthUser }
  */
 const useUserAuth = () => {
-   const { data, status } = useSession()
-   const sessionObj = { userData: data.user, signIn, signOut }
+   const { data } = useSession()
 
-   return status === 'authenticated' ? sessionObj : null
+   return { userData: data?.user || null, signIn, signOut }
 }
 
 export default useUserAuth
