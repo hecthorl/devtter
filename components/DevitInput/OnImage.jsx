@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import useZtndStore from 'ztndStore'
 import { Box, CloseButton, Image } from '@chakra-ui/react'
+import useZtndStore from 'ztndStore'
 
 const OnImage = ({ preview, setPreview }) => {
    const devitStates = useZtndStore(state => state.devitStates)

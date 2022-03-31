@@ -1,11 +1,13 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { BsImage } from 'react-icons/bs'
 import {
    Avatar,
    Box,
    Button,
    Flex,
    HStack,
+   Icon,
    Link as ChakraLink,
    Text
 } from '@chakra-ui/react'
@@ -13,8 +15,12 @@ import useUserAuth from 'hooks/useAuthUser'
 import DevitInputTextarea from './DevitInputTextarea'
 import DevitLoading from './DevitLoading'
 import useSendDevit from 'hooks/useSendDevit'
+import usePreview from 'hooks/usePreview'
+import OnImage from './OnImage'
 
 const DevitInput = () => {
+   const inputRef = useRef(null)
+   const { imageDrop, preview, setPreview } = usePreview()
    const [textareaMsg, setTextareaMsg] = useState('')
    const { userData } = useUserAuth()
    const { handleSubmit, isBtnDisable } = useSendDevit(
@@ -37,14 +43,31 @@ const DevitInput = () => {
             </ChakraLink>
          </Link>
          <Flex direction="column" width="full" height="full">
-            <DevitInputTextarea
-               value={textareaMsg}
-               onChange={e => setTextareaMsg(e.target.value)}
-            />
+            <Box w="full">
+               <DevitInputTextarea
+                  value={textareaMsg}
+                  onChange={e => setTextareaMsg(e.target.value)}
+                  onDrop={imageDrop}
+               />
+               <OnImage preview={preview} setPreview={setPreview} />
+            </Box>
             <Box w="full" borderBottom="1px solid #38444d" my={1} />
             <Flex pt="12px" justify="space-between" align="center" w="full">
                <HStack spacing={6}>
-                  <Box>🐱‍🏍</Box>
+                  <input
+                     ref={inputRef}
+                     onChange={imageDrop}
+                     type="file"
+                     style={{ display: 'none' }}
+                  />
+                  <Box
+                     as="button"
+                     onClick={() => {
+                        inputRef.current.click()
+                     }}
+                  >
+                     <Icon color="leela.500" as={BsImage} />
+                  </Box>
                   <Box>🐱‍👤</Box>
                   <Box>🐱‍💻</Box>
                   <Box>🐱‍🐉</Box>
