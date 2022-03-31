@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { useState, useRef } from 'react'
-import { BsImage } from 'react-icons/bs'
+import { useState } from 'react'
+import { AiOutlineFileGif } from 'react-icons/ai'
 import {
    Avatar,
    Box,
@@ -17,9 +17,9 @@ import DevitLoading from './DevitLoading'
 import useSendDevit from 'hooks/useSendDevit'
 import usePreview from 'hooks/usePreview'
 import OnImage from './OnImage'
+import ImgUploadBtn from './ImgUploadBtn'
 
 const DevitInput = () => {
-   const inputRef = useRef(null)
    const { imageDrop, preview, setPreview } = usePreview()
    const [textareaMsg, setTextareaMsg] = useState('')
    const { userData } = useUserAuth()
@@ -54,21 +54,21 @@ const DevitInput = () => {
             <Box w="full" borderBottom="1px solid #38444d" my={1} />
             <Flex pt="12px" justify="space-between" align="center" w="full">
                <HStack spacing={6}>
-                  <input
-                     ref={inputRef}
-                     onChange={imageDrop}
-                     type="file"
-                     style={{ display: 'none' }}
-                  />
-                  <Box
-                     as="button"
-                     onClick={() => {
-                        inputRef.current.click()
-                     }}
+                  <ImgUploadBtn onChange={imageDrop} />
+                  <Link
+                     passHref
+                     href="/home?gif=true"
+                     as="/home"
+                     shallow={true}
                   >
-                     <Icon color="leela.500" as={BsImage} />
-                  </Box>
-                  <Box>🐱‍👤</Box>
+                     <ChakraLink
+                        color="leela.500"
+                        fontSize="xl"
+                        shadow="unset !important"
+                     >
+                        <Icon as={AiOutlineFileGif} />
+                     </ChakraLink>
+                  </Link>
                   <Box>🐱‍💻</Box>
                   <Box>🐱‍🐉</Box>
                   <Box>🐱‍👓</Box>

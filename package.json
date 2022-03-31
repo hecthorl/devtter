@@ -11,6 +11,8 @@
       "@chakra-ui/react": "1.8.7",
       "@emotion/react": "11.8.2",
       "@emotion/styled": "11.8.1",
+      "@giphy/js-fetch-api": "4.1.2",
+      "@giphy/react-components": "5.6.1",
       "cloudinary": "1.29.0",
       "firebase": "9.6.10",
       "framer-motion": "6.2.8",
