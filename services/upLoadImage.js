@@ -5,7 +5,11 @@
  */
 const upLoadImage = async file => {
    const formData = new FormData()
+
+   // https://api.cloudinary.com/v1_1/ <cloud_name> /image/ <action>
    const cloudinaryURI = process.env.NEXT_PUBLIC_CloudinaryURI
+
+   // Serverless Function para obtener los credenciales de cloudinary
    const cldCredentialsURI = process.env.NEXT_PUBLIC_CredentialsURI
 
    const signatureRes = await fetch(cldCredentialsURI).catch(console.error)
