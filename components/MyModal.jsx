@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 import useZtndStore from 'ztndStore'
 import DevitInput from './DevitInput'
 
-const MyModal = ({ gifs }) => {
+const MyModal = ({ gifs = [] }) => {
    const { query, push } = useRouter()
 
    const isPopup = useZtndStore(state => state.isPopup)

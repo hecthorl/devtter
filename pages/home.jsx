@@ -9,7 +9,7 @@ const BodySwitch = dynamic(() => import('components/Layouts/BodySwitch'), {
    ssr: false
 })
 
-const Home = ({ trendingGifs = [] }) => {
+const Home = ({ trendingGifs }) => {
    return (
       <>
          <SeoHead title="Inicio / Devtter" />
@@ -25,12 +25,12 @@ export async function getServerSideProps(context) {
    const session = await getSession(context)
 
    const searchingTerms = await getGifsTrends()
-   const trendingGifs = await Promise.all(
+   const trendingGifs = await Promise.allSettled(
       searchingTerms.map(async term => await getGifSearch(term))
    )
-   console.log(trendingGifs)
+
    const authenticated = {
-      props: { session }
+      props: { session, trendingGifs }
    }
    const unAuth = {
       redirect: {
