@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
    Modal,
    ModalOverlay,
@@ -8,14 +9,12 @@ import {
    Text
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import getGiphysTrends from 'services/getGiphysTrends'
-import useSWR from 'swr'
 import useZtndStore from 'ztndStore'
 import DevitInput from './DevitInput'
 
-const MyModal = () => {
+const MyModal = ({ gifs }) => {
    const { query, push } = useRouter()
-   const { data: gifs } = useSWR('g', getGiphysTrends)
+
    const isPopup = useZtndStore(state => state.isPopup)
    const setIspopup = useZtndStore(state => state.setIspopup)
 
@@ -24,7 +23,7 @@ const MyModal = () => {
          isOpen={isPopup || query?.gif}
          onClose={() => {
             setIspopup(false)
-            push('/home', null, { shallow: false })
+            push('/home', null, { shallow: true })
          }}
       >
          <ModalOverlay bg="rgb(91 112 131 / 40%)" />
@@ -36,10 +35,11 @@ const MyModal = () => {
             maxH="90vh"
             bg="rgb(21 32 43)"
             textColor="white"
+            overflow="hidden"
          >
             <Flex mb={2} justify="start" align="center" height="53px" px="16px">
                <ModalCloseButton
-                  onClick={() => push('/home', null, { shallow: false })}
+                  onClick={() => push('/home', null, { shallow: true })}
                   pos="static"
                   rounded="full"
                   bg="transparent"
@@ -55,15 +55,15 @@ const MyModal = () => {
                      gridTemplateRows="repeat(10, 150px)"
                      gap={1}
                   >
-                     {gifs.map(item => (
-                        <Box pos="relative" key={gifs.id}>
+                     {gifs.map(({ display_name, img, id }) => (
+                        <Box pos="relative" key={id}>
                            <img
                               style={{
                                  objectFit: 'cover',
                                  width: '100%',
                                  height: '100%'
                               }}
-                              src={item.images.original.url}
+                              src={img}
                            />
                            <Box
                               pos="absolute"
@@ -75,12 +75,7 @@ const MyModal = () => {
                               fontSize="2xl"
                               padding="8px"
                            >
-                              <Text>
-                                 {item.title.slice(
-                                    0,
-                                    item.title.indexOf('GIF')
-                                 )}
-                              </Text>
+                              <Text>{display_name}</Text>
                            </Box>
                         </Box>
                      ))}

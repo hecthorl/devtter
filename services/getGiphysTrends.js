@@ -6,3 +6,13 @@ export default async function getGiphysTrends(rating = 'g') {
    const { data } = await res.json()
    return data
 }
+
+/**
+ * #ff7a00
+ * #7856ff
+ * #1d9bf0
+ * #00ba7c
+ * #f91880
+ * #ffd400
+ * #1d9bf0
+ */

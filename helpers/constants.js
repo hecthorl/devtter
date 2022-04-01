@@ -43,3 +43,8 @@ export const breackPoints = {
    xl: '1282px',
    '2xl': '1536px'
 }
+
+export const GIF = {
+   API_KEY: process.env.GIPHY_API_KEY,
+   BASE_URI: 'https://api.giphy.com/v1'
+}

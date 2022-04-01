@@ -7,6 +7,7 @@ import BrandIcon from 'components/DevitIcons/BrandIcon'
 
 const Index = () => {
    const { signIn } = useUserAuth()
+
    return (
       <>
          <SeoHead title="Devtter" />
