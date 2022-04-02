@@ -45,6 +45,6 @@ export const breackPoints = {
 }
 
 export const GIF = {
-   API_KEY: process.env.GIPHY_API_KEY,
+   API_KEY: process.env.NEXT_PUBLIC_GIPHY_API_KEY,
    BASE_URI: 'https://api.giphy.com/v1'
 }

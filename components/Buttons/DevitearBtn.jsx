@@ -1,9 +1,15 @@
+import { useRouter } from 'next/router'
 import { Button, Icon, Text } from '@chakra-ui/react'
 import { GiFeather } from 'react-icons/gi'
 import useZtndStore from 'ztndStore'
 
 const DevitearBtn = () => {
    const setIspopup = useZtndStore(state => state.setIspopup)
+   const { push } = useRouter()
+   const handlePopup = () => {
+      setIspopup(true)
+      push('/home?devitInput=true', '/home', { shallow: true })
+   }
    return (
       <Button
          shadow="unset !important"
@@ -14,7 +20,7 @@ const DevitearBtn = () => {
          w={{ base: '50px', xl: '90%' }}
          h="50px"
          fontWeight="bold"
-         onClick={() => setIspopup(true)}
+         onClick={handlePopup}
       >
          <Text display={{ base: 'none', xl: 'block' }}>Devittear</Text>
          <Icon

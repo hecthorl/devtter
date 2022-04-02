@@ -18,8 +18,10 @@ import useSendDevit from 'hooks/useSendDevit'
 import usePreview from 'hooks/usePreview'
 import OnImage from './OnImage'
 import ImgUploadBtn from './ImgUploadBtn'
+import { useRouter } from 'next/router'
 
 const DevitInput = () => {
+   const { push } = useRouter()
    const { imageDrop, preview, setPreview } = usePreview()
    const [textareaMsg, setTextareaMsg] = useState('')
    const { userData } = useUserAuth()
@@ -37,11 +39,13 @@ const DevitInput = () => {
          pos="relative"
          h="full"
       >
-         <Link passHref href={`/${userData.nickname.slice(1)}`}>
-            <ChakraLink shadow="unset !important">
-               <Avatar mr="12px" src={userData.image} name={userData.name} />
-            </ChakraLink>
-         </Link>
+         <Box>
+            <Link passHref href={`/${userData.nickname.slice(1)}`}>
+               <ChakraLink shadow="unset !important">
+                  <Avatar mr="12px" src={userData.image} name={userData.name} />
+               </ChakraLink>
+            </Link>
+         </Box>
          <Flex direction="column" width="full" height="full">
             <Box w="full">
                <DevitInputTextarea
@@ -55,20 +59,20 @@ const DevitInput = () => {
             <Flex pt="12px" justify="space-between" align="center" w="full">
                <HStack spacing={6}>
                   <ImgUploadBtn onChange={imageDrop} />
-                  <Link
-                     passHref
-                     href="/home?gif=true"
-                     as="/home"
-                     shallow={true}
+                  <Box
+                     onClick={() =>
+                        push('/home?gif=true', '/home', {
+                           shallow: true
+                        })
+                     }
+                     as="button"
+                     color="leela.500"
+                     fontSize="xl"
+                     shadow="unset !important"
                   >
-                     <ChakraLink
-                        color="leela.500"
-                        fontSize="xl"
-                        shadow="unset !important"
-                     >
-                        <Icon as={AiOutlineFileGif} />
-                     </ChakraLink>
-                  </Link>
+                     <Icon as={AiOutlineFileGif} />
+                  </Box>
+
                   <Box>🐱‍💻</Box>
                   <Box>🐱‍🐉</Box>
                   <Box>🐱‍👓</Box>

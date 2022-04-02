@@ -9,7 +9,6 @@ import ProfileLayout from 'components/Layouts/ProfileLayout'
 import ProfileNotFound from 'components/ProfileNotFound'
 import GoBackBtn from 'components/Buttons/GoBackBtn'
 import FollowBtn from 'components/Buttons/FollowBtn'
-import MyModal from 'components/MyModal'
 
 const Profile = ({ user }) => {
    const { userData } = useUserAuth()
@@ -44,7 +43,6 @@ const Profile = ({ user }) => {
                </Box>
             </Letterhead>
             {user ? <ProfileLayout user={user} /> : <ProfileNotFound />}
-            <MyModal />
          </Layouts>
       </>
    )
