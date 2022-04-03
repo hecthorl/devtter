@@ -1,19 +1,15 @@
 import { Modal, ModalOverlay, ModalContent } from '@chakra-ui/react'
+import modalTrigger from 'helpers/modalTrigger'
 import { useRouter } from 'next/router'
-// import useZtndStore from 'ztndStore'
 
 const MyModal = ({ children }) => {
-   const { query, push } = useRouter()
-
-   // const isPopup = useZtndStore(state => state.isPopup)
-   // const setIspopup = useZtndStore(state => state.setIspopup)
+   const { query, push, asPath } = useRouter()
 
    return (
       <Modal
-         isOpen={!!Object.keys(query).length}
+         isOpen={modalTrigger(['gif', 'devitInput'], Object.keys(query))}
          onClose={() => {
-            // setIspopup(false)
-            push('/home', null, { shallow: true })
+            push(asPath, null, { shallow: true })
          }}
       >
          <ModalOverlay bg="rgb(91 112 131 / 40%)" />

@@ -21,7 +21,7 @@ import ImgUploadBtn from './ImgUploadBtn'
 import { useRouter } from 'next/router'
 
 const DevitInput = () => {
-   const { push } = useRouter()
+   const { push, asPath } = useRouter()
    const { imageDrop, preview, setPreview } = usePreview()
    const [textareaMsg, setTextareaMsg] = useState('')
    const { userData } = useUserAuth()
@@ -61,9 +61,7 @@ const DevitInput = () => {
                   <ImgUploadBtn onChange={imageDrop} />
                   <Box
                      onClick={() =>
-                        push('/home?gif=true', '/home', {
-                           shallow: true
-                        })
+                        push(`${asPath}?gif=true`, asPath, { shallow: true })
                      }
                      as="button"
                      color="leela.500"

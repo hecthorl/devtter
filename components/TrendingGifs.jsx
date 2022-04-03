@@ -8,7 +8,7 @@ import Error from './Error'
 
 export default function TrendingGifs() {
    const { data: gifs, error } = useSWR(43, getGifsTrends)
-   const { push, query } = useRouter()
+   const { push, query, asPath } = useRouter()
    const [list, setList] = useState([])
    const item = Object.keys(query)
 
@@ -18,7 +18,7 @@ export default function TrendingGifs() {
       }
       return () => setList([])
    }, [query])
-   console.log(list)
+
    if (!gifs) return <Box>LOADING...</Box>
    if (error) return <Error />
    return (
@@ -37,8 +37,7 @@ export default function TrendingGifs() {
             <Box minW="56px">
                <CloseButton
                   onClick={() => {
-                     push('/home?gif=true', '/home', { shallow: true })
-                     // push('/home', null, { shallow: true })
+                     push(asPath, null, { shallow: true })
                   }}
                   rounded="full"
                   _hover={{
