@@ -16,6 +16,7 @@ const MyModal = ({ children }) => {
          <ModalContent
             rounded="2xl"
             width="full"
+            height="full"
             maxW="600px"
             maxH="650px"
             bg="rgb(21 32 43)"

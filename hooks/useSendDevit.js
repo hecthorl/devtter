@@ -22,9 +22,9 @@ const useSendDevit = (textareaMsg = '', setTextareaMsg) => {
 
    const devit = {
       userInfo: {
-         avatar: userData.image,
-         name: userData.name,
-         nickname: userData.nickname
+         avatar: userData?.image,
+         name: userData?.name,
+         nickname: userData?.nickname
       },
       content: textareaMsg.trim(),
       createdAt: new Date().getTime(),

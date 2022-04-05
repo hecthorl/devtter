@@ -40,9 +40,13 @@ const DevitInput = () => {
          h="full"
       >
          <Box>
-            <Link passHref href={`/${userData.nickname.slice(1)}`}>
+            <Link passHref href={`/${userData?.nickname.slice(1)}`}>
                <ChakraLink shadow="unset !important">
-                  <Avatar mr="12px" src={userData.image} name={userData.name} />
+                  <Avatar
+                     mr="12px"
+                     src={userData?.image}
+                     name={userData?.name}
+                  />
                </ChakraLink>
             </Link>
          </Box>

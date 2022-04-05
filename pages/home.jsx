@@ -29,5 +29,6 @@ export async function getServerSideProps(context) {
       }
    }
    return session ? authenticated : unAuth
+   // return authenticated
 }
 export default Home
