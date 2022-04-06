@@ -57,7 +57,7 @@ const DevitInput = () => {
                   onChange={e => setTextareaMsg(e.target.value)}
                   onDrop={imageDrop}
                />
-               <OnImage preview={preview} setPreview={setPreview} />
+               <OnImage preview={preview} setPreview={() => setPreview(null)} />
             </Box>
             <Box w="full" borderBottom="1px solid #38444d" my={1} />
             <Flex pt="12px" justify="space-between" align="center" w="full">

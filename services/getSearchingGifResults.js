@@ -1,5 +1,4 @@
 import { GIF } from 'helpers/constants'
-import uuid from 'helpers/uuid'
 
 /**
  * @param {string} words
@@ -18,8 +17,13 @@ export default async function getSearchingGifResults(words, limit, offset = 0) {
 
          return {
             displayName,
-            img: images.fixed_width_still,
-            id: uuid() + id
+            imgData: {
+               width: images.fixed_height.width,
+               height: images.fixed_height.height
+            },
+            freezeImg: images.fixed_height_still.url,
+            img: images.fixed_height.url,
+            gifId: id
          }
       })
 

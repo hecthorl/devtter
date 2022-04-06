@@ -1,12 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useZtndStore from 'ztndStore'
 import { DRAG_IMAGE_STATES } from 'helpers/constants'
 import imgFormatSupported from 'helpers/imgFormatSupported'
+import { useRouter } from 'next/router'
 
 const usePreview = () => {
+   const { query } = useRouter()
    const [preview, setPreview] = useState(null)
    const setDragStates = useZtndStore(state => state.setDragStates)
    const setFile = useZtndStore(state => state.setFile)
+
+   useEffect(() => {
+      if (typeof query?.imgUrl !== 'undefined') {
+         setPreview(query.imgUrl)
+      }
+   }, [query])
 
    /**
     * Se busca mejor nombre para esta función
@@ -14,7 +22,7 @@ const usePreview = () => {
     */
    function imageDrop(event) {
       event.preventDefault()
-      console.log(event)
+
       setDragStates(DRAG_IMAGE_STATES.DROPED)
       const [file] = event.dataTransfer
          ? event.dataTransfer.files

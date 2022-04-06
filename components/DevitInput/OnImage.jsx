@@ -1,23 +1,17 @@
-import { useEffect } from 'react'
 import { Box, CloseButton, Image } from '@chakra-ui/react'
 import useZtndStore from 'ztndStore'
 
 const OnImage = ({ preview, setPreview }) => {
-   const devitStates = useZtndStore(state => state.devitStates)
    const setFile = useZtndStore(state => state.setFile)
-
-   // Cuando se termine de subir la img, el efecto limpia la imagen
-   useEffect(() => {
-      setPreview(null)
-   }, [devitStates])
 
    if (!preview) return null
    return (
       <Box pos="relative">
          <CloseButton
             onClick={() => {
-               setPreview(null)
                setFile(null)
+               setPreview()
+               console.log('xddddddd')
             }}
             rounded="full"
             bg="rgba(0 0 0 / 50%)"

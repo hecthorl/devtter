@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { Box, forwardRef, Spinner } from '@chakra-ui/react'
+import { Box, Flex, forwardRef, Spinner } from '@chakra-ui/react'
 import debounce from 'just-debounce-it'
-import Masonry from 'react-masonry-css'
 import getSearchingGifResults from 'services/getSearchingGifResults'
 import randomBG from 'helpers/randomBG'
+import { useRouter } from 'next/router'
 
 const BoxRootRef = forwardRef((props, ref) => <Box {...props} ref={ref} />)
 
@@ -15,7 +15,6 @@ const BoxRootRef = forwardRef((props, ref) => <Box {...props} ref={ref} />)
 export default function SearchingResults({ keyWord }) {
    const [gifs, setGifs] = useState([])
    const [lote, setLote] = useState(0)
-   const rootRef = useRef(null)
    const visorRef = useRef(null)
 
    const limit = 20
@@ -61,22 +60,10 @@ export default function SearchingResults({ keyWord }) {
    }, [keyWord, lote])
 
    return (
-      <div
-         id="rootRef"
-         ref={rootRef}
-         style={{ height: 'auto', minHeight: '100%' }}
-      >
-         <Masonry
-            style={{
-               display: 'flex',
-               marginLeft: '-1px',
-               width: 'auto'
-            }}
-            columnClassName="my-masonry-grid_column_xd"
-            breakpointCols={5}
-         >
+      <div id="rootRefxd" style={{ height: 'auto', minHeight: '100%' }}>
+         <Flex gap="1px" wrap="wrap">
             {!!gifs.length && gifs.map(GifsMap)}
-         </Masonry>
+         </Flex>
          <div
             id="visor"
             style={{
@@ -93,27 +80,34 @@ export default function SearchingResults({ keyWord }) {
    )
 }
 
-/**
- * @param {object} gifObjec
- * @param {import('types/img480w_still').img480w_still} gifObjec.img
- * @param {number} index
- * @returns
- */
-function GifsMap({ id, displayName, img }, index) {
+function GifsMap({ displayName, imgData, freezeImg, img, gifId }, index) {
+   const width = imgData.width > 388 ? 583 / 2 : imgData.width
+   const { push } = useRouter()
    return (
       <Box
-         paddingLeft="1px"
-         backgroundClip="padding-box"
+         h="150px"
+         cursor="pointer"
+         width={`${width}px`}
+         margin="0"
+         flex="1 0 auto"
          backgroundColor={randomBG()}
-         key={id}
+         key={gifId}
+         onClick={() => {
+            push(`/home?imgUrl=${img}`, '/home', { shallow: true })
+            /**
+             * - Funcion para enviar la url a los hooks
+             * - Ademas crear funcion para saber si debe cerrar el popup
+             *   o retroceder al devitInput
+             */
+         }}
       >
          <img
             style={{
                objectFit: 'cover',
-               width: `${img.width}px`,
-               height: `${img.height}px`
+               width: '100%',
+               height: '100%'
             }}
-            src={img.url}
+            src={freezeImg}
             alt={displayName}
          />
       </Box>
